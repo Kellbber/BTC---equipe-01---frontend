@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import icon from "../../assets/images/icon.svg";
 import seta from "../../assets/images/seta.svg";
-import seta2 from '../../assets/images/seta2.svg'
+import seta2 from "../../assets/images/seta2.svg";
 
-type seta ={
-
-}
+type setaType = {
+  icons?: boolean;
+};
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
@@ -78,56 +78,59 @@ export const content = styled.main`
   flex-direction: column;
 `;
 
-export const adminSearch = styled.div`
+export const adminSearch = styled.div<setaType>`
   ${({ theme }) => css`
     display: flex;
-    width: 50%;
-    justify-content: space-around;
+    width: 60%;
+    justify-content: space-evenly;
     margin-top: 0.7rem;
     padding: 1rem 3rem;
     border-radius: 0.2rem;
-
     background-color: ${theme.colors.primaryColors};
+
     input {
       display: flex;
       outline: none;
-      border: 1px solid ${theme.colors.backgroundColor};
+      font-family: ${theme.constants.textInitialFontFamily};
       padding: 0.8rem;
-      font-family: ${theme.constants.textFinalFontFamily};
     }
-    select {
-    
-      display: flex;
+    option {
+      list-style: none;
       outline: none;
-      border: 1px solid ${theme.colors.backgroundColor};
-      padding: 0%.5rem;
-      background: url(${seta});
-      background-repeat: no-repeat;
-      background-size: 1rem;
-      background-position-x:6rem;
-      background-position-y:.8rem;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      width: 25%;
-      font-family: ${theme.constants.textFinalFontFamily};
-    }
-    option{
-        list-style: none;
-        outline: none;
-        border: 1px solid black;
-        border-radius: 0.2rem;
+      border: 1px solid black;
+      border-radius: 0.2rem;
+      font-family: ${theme.constants.textInitialFontFamily};
     }
     button {
       list-style: none;
       outline: none;
-      background-color: ${theme.colors.secundaryColor};
       border: transparent;
       border-radius: 0.2rem;
-      width: 15%;
-      color: ${theme.colors.primaryColors};
+      width: 60%;
+      background-color: ${theme.colors.secundaryColor};
       font-family: ${theme.constants.headingFontFamily};
-      font-weight: 400;
+      font-weight: 600;
+      color: ${theme.colors.primaryColors};
+      margin-left: 2rem;
     }
   `}
+`;
+
+export const selectEntity = styled.div<setaType>`
+  width: 30%;
+  display: flex;
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(${(props) => (props.icons? seta2 : seta)});
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position-x: 6rem;
+    background-position-y: 0.8rem;
+    outline: none;
+    border: 1px solid #D9D9D9;
+    width: 100%;
+
+  }
 `;

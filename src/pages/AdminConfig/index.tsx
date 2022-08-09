@@ -1,7 +1,22 @@
 import * as S from './style'
 import {BiLogOut} from 'react-icons/bi'
+import { useEffect, useState } from 'react';
 
 const AdminConfig = () => {
+
+  const [icon, setIcon] = useState<boolean>(false);
+
+
+
+  function changeIcon (){
+    if(icon){
+      setIcon(false)
+    }
+    else{
+      setIcon(true)
+    }
+  }
+
 
 
   return (
@@ -21,12 +36,14 @@ const AdminConfig = () => {
         <S.content>
             <S.adminSearch>
                 <input type="text" placeholder='Digite aqui...'/>
-                <select name="entity" id="entity" >
-                <option>Instituição</option>
-                <option>Usuário</option>
-                <option>Aluno</option>
+                <S.selectEntity icons={icon}>
+                <select name="entity" id="entity" onClick={changeIcon}>
+                <option >Instituição</option>
+                <option >Usuário</option>
+                <option >Aluno</option>
                 </select>
                 <button>Buscar</button>
+                </S.selectEntity>
             </S.adminSearch>
         </S.content>
     </S.background>
