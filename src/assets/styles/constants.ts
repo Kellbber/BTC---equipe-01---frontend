@@ -1,5 +1,7 @@
 export const constants = {
+  
   fontFamily: "Poppins",
+
   headingFontSize: "20px",
   headingLineHeight: "140%",
 
