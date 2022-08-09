@@ -22,13 +22,13 @@ export const header = styled.header`
     background: #2ea8dc;
   `}
 `;
-export const h1 = styled.header`
+export const h1 = styled.h1`
   ${({ theme }) => css`
     position: absolute;
     width: 197px;
     height: 39px;
-    left: 60px;
-    top: 15px;
+    left: 750px;
+    top: 0px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
@@ -43,7 +43,7 @@ export const LoginSection = styled.section`
     position: absolute;
     width: 597px;
     height: 453px;
-    left: 417px;
+    left: 500px;
     top: 221px;
     background: #ffffff;
     border-radius: 5px;
