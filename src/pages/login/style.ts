@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import background from "../../assets/images/background-login.png";
-
+import icon from "../../assets/images/icon.svg";
 export const logincss = styled.section`
   ${({ theme }) => css`
     background-image: url(${background});
@@ -11,30 +11,14 @@ export const logincss = styled.section`
   `}
 `;
 
-export const header = styled.header`
+export const heading = styled.div`
   ${({ theme }) => css`
-    position: absolute;
-    width: 1920px;
-    height: 70px;
-    left: 0px;
-    top: 0px;
+    display: flex;
+    width: 100%;
 
-    background: #2ea8dc;
-  `}
-`;
-export const h1 = styled.h1`
-  ${({ theme }) => css`
-    position: absolute;
-    width: 197px;
-    height: 39px;
-    left: 750px;
-    top: 0px;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 39px;
-    color: #ffffff;
+    background-color: ${theme.colors.secundaryColor};
+    align-items: center;
+    justify-content: center;
   `}
 `;
 
@@ -43,7 +27,7 @@ export const LoginSection = styled.section`
     position: absolute;
     width: 597px;
     height: 453px;
-    left: 500px;
+    left: 530px;
     top: 221px;
     background: #ffffff;
     border-radius: 5px;
@@ -84,4 +68,27 @@ export const p = styled.p`
   line-height: 30px;
 
   color: #ffffff;
+`;
+export const iconConfig = styled.div`
+  ${({ theme }) => css`
+    width: 65%;
+
+    p {
+      text-align: center;
+      color: ${theme.colors.primaryColors};
+      display: flex;
+
+      font-family: ${theme.constants.headingFontFamily};
+      font-weight: 600;
+    }
+    img {
+      background-image: url(${icon});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      padding: 0.8rem 0.2rem 0.8rem 0.2rem;
+      align-self: center;
+    }
+  `}
 `;

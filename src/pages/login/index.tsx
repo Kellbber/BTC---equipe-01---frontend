@@ -4,9 +4,15 @@ const Login = () => {
   return (
     <S.logincss>
       <main>
-        <S.header>
-          <S.h1>Coluna reta</S.h1>
-        </S.header>
+        <S.heading>
+          <S.iconConfig>
+            <p>
+              Coluna
+              <img />
+              Reta
+            </p>
+          </S.iconConfig>
+        </S.heading>
         <S.LoginSection>
           <S.loginborder></S.loginborder>
           <S.LoginInput
