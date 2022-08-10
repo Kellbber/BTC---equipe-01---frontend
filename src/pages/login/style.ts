@@ -34,8 +34,8 @@ export const LoginSection = styled.section`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    width: 35rem;
-    height: 25rem;
+    width: 30rem;
+    height: 20rem;
     border-radius: 5px;
     background: ${theme.colors.primaryColors};
   `}
@@ -78,8 +78,8 @@ export const div = styled.div`
 
 export const loginborder = styled.section`
   ${({ theme }) => css`
-    width: 35rem;
-    height: 5rem;
+    width: 30rem;
+    height: 4.7rem;
     background: #2ea8dc;
     border-radius: 5px 5px 0px 0px;
   `}
