@@ -81,18 +81,23 @@ export const content = styled.main`
 export const adminSearch = styled.div<setaType>`
   ${({ theme }) => css`
     display: flex;
-    width: 60%;
-    justify-content: space-evenly;
+    min-width: 60%;
+    justify-content: center;
     margin-top: 0.7rem;
     padding: 1rem 3rem;
     border-radius: 0.2rem;
     background-color: ${theme.colors.primaryColors};
+    flex-wrap: wrap;
 
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      padding: 0.8rem;
+      width: 50%;
+      padding: .5rem 0.2rem;
+      border: 1px solid ${theme.colors.backgroundColor};
+      margin-right: 2rem;
+
     }
     option {
       list-style: none;
@@ -101,17 +106,21 @@ export const adminSearch = styled.div<setaType>`
       border-radius: 0.2rem;
       font-family: ${theme.constants.textInitialFontFamily};
     }
+    select{
+      font-family: ${theme.constants.textInitialFontFamily};
+    }
     button {
       list-style: none;
       outline: none;
       border: transparent;
       border-radius: 0.2rem;
-      width: 60%;
+      width: 70%;
       background-color: ${theme.colors.secundaryColor};
       font-family: ${theme.constants.headingFontFamily};
       font-weight: 600;
       color: ${theme.colors.primaryColors};
       margin-left: 2rem;
+      cursor: pointer;
     }
   `}
 `;
@@ -126,11 +135,12 @@ export const selectEntity = styled.div<setaType>`
     background: url(${(props) => (props.icons? seta2 : seta)});
     background-repeat: no-repeat;
     background-size: 1rem;
-    background-position-x: 6rem;
-    background-position-y: 0.8rem;
+    /* background-position-x: 6rem;
+    background-position-y: 0.8rem; */
+    background-position: 6rem;
     outline: none;
     border: 1px solid #D9D9D9;
     width: 100%;
-
+    padding: 0 1.5rem 0 1.5rem;
   }
 `;
