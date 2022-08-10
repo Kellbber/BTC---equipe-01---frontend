@@ -34,8 +34,8 @@ export const LoginSection = styled.section`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    width: 38rem;
-    height: 28rem;
+    width: 35rem;
+    height: 25rem;
     border-radius: 5px;
     background: ${theme.colors.primaryColors};
   `}
@@ -45,7 +45,7 @@ export const div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 5rem;
+  padding: 4rem;
   ${({ theme }) => css`
     input {
       display: flex;
@@ -58,7 +58,7 @@ export const div = styled.div`
     }
     button {
       border: transparent;
-      width: 7rem;
+      width: 6rem;
       height: 2.8rem;
       background-color: ${theme.colors.secundaryColor};
       font-family: ${theme.constants.headingFontFamily};
@@ -78,7 +78,7 @@ export const div = styled.div`
 
 export const loginborder = styled.section`
   ${({ theme }) => css`
-    width: 38rem;
+    width: 35rem;
     height: 5rem;
     background: #2ea8dc;
     border-radius: 5px 5px 0px 0px;
