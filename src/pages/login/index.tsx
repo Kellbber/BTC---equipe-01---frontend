@@ -20,6 +20,10 @@ const Login = () => {
           <S.div>
             <input type="email" placeholder="Digite seu email aqui" />
             <input type="text" placeholder="Digite seu nome aqui" />
+            <input type="text" placeholder="Digite sua senha aqui" />
+            <button>
+              <p>Entrar</p>
+            </button>
           </S.div>
         </S.LoginSection>
       </section>

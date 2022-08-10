@@ -8,14 +8,9 @@ export const logincss = styled.section`
     background-size: cover;
     min-height: 100vh;
     min-width: 100vw;
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; */
     .containerlogin {
       width: 100%;
       min-height: calc(100vh - 5rem);
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,16 +45,33 @@ export const div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 7rem;
+  padding: 5rem;
   ${({ theme }) => css`
     input {
-      box-sizing: border-box;
-      position: relative;
-      width: 23rem;
-      height: 3rem;
-      background: ${theme.colors.primaryColors};
-      border: 2px solid rgba(34, 32, 32, 0.5);
-      border-radius: 1rem;
+      display: flex;
+      outline: none;
+      font-family: ${theme.constants.textInitialFontFamily};
+      width: 100%;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid ${theme.colors.backgroundColor};
+      margin-right: 2rem;
+    }
+    button {
+      border: transparent;
+      width: 7rem;
+      height: 2.8rem;
+      background-color: ${theme.colors.secundaryColor};
+      font-family: ${theme.constants.headingFontFamily};
+      font-weight: 600;
+      color: ${theme.colors.primaryColors};
+      margin-left: 4rem;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+    p:hover {
+      text-align: center;
+      transform: scale(1.1);
+      cursor: pointer;
     }
   `}
 `;
@@ -105,5 +117,16 @@ export const iconConfig = styled.div`
       padding: 0.8rem 0.2rem 0.8rem 0.2rem;
       align-self: center;
     }
+  `}
+`;
+export const button = styled.section`
+  ${({ theme }) => css`
+    box-sizing: border-box;
+    width: 152px;
+    height: 63px;
+    left: 644px;
+    top: 576px;
+    background: #2ea8dc;
+    border-radius: 5px;
   `}
 `;
