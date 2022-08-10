@@ -144,3 +144,13 @@ export const selectEntity = styled.div<setaType>`
     padding: 0 1.5rem 0 1.5rem;
   }
 `;
+
+export const searchList = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+`
