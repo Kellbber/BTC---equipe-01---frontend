@@ -119,14 +119,3 @@ export const iconConfig = styled.div`
     }
   `}
 `;
-export const button = styled.section`
-  ${({ theme }) => css`
-    box-sizing: border-box;
-    width: 152px;
-    height: 63px;
-    left: 644px;
-    top: 576px;
-    background: #2ea8dc;
-    border-radius: 5px;
-  `}
-`;
