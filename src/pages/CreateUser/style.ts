@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
-import background from "../../assets/images/background-login.png";
+import background from "../../assets/images/background-register.png";
 import icon from "../../assets/images/icon.svg";
-export const logincss = styled.section`
+export const createcss = styled.section`
   ${({ theme }) => css`
     background-image: url(${background});
     background-position: center;
     background-size: cover;
     min-height: 100vh;
     min-width: 100vw;
-    .containerlogin {
+    .containerregister {
       width: 100%;
       min-height: calc(100vh - 5rem);
       display: flex;
@@ -28,14 +28,14 @@ export const heading = styled.div`
   `}
 `;
 
-export const LoginSection = styled.section`
+export const registerSection = styled.section`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    width: 30rem;
-    height: 20rem;
+    width: 33rem;
+    height: 25rem;
     border-radius: 5px;
     background: ${theme.colors.primaryColors};
   `}
@@ -45,26 +45,26 @@ export const div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 4rem;
+  padding: 1.5rem;
   ${({ theme }) => css`
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
       width: 100%;
-      padding: 0.5rem 0.9rem;
+      padding: 0.9rem 0.9rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
     }
     button {
       border: transparent;
-      width: 6rem;
+      width: 8rem;
       height: 2.8rem;
       background-color: ${theme.colors.secundaryColor};
       font-family: ${theme.constants.headingFontFamily};
       font-weight: 600;
       color: ${theme.colors.primaryColors};
-      margin-left: 4rem;
+      margin-left: 3rem;
       border-radius: 0.2rem;
       cursor: pointer;
     }
@@ -76,9 +76,9 @@ export const div = styled.div`
   `}
 `;
 
-export const loginborder = styled.section`
+export const registerborder = styled.section`
   ${({ theme }) => css`
-    width: 30rem;
+    width: 33rem;
     height: 4.7rem;
     background: #2ea8dc;
     border-radius: 5px 5px 0px 0px;

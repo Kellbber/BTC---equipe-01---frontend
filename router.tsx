@@ -4,6 +4,7 @@ import { RoutePath } from "./src/types/routes";
 import StartPage from "./src/pages/StartPage";
 import Login from "./src/pages/login/index";
 import AdminConfig from "./src/pages/AdminInstitution";
+import Create from "./src/pages/CreateUser/index";
 
 const Router = () => {
   return (
