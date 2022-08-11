@@ -1,4 +1,6 @@
 import * as S from "./style";
+import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -11,7 +13,14 @@ const Login = () => {
             Reta
           </p>
         </S.iconConfig>
+        <BiArrowBack
+          className="BiArrowBack"
+          cursor="pointer"
+          size={30}
+          onClick={() => useNavigate()}
+        />
       </S.heading>
+
       <section className="containerlogin">
         <S.LoginSection>
           <S.loginborder>

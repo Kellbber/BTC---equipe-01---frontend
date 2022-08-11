@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import background from "../../assets/images/background-login.png";
 import icon from "../../assets/images/icon.svg";
+
 export const logincss = styled.section`
   ${({ theme }) => css`
     background-image: url(${background});
@@ -21,10 +22,28 @@ export const logincss = styled.section`
 export const heading = styled.div`
   ${({ theme }) => css`
     display: flex;
+    justify-content: center;
     width: 100%;
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
     justify-content: center;
+.BiArrowBack {
+    display: flex;
+    width:28rem;
+    justify-content: flex-end;
+    margin-right: -30rem;
+    color: ${theme.colors.primaryColors};
+    font-family: ${theme.constants.headingFontFamily};
+    font-weight: 600;
+    p {
+      cursor: pointer;
+      margin: 0 0.2rem 0 0.2rem;
+      transition: ease-in-out 0.5s;
+    }
+
+    p:hover {
+      transform: scale(1.1);
+    }
   `}
 `;
 
