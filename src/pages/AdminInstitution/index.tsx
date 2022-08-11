@@ -3,6 +3,7 @@ import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { Institutions } from "../../mocks/institutions";
 import {FiEdit} from 'react-icons/fi'
+
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
 
