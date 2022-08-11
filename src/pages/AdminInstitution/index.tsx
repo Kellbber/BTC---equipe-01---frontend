@@ -2,7 +2,6 @@ import * as S from "./style";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { Institutions } from "../../mocks/institutions";
-import { FiEdit } from "react-icons/fi";
 
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
@@ -42,21 +41,14 @@ const AdminConfig = () => {
                 <p>Nome</p>
                 <p>Telefone</p>
                 <p>Cep</p>
-                <p>Editar</p>
               </S.nameTable>
               <S.divTable>
                 {filteredInst.map((institution) => {
                   return (
-                    <div className="divmain"
-                      key={institution.name}
-                  
-                    >
+                    <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
                       <div>{institution.cep}</div>
-                      <div>
-                        <FiEdit size={15} cursor="pointer" />
-                      </div>
                     </div>
                   );
                 })}
@@ -68,20 +60,14 @@ const AdminConfig = () => {
                 <p>Nome</p>
                 <p>Telefone</p>
                 <p>Cep</p>
-                <p>Editar</p>
               </S.nameTable>
               <S.divTable>
                 {Institutions.map((institution) => {
                   return (
-                    <div className="divmain"
-                      key={institution.name}
-                    >
+                    <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
                       <div>{institution.cep}</div>
-                      <div>
-                        <FiEdit size={15} cursor="pointer" />
-                      </div>
                     </div>
                   );
                 })}
