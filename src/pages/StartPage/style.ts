@@ -99,6 +99,7 @@ export const text2 = styled.p`
     color: ${theme.colors.primaryColors};
     font-family: ${theme.constants.textInitialFontFamily};
     font-weight: 800;
+    text-align: center;
   `}
 `;
 
@@ -123,7 +124,7 @@ export const primaryFooter = styled.div`
 
     background: ${theme.colors.footerPrimaryColor};
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
   `}
 `;
 
@@ -133,7 +134,7 @@ export const secundaryFooter = styled.div`
     width: 100%;
 
     background: ${theme.colors.footerSecundaryColor};
-
+    
     p {
       width: 100%;
       color: ${theme.colors.primaryColors};

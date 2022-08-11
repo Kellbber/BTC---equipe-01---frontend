@@ -22,12 +22,12 @@ export const listaUser = [
     },
     {
       id: "380d9b65-12c6-40ec-aa4d-e5b2e2b6efbe",
-      name: "LeLeOnARDO",
-      email: "lksobrabo@gmail.com",
+      name: "Gabriel",
+      email: "vagabs@gmail.com",
       institution: [
         {
           id: "611205b0-7fb1-465e-9b37-2c280924a4c3",
-          name: "Industrial",
+          name: "Cimol",
           students: [
             {
               id: "1232dfa-7fb1-465e-9b37-s12876sa26",

@@ -1,17 +1,19 @@
+import { useState } from "react";
 import * as S from "./style";
-import { BiArrowBack } from "react-icons/bi";
-import { useState} from "react";
-import { Institutions } from "../../mocks/institutions";
 import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
+import { listaUser } from "../../mocks/users";
 
-const AdminConfig = () => {
+const AdminUsers = () => {
   const [search, setSearch] = useState<string>("");
 
-  const filteredInst =
+  const filteredUsers =
     search.length > 0
-      ? Institutions.filter((institution) => institution.name.includes(search))
+      ? listaUser.filter((user) => user.name.includes(search))
       : [];
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
+
   return (
     <S.background>
       <S.heading>
@@ -23,14 +25,18 @@ const navigate = useNavigate();
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/admin')}/>
+          <BiArrowBack
+            cursor="pointer"
+            size={30}
+            onClick={() => navigate("/admin")}
+          />
         </S.logins>
       </S.heading>
       <S.content>
         <S.adminSearch>
           <input
             type="text"
-            placeholder="Digite o nome da instituição..."
+            placeholder="Digite o nome do usuário..."
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
@@ -40,16 +46,16 @@ const navigate = useNavigate();
             <S.itemList>
               <S.nameTable>
                 <p>Nome</p>
-                <p>Telefone</p>
-                <p>Cep</p>
+                <p>Email</p>
+                <p>Vinculado a</p>
               </S.nameTable>
               <S.divTable>
-                {filteredInst.map((institution) => {
+                {filteredUsers.map((user) => {
                   return (
-                    <div className="divmain" key={institution.name}>
-                      <div>{institution.name}</div>
-                      <div>{institution.fone}</div>
-                      <div>{institution.cep}</div>
+                    <div className="divmain" key={user.name}>
+                      <div>{user.name}</div>
+                      <div>{user.email}</div>
+                      <div>{user.institution[0].name}</div>
                     </div>
                   );
                 })}
@@ -59,16 +65,16 @@ const navigate = useNavigate();
             <S.itemList>
               <S.nameTable>
                 <p>Nome</p>
-                <p>Telefone</p>
-                <p>Cep</p>
+                <p>Email</p>
+                <p>Vinculado a</p>
               </S.nameTable>
               <S.divTable>
-                {Institutions.map((institution) => {
+                {listaUser.map((user) => {
                   return (
-                    <div className="divmain" key={institution.name}>
-                      <div>{institution.name}</div>
-                      <div>{institution.fone}</div>
-                      <div>{institution.cep}</div>
+                    <div className="divmain" key={user.name}>
+                      <div>{user.name}</div>
+                      <div>{user.email}</div>
+                      <div>{user.institution[0].name}</div>
                     </div>
                   );
                 })}
@@ -81,4 +87,4 @@ const navigate = useNavigate();
   );
 };
 
-export default AdminConfig;
+export default AdminUsers;
