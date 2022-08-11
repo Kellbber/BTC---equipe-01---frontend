@@ -9,5 +9,7 @@ export const colors = {
 
   footerPrimaryColor: "#1E2325",
   footerSecundaryColor:"#4A5B63",
+
+  shadowColorHover:"#E3DFEB",
   
 };

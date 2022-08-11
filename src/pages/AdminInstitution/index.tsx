@@ -1,9 +1,8 @@
 import * as S from "./style";
-import { BiLogOut } from "react-icons/bi";
-import { useState } from "react";
+import { BiArrowBack } from "react-icons/bi";
+import { useState} from "react";
 import { Institutions } from "../../mocks/institutions";
-import {FiEdit} from 'react-icons/fi'
-
+import { useNavigate } from "react-router-dom";
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
 
@@ -11,7 +10,7 @@ const AdminConfig = () => {
     search.length > 0
       ? Institutions.filter((institution) => institution.name.includes(search))
       : [];
-
+const navigate = useNavigate();
   return (
     <S.background>
       <S.heading>
@@ -23,7 +22,7 @@ const AdminConfig = () => {
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiLogOut cursor="pointer" size={30} />
+          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/')}/>
         </S.logins>
       </S.heading>
       <S.content>
@@ -42,19 +41,15 @@ const AdminConfig = () => {
                 <p>Nome</p>
                 <p>Telefone</p>
                 <p>Cep</p>
-                <p>Editar</p>
               </S.nameTable>
               <S.divTable>
                 {filteredInst.map((institution) => {
                   return (
-                    <div key={institution.name}>
+                    <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
                       <div>{institution.cep}</div>
-                      <div><FiEdit size={15} cursor="pointer"/></div>
                     </div>
-                    
-                    
                   );
                 })}
               </S.divTable>
@@ -65,16 +60,14 @@ const AdminConfig = () => {
                 <p>Nome</p>
                 <p>Telefone</p>
                 <p>Cep</p>
-                <p>Editar</p>
               </S.nameTable>
               <S.divTable>
                 {Institutions.map((institution) => {
                   return (
-                    <div key={institution.name}>
+                    <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
                       <div>{institution.cep}</div>
-                      <div><FiEdit size={15} cursor="pointer"/></div>
                     </div>
                   );
                 })}

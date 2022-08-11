@@ -1,6 +1,10 @@
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
 const StartPage = () => {
+
+  const navigate = useNavigate();
+
   return (
     <S.Initial>
       <S.heading>
@@ -12,9 +16,9 @@ const StartPage = () => {
           </p>
         </S.iconConfig>
         <S.logins>
-          <p>Entrar</p>
-          <p>/</p>
-          <p>Cadastrar</p>
+          <p onClick={()=>navigate('/login')}>Entrar</p>
+          
+          
         </S.logins>
       </S.heading>
       <S.content>
