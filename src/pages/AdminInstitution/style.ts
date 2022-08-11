@@ -167,9 +167,13 @@ ${({theme})=>css`
     font-size: .8rem;
     transition: ease-in-out .5s;
   }
-  div:hover{
+  div.divmain{
+    border-bottom: 1px solid ${theme.colors.backgroundColor};
+  }
+  div.divmain:hover{
     background-color: ${theme.colors.shadowColorHover};
     cursor: pointer;
+    border-bottom: 1px solid ${theme.colors.backgroundColor};
   }
 `}
 `

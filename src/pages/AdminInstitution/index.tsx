@@ -47,9 +47,9 @@ const AdminConfig = () => {
               <S.divTable>
                 {filteredInst.map((institution) => {
                   return (
-                    <div
+                    <div className="divmain"
                       key={institution.name}
-                      style={{ border: "1px solid gray" }}
+                  
                     >
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
@@ -73,9 +73,8 @@ const AdminConfig = () => {
               <S.divTable>
                 {Institutions.map((institution) => {
                   return (
-                    <div
+                    <div className="divmain"
                       key={institution.name}
-                      style={{ border: "1px solid gray" }}
                     >
                       <div>{institution.name}</div>
                       <div>{institution.fone}</div>
