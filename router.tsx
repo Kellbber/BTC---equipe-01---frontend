@@ -12,6 +12,7 @@ const Router = () => {
       <Route path={RoutePath.START} element={<StartPage />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path={RoutePath.ADMINST} element={<AdminConfig/>}/>
+      <Route path={RoutePath.CREATE} element={<Create/>}/>
     </Routes>
   );
 };
