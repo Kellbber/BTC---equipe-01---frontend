@@ -13,8 +13,8 @@ const StartPage = () => {
         </S.iconConfig>
         <S.logins>
           <p>Entrar</p>
-          <p>/</p>
-          <p>Cadastrar</p>
+          
+          
         </S.logins>
       </S.heading>
       <S.content>

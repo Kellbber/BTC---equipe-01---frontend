@@ -165,6 +165,11 @@ ${({theme})=>css`
     padding: 1rem 0 1rem;
     font-family: ${theme.constants.headingFontFamily};
     font-size: .8rem;
+    transition: ease-in-out .5s;
+  }
+  div:hover{
+    background-color: ${theme.colors.shadowColorHover};
+    cursor: pointer;
   }
 `}
 `
@@ -186,5 +191,11 @@ ${({theme})=>css`
     
   }
 `}
+
+`
+export const divisionLine = styled.div`
+display: flex;
+width: 100%;
+background-color: black;
 
 `
