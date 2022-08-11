@@ -1,8 +1,8 @@
 import * as S from "./style";
-import { BiLogOut } from "react-icons/bi";
-import { useState } from "react";
+import { BiArrowBack } from "react-icons/bi";
+import { useState} from "react";
 import { Institutions } from "../../mocks/institutions";
-
+import { useNavigate } from "react-router-dom";
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
 
@@ -10,7 +10,7 @@ const AdminConfig = () => {
     search.length > 0
       ? Institutions.filter((institution) => institution.name.includes(search))
       : [];
-
+const navigate = useNavigate();
   return (
     <S.background>
       <S.heading>
@@ -22,7 +22,7 @@ const AdminConfig = () => {
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiLogOut cursor="pointer" size={30} />
+          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/')}/>
         </S.logins>
       </S.heading>
       <S.content>
