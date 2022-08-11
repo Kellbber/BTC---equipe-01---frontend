@@ -29,7 +29,7 @@ const AdminConfig = () => {
         <S.adminSearch>
           <input
             type="text"
-            placeholder="Digite aqui..."
+            placeholder="Digite o nome da instituição..."
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
