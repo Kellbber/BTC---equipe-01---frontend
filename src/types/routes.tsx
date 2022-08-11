@@ -2,6 +2,6 @@ export enum RoutePath{
     START='/',
     LOGIN='/login',
     CREATE='/create',
-    ADMCONFIG = '/admin',
+    ADMINST = '/admin/instituicoes',
     
 }

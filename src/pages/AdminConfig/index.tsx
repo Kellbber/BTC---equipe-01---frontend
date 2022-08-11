@@ -1,50 +1,14 @@
 import * as S from "./style";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
-import { listaUser } from "../../mocks/users";
 import { Institutions } from "../../mocks/institutions";
-import { students } from "../../mocks/students";
+import {FiEdit} from 'react-icons/fi'
 const AdminConfig = () => {
-  const [icon, setIcon] = useState<boolean>(false);
-
   const [search, setSearch] = useState<string>("");
-
-  const [selectValue, setSelectValue] = useState<string>("");
-  interface User {
-    id: string;
-    name: string;
-    email: string;
-    institution: {
-      id: string;
-      name: string;
-      students: {
-        id: string;
-        name: string;
-      }[];
-    }[];
-  }
-
-  const filteredUser =
-    search.length > 0
-      ? listaUser.filter((user) => user.name.includes(search))
-      : [];
-
-  function changeIcon() {
-    if (icon) {
-      setIcon(false);
-    } else {
-      setIcon(true);
-    }
-  }
 
   const filteredInst =
     search.length > 0
       ? Institutions.filter((institution) => institution.name.includes(search))
-      : [];
-
-  const filteredStudent =
-    search.length > 0
-      ? students.filter((student) => student.name.includes(search))
       : [];
 
   return (
@@ -69,69 +33,51 @@ const AdminConfig = () => {
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
-          <S.selectEntity icons={icon}>
-            <select
-              name="entity"
-              id="entity"
-              onClick={changeIcon}
-              onChange={(e) => setSelectValue(e.currentTarget.value)}
-              defaultValue={"default"}
-            >
-              <option value="default" disabled style={{display: "none"}}></option>
-              <option>Instituição</option>
-              <option>Usuário</option>
-              <option>Aluno</option>
-            </select>
-           
-          </S.selectEntity>
         </S.adminSearch>
         <S.searchList>
-
-          
-          {search.length > 0 && selectValue === "Usuário" ? (
-            
-              <S.itemList>
-              {filteredUser.map((user: User) => {
-                return <li key={user.name}>{user.name}</li>;
-              })}
-              </S.itemList>
-            
-          ) : (
-            <S.itemList style={{display: selectValue==="Usuário"?"flex":"none"}}>
-              {listaUser.map((user: User) => {
-                    return <li key={user.name}>{user.name}</li>;
-                  })
-                }
-            </S.itemList>
-          )}
-          
-          {search.length > 0 && selectValue === "Instituição" ? (
+          {search.length > 0 ? (
             <S.itemList>
-              {filteredInst.map((institution) => {
-                return <li key={institution.name}>{institution.name}</li>;
-              })}
+              <S.nameTable>
+                <p>Nome</p>
+                <p>Telefone</p>
+                <p>Cep</p>
+                <p>Editar</p>
+              </S.nameTable>
+              <S.divTable>
+                {filteredInst.map((institution) => {
+                  return (
+                    <div key={institution.name}>
+                      <div>{institution.name}</div>
+                      <div>{institution.fone}</div>
+                      <div>{institution.cep}</div>
+                      <div><FiEdit size={15} cursor="pointer"/></div>
+                    </div>
+                    
+                    
+                  );
+                })}
+              </S.divTable>
             </S.itemList>
           ) : (
-            <S.itemList style={{display: selectValue==="Instituição"?"flex":"none"}}>
-              {Institutions.map((institution) => {
-                    return <li key={institution.name}>{institution.name}</li>;
-                  })
-                }
-            </S.itemList>
-          )}
-          
-          {search.length > 0 && selectValue === "Aluno" ? (
             <S.itemList>
-              {filteredStudent.map((student) => {
-                return <li key={student.name}>{student.name}</li>;
-              })}
-            </S.itemList>
-          ) : (
-            <S.itemList style={{display: selectValue==="Aluno"?"flex":"none"}}>
-              {students.map((student) => {
-                    return <li key={student.name}>{student.name}</li>;
-                  })
-                }
+              <S.nameTable>
+                <p>Nome</p>
+                <p>Telefone</p>
+                <p>Cep</p>
+                <p>Editar</p>
+              </S.nameTable>
+              <S.divTable>
+                {Institutions.map((institution) => {
+                  return (
+                    <div key={institution.name}>
+                      <div>{institution.name}</div>
+                      <div>{institution.fone}</div>
+                      <div>{institution.cep}</div>
+                      <div><FiEdit size={15} cursor="pointer"/></div>
+                    </div>
+                  );
+                })}
+              </S.divTable>
             </S.itemList>
           )}
         </S.searchList>

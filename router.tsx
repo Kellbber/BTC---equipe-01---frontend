@@ -10,7 +10,7 @@ const Router = () => {
     <Routes>
       <Route path={RoutePath.START} element={<StartPage />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
-      <Route path={RoutePath.ADMCONFIG} element={<AdminConfig/>}/>
+      <Route path={RoutePath.ADMINST} element={<AdminConfig/>}/>
     </Routes>
   );
 };

@@ -81,7 +81,7 @@ export const content = styled.main`
 export const adminSearch = styled.div<setaType>`
   ${({ theme }) => css`
     display: flex;
-    min-width: 60%;
+    min-width: 30%;
     justify-content: center;
     margin-top: 0.7rem;
     padding: 1rem 3rem;
@@ -93,7 +93,7 @@ export const adminSearch = styled.div<setaType>`
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      width: 50%;
+      width: 90%;
       padding: .5rem 0.2rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
@@ -123,8 +123,6 @@ export const selectEntity = styled.div<setaType>`
     background: url(${(props) => (props.icons? seta2 : seta)});
     background-repeat: no-repeat;
     background-size: 1rem;
-    /* background-position-x: 6rem;
-    background-position-y: 0.8rem; */
     background-position: 90%;
     outline: none;
     border: 1px solid #D9D9D9;
@@ -147,8 +145,46 @@ export const itemList = styled.div`
 ${({theme})=>css`
   display: flex;
   width: 80%;
+  background-color: ${theme.colors.primaryColors};
+
+  flex-direction: column;
+
+
+`}
+`
+export const divTable = styled.div`
+${({theme})=>css`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0 1rem;
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: .8rem;
+  }
+`}
+`
+export const nameTable = styled.div`
+${({theme})=>css`
   background-color: ${theme.colors.secundaryColor};
-  padding: 1rem;
+  background-size: cover;
+  font-family: ${theme.constants.headingFontFamily};
+  font-size: .8rem;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+ align-items: center;
+  p{
+    
+    color: ${theme.colors.primaryColors};
+
+    
+  }
 `}
 
 `

@@ -1,7 +1,9 @@
 export const Institutions=[
     {
-        id:"01",
+        id:"121fcg2-sdsda-2sd234d-fbv",
         name:"Industrial",
+        fone:"(54) 3244-2392",
+        cep:"95400-000",
         students:[
             {
                 id:"01",
@@ -20,6 +22,8 @@ export const Institutions=[
     {
         id:"02",
         name:"Cimol",
+        fone:"(54) 3244-1213",
+        cep:"91810-023",
         students:[
             {
                 id:"04",
