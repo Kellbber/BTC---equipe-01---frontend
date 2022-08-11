@@ -3,6 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <S.logincss>
       <S.heading>
@@ -17,7 +18,7 @@ const Login = () => {
           className="BiArrowBack"
           cursor="pointer"
           size={30}
-          onClick={() => useNavigate()}
+          onClick={() => navigate('/')}
         />
       </S.heading>
 
