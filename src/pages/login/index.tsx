@@ -31,7 +31,7 @@ const Login = () => {
             <input type="email" placeholder="Digite seu email aqui" />
             <input type="text" placeholder="Digite sua senha aqui" />
             <button>
-              <p>Entrar</p>
+              <p onClick={() => navigate('/admin')}>Entrar</p>
             </button>
           </S.div>
         </S.LoginSection>

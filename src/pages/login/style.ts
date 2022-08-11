@@ -26,19 +26,16 @@ export const heading = styled.div`
     width: 100%;
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 .BiArrowBack {
-    display: flex;
-    width:28rem;
-    justify-content: flex-end;
-    margin-right: -30rem;
     color: ${theme.colors.primaryColors};
     font-family: ${theme.constants.headingFontFamily};
-    font-weight: 600;
+    margin-right: .5rem;
     p {
       cursor: pointer;
-      margin: 0 0.2rem 0 0.2rem;
+      
       transition: ease-in-out 0.5s;
+      
     }
 
     p:hover {
@@ -109,7 +106,7 @@ export const p = styled.p`
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1rem;
     line-height: 30px;
     justify-content: center;
     color: ${theme.colors.primaryColors};
@@ -117,7 +114,7 @@ export const p = styled.p`
 `;
 export const iconConfig = styled.div`
   ${({ theme }) => css`
-    width: 65%;
+    width: 100%;
     p {
       text-align: center;
       color: ${theme.colors.primaryColors};
