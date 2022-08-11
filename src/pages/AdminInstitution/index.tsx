@@ -3,6 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useState} from "react";
 import { Institutions } from "../../mocks/institutions";
 import { useNavigate } from "react-router-dom";
+
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
 

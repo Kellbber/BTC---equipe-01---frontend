@@ -166,6 +166,14 @@ ${({theme})=>css`
     font-family: ${theme.constants.headingFontFamily};
     font-size: .8rem;
   }
+  div.divmain{
+    border-bottom: 1px solid ${theme.colors.backgroundColor};
+  }
+  div.divmain:hover{
+    background-color: ${theme.colors.shadowColorHover};
+    cursor: pointer;
+    border-bottom: 1px solid ${theme.colors.backgroundColor};
+  }
 `}
 `
 export const nameTable = styled.div`
