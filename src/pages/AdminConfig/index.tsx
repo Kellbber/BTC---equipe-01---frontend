@@ -75,60 +75,64 @@ const AdminConfig = () => {
               id="entity"
               onClick={changeIcon}
               onChange={(e) => setSelectValue(e.currentTarget.value)}
+              defaultValue={"default"}
             >
-              <option defaultValue="selecione">selecione</option>
+              <option value="default" disabled style={{display: "none"}}></option>
               <option>Instituição</option>
               <option>Usuário</option>
               <option>Aluno</option>
             </select>
-            <button>Buscar</button>
+           
           </S.selectEntity>
         </S.adminSearch>
         <S.searchList>
+
+          
           {search.length > 0 && selectValue === "Usuário" ? (
-            <ul>
+            
+              <S.itemList>
               {filteredUser.map((user: User) => {
                 return <li key={user.name}>{user.name}</li>;
               })}
-            </ul>
+              </S.itemList>
+            
           ) : (
-            <ul>
-              {selectValue === "Usuário"
-                ? listaUser.map((user: User) => {
+            <S.itemList style={{display: selectValue==="Usuário"?"flex":"none"}}>
+              {listaUser.map((user: User) => {
                     return <li key={user.name}>{user.name}</li>;
                   })
-                : ""}
-            </ul>
+                }
+            </S.itemList>
           )}
+          
           {search.length > 0 && selectValue === "Instituição" ? (
-            <ul>
+            <S.itemList>
               {filteredInst.map((institution) => {
                 return <li key={institution.name}>{institution.name}</li>;
               })}
-            </ul>
+            </S.itemList>
           ) : (
-            <ul>
-              {selectValue === "Instituição"
-                ? Institutions.map((institution) => {
+            <S.itemList style={{display: selectValue==="Instituição"?"flex":"none"}}>
+              {Institutions.map((institution) => {
                     return <li key={institution.name}>{institution.name}</li>;
                   })
-                : ""}
-            </ul>
+                }
+            </S.itemList>
           )}
+          
           {search.length > 0 && selectValue === "Aluno" ? (
-            <ul>
+            <S.itemList>
               {filteredStudent.map((student) => {
                 return <li key={student.name}>{student.name}</li>;
               })}
-            </ul>
+            </S.itemList>
           ) : (
-            <ul>
-              {selectValue === "Aluno"
-                ? students.map((student) => {
+            <S.itemList style={{display: selectValue==="Aluno"?"flex":"none"}}>
+              {students.map((student) => {
                     return <li key={student.name}>{student.name}</li>;
                   })
-                : ""}
-            </ul>
+                }
+            </S.itemList>
           )}
         </S.searchList>
       </S.content>

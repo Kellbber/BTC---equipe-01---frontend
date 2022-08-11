@@ -109,19 +109,7 @@ export const adminSearch = styled.div<setaType>`
     select{
       font-family: ${theme.constants.textInitialFontFamily};
     }
-    button {
-      list-style: none;
-      outline: none;
-      border: transparent;
-      border-radius: 0.2rem;
-      width: 70%;
-      background-color: ${theme.colors.secundaryColor};
-      font-family: ${theme.constants.headingFontFamily};
-      font-weight: 600;
-      color: ${theme.colors.primaryColors};
-      margin-left: 2rem;
-      cursor: pointer;
-    }
+
   `}
 `;
 
@@ -137,7 +125,7 @@ export const selectEntity = styled.div<setaType>`
     background-size: 1rem;
     /* background-position-x: 6rem;
     background-position-y: 0.8rem; */
-    background-position: 6rem;
+    background-position: 90%;
     outline: none;
     border: 1px solid #D9D9D9;
     width: 100%;
@@ -153,4 +141,14 @@ export const searchList = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+`
+
+export const itemList = styled.div`
+${({theme})=>css`
+  display: flex;
+  width: 80%;
+  background-color: ${theme.colors.secundaryColor};
+  padding: 1rem;
+`}
+
 `
