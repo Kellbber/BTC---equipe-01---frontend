@@ -3,5 +3,6 @@ export enum RoutePath{
     LOGIN='/login',
     CREATE='/create',
     ADMINST = '/admin/instituicoes',
-    STUDENT = '/admin/students'
+    STUDENT = '/admin/students',
+    USERS = "/admin/users",
 }
