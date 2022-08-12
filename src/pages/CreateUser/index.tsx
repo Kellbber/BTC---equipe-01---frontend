@@ -1,6 +1,8 @@
 import * as S from "./style";
-
+import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 const create = () => {
+  const navigate = useNavigate();
   return (
     <S.createcss>
       <S.heading>
@@ -11,6 +13,12 @@ const create = () => {
             Reta
           </p>
         </S.iconConfig>
+        <BiArrowBack
+          className="BiArrowBack"
+          cursor="pointer"
+          size={30}
+          onClick={() => navigate("/")}
+        />
       </S.heading>
       <section className="containerregister">
         <S.registerSection>

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import background from "../../assets/images/background-register.png";
 import icon from "../../assets/images/icon.svg";
+
 export const createcss = styled.section`
   ${({ theme }) => css`
     background-image: url(${background});
@@ -20,11 +21,25 @@ export const createcss = styled.section`
 
 export const heading = styled.div`
   ${({ theme }) => css`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
-    justify-content: center;
+    .BiArrowBack {
+    padding: 0.5rem;
+    grid-column: 4/4;
+    display: flex;
+    color: ${theme.colors.primaryColors};
+    font-family: ${theme.constants.headingFontFamily};
+    justify-content: flex-end;
+    p {
+      cursor: pointer;
+      transition: ease-in-out 0.5s;
+    }
+    p:hover {
+      transform: scale(1.1);
+    }
   `}
 `;
 
@@ -98,7 +113,8 @@ export const p = styled.p`
 `;
 export const iconConfig = styled.div`
   ${({ theme }) => css`
-    width: 65%;
+    width: 120%;
+    grid-column: 2/2;
     p {
       text-align: center;
       color: ${theme.colors.primaryColors};
