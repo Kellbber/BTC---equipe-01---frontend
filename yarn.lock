@@ -643,6 +643,11 @@ hoist-non-react-statics@^3.0.0:
   dependencies:
     react-is "^16.7.0"
 
+intl-tel-input@^17.0.18:
+  version "17.0.18"
+  resolved "https://registry.yarnpkg.com/intl-tel-input/-/intl-tel-input-17.0.18.tgz#dd6eeefc5b33bfbea32cbba770270ac138c5cda3"
+  integrity sha512-U+ugXhOrYO/6ggIWKccsXcfAEWzjnTBLXK8c/71zvatjSPNz3TgVnXH8KhotaPh+4mBxXy4SlNOgsbXiecfPSA==
+
 is-core-module@^2.9.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.10.0.tgz#9012ede0a91c69587e647514e1d5277019e728ed"
@@ -799,6 +804,11 @@ react-router@6.3.0:
   integrity sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==
   dependencies:
     history "^5.2.0"
+
+react-telefone-brasileiro@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-telefone-brasileiro/-/react-telefone-brasileiro-1.0.5.tgz#65ebeb909422baeda0da6a21406a015334d33879"
+  integrity sha512-dKmcY5ak0ji8zOYqh/P6Ka8EggVezcqj3kx1s2Ga7Xq94eyZDERIXj327bvqHDbpj/bksBHhSVEVeA0nhnOxYw==
 
 react@^18.2.0:
   version "18.2.0"
