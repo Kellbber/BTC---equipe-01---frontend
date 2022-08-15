@@ -3,6 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useState} from "react";
 import { Institutions } from "../../mocks/institutions";
 import { useNavigate } from "react-router-dom";
+import FormInstitution from "../../components/FormInstitution";
 
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");
@@ -35,6 +36,7 @@ const navigate = useNavigate();
             value={search}
           />
         </S.adminSearch>
+        <button onClick={()=> navigate('/criarinstituicao')}>Adicionar</button>
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
