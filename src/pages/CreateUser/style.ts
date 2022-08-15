@@ -105,8 +105,8 @@ export const p = styled.p`
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 1rem;
+    line-height: 1rem;
     justify-content: center;
     color: ${theme.colors.primaryColors};
   `}

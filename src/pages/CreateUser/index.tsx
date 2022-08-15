@@ -23,7 +23,7 @@ const create = () => {
       <section className="containerregister">
         <S.registerSection>
           <S.registerborder>
-            <S.p>Registro de usuário</S.p>
+            <S.p>Criar Usuário</S.p>
           </S.registerborder>
           <S.div>
             <input type="Email" placeholder="Email" />
