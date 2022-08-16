@@ -1,9 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
-import {GiSchoolBag} from 'react-icons/gi'
-import {FaSchool} from 'react-icons/fa'
-import {FiUsers} from 'react-icons/fi'
-import * as S from './style'
+import { useNavigate } from 'react-router-dom';
+import * as S from './style';
 
 const AdminPage = () => {
 
@@ -23,26 +20,41 @@ const AdminPage = () => {
           <BiLogOut cursor="pointer" size={30} onClick={()=>navigate('/')}/>
         </S.logins>
       </S.heading>
-      <S.settingsAdmin>
-        <p>CONFIGURAÇÕES</p>
-        <S.divisionDiv/>
-        <S.btnNavigate>
-            <button onClick={()=>navigate('/instituicoes')}>Instituições</button>
-            <FaSchool size={20} color="#44494b"/>
-        </S.btnNavigate>
-        <S.divisionDiv/>
-        <div/>
-        <S.btnNavigate>
-            <button onClick={()=>navigate('/alunos')}>Alunos</button>
-            <GiSchoolBag size={20} color="#44494b" />
-        </S.btnNavigate>
-        <S.divisionDiv/>
-        <S.btnNavigate>
-            <button onClick={()=>navigate('/usuarios')}>Usuários</button>
-            <FiUsers size={20} color="#44494b" />
-        </S.btnNavigate>
-        <S.divisionDiv/>
-      </S.settingsAdmin>
+    <S.title>
+      Bem-vindo(a),
+    </S.title>
+    <S.nameUser>
+      Nome do Usuário!
+    </S.nameUser>
+    <S.options>
+      O que gostaria de fazer?
+    </S.options>
+    <S.cardOptions>
+      <S.cardOptionsUnique>
+        <p>Instituições</p>
+        <div>
+          <a onClick={()=>navigate("/instituicoes")}>Ver todos</a>
+          <S.divSeparator/>
+          <a onClick={()=>navigate("/forminstituicao")}>Adicionar</a>
+        </div>
+      </S.cardOptionsUnique>
+      <S.cardOptionsUnique>
+      <p>Alunos</p>
+      <div>
+          <a onClick={()=>navigate("/alunos")}>Ver todos</a>
+          <S.divSeparator/>
+          <a>Adicionar</a>
+        </div>
+        </S.cardOptionsUnique>
+        <S.cardOptionsUnique>
+        <p>Usuários</p>
+        <div>
+          <a onClick={()=>navigate("/usuarios")}>Ver todos</a>
+          <S.divSeparator/>
+          <a onClick={()=>navigate("/formusuario")}>Adicionar</a>
+        </div>
+        </S.cardOptionsUnique>
+    </S.cardOptions>
     </S.background>
   )
 }

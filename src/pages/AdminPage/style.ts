@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import icon from "../../assets/images/icon.svg";
-import  backgroundAdm  from "../../assets/images/background-admin.png"
+import backgroundAdm from "../../assets/images/background-admin.png";
+import theme from "../../assets/styles/theme";
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
@@ -66,63 +67,102 @@ export const logins = styled.div`
   `}
 `;
 
-export const settingsAdmin = styled.div`
+export const title = styled.h1`
   ${({ theme }) => css`
     display: flex;
-    width: 20%;
-    justify-content: flex-start;
-    align-self: flex-start;
-    background-color: ${theme.colors.primaryColors};
-    flex-direction: column;
-    border-right: 0.5px solid ${theme.colors.footerSecundaryColor};
-    border-bottom: 0.5px solid ${theme.colors.footerSecundaryColor};
-    border-radius: 0 0 1rem;
-    text-align: center;
-    p {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      font-family: ${theme.constants.textFinalFontFamily};
-      font-weight: 600;
-      font-size: 0.8rem;
-      color: #2EA8DC;
-    }
-  `}
-`;
-export const btnNavigate = styled.div`
-  ${({ theme }) => css`
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    button {
-      display: flex;
-      outline: none;
-      list-style: none;
-      background-color: transparent;
-      width: 80%;
-      border: transparent;
-
-      font-family: ${theme.constants.headingFontFamily};
-      font-weight: 400;
-      cursor: pointer;
-      transition: ease .3s;
-    }
-
-    button:hover{
-        transform: scale(1.01);
-    }
-  `}
-`;
-export const divisionDiv = styled.div`
-  ${({ theme }) => css`
-    width: 90%;
-    border-bottom: 1px solid ${theme.colors.secundaryColor};
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-    align-items: center;
+    font-family: ${theme.constants.headingFontFamily};
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
     justify-content: center;
     align-self: center;
+    color: ${theme.colors.primaryColors};
+    margin-top: -0.1rem;
   `}
 `;
+export const nameUser = styled.p`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: ${theme.constants.textFinalFontFamily};
+    color: ${theme.colors.primaryColors};
+    font-weight: 800;
+    font-size: 3.5rem;
+    margin-top: -2rem;
+  `}
+`;
+
+export const options = styled.p`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: ${theme.constants.textFinalFontFamily};
+    color: ${theme.colors.primaryColors};
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+  `}
+`;
+
+export const cardOptions = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+
+export const cardOptionsUnique = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: ${theme.colors.primaryColors};
+    padding: .5rem;
+    p{
+      width: 100%;
+      background-color: ${theme.colors.secundaryColor};
+      font-family: ${theme.constants.headingFontFamily};
+      font-size: 1rem;
+      color: ${theme.colors.primaryColors};
+      font-weight: 500;
+      margin-top: -1rem;
+      text-align: center;
+    }
+    div{
+      display: flex;
+      width: 70%;
+      font-family: ${theme.constants.headingFontFamily};
+      font-size: .8rem;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      a{
+      margin: .5rem 0 .5rem 0;
+      cursor: pointer;
+      transition: ease .5s;
+    }
+    a:hover{
+      font-weight: 600;
+    }
+    }
+
+  `}
+`;
+
+export const divSeparator = styled.div`
+${({theme})=>css`
+    display: flex;
+    width: 50%;
+    background-color: ${theme.colors.backgroundColor};
+    padding: .1rem 0 0 0;
+    justify-content: center;
+    align-items: center;
+
+
+`}
+`
