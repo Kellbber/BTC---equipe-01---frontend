@@ -63,7 +63,7 @@ const FormInstitution = (props:Update) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/admin/instituicoes")}
+            onClick={() => navigate("/instituicoes")}
           />
         </S.logins>
       </S.heading>
