@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
-import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import SendButton from "../../components/SendButton";
+import * as S from "./style";
 
 interface Institution {
   name: string;
@@ -14,7 +14,11 @@ interface Institution {
   city: string;
   state: string;
 }
-const FormInstitution = () => {
+
+type Update={
+  update?:boolean
+}
+const FormInstitution = (props:Update) => {
   const { register, setValue, setFocus } = useForm();
   const navigate = useNavigate();
 
@@ -59,7 +63,7 @@ const FormInstitution = () => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/admin")}
+            onClick={() => navigate("/admin/instituicoes")}
           />
         </S.logins>
       </S.heading>
@@ -69,14 +73,18 @@ const FormInstitution = () => {
 
           <form onSubmit={handleSubmit}>
             <input
+        
               {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
+              
             />
             <input
+           
               {...register("telefone", { required: true })}
               placeholder="(xx)(xxxxx)(xxxx)"
               name="fone"
+              
             />
             <input
               {...register("cep", { required: true })}

@@ -27,18 +27,18 @@ const AdminPage = () => {
         <p>CONFIGURAÇÕES</p>
         <S.divisionDiv/>
         <S.btnNavigate>
-            <button onClick={()=>navigate('/admin/instituicoes')}>Instituições</button>
+            <button onClick={()=>navigate('/instituicoes')}>Instituições</button>
             <FaSchool size={20} color="#44494b"/>
         </S.btnNavigate>
         <S.divisionDiv/>
         <div/>
         <S.btnNavigate>
-            <button onClick={()=>navigate('/admin/alunos')}>Alunos</button>
+            <button onClick={()=>navigate('/alunos')}>Alunos</button>
             <GiSchoolBag size={20} color="#44494b" />
         </S.btnNavigate>
         <S.divisionDiv/>
         <S.btnNavigate>
-            <button onClick={()=>navigate('/admin/usuarios')}>Usuários</button>
+            <button onClick={()=>navigate('/usuarios')}>Usuários</button>
             <FiUsers size={20} color="#44494b" />
         </S.btnNavigate>
         <S.divisionDiv/>

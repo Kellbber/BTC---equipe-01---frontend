@@ -28,7 +28,7 @@ const AdminUsers = () => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/admin")}
+            onClick={() => navigate("/dashboard")}
           />
         </S.logins>
       </S.heading>

@@ -2,9 +2,9 @@ export enum RoutePath{
     START='/',
     LOGIN='/login',
     CREATE='/create',
-    ADMINST = '/admin/instituicoes',
-    STUDENT = '/admin/alunos',
-    USERS = "/admin/usuarios",
-    ADMIN = "/admin",
-    CREATEINST='/criarinstituicao'
+    ADMINST = '/instituicoes',
+    STUDENT = '/alunos',
+    USERS = "/usuarios",
+    DASHBOARD = "/dashboard",
+    FORMINST='/forminstituicao'
 }

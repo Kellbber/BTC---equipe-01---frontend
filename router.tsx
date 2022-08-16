@@ -17,8 +17,8 @@ const Router = () => {
       <Route path={RoutePath.CREATE} element={<Create />} />
       <Route path={RoutePath.STUDENT} element={<Student />} />
       <Route path={RoutePath.USERS} element={<Users/>} />
-      <Route path={RoutePath.ADMIN} element={<Admin/>} />
-      <Route path={RoutePath.CREATEINST} element={<FormInstitution/>} />
+      <Route path={RoutePath.DASHBOARD} element={<Admin/>} />
+      <Route path={RoutePath.FORMINST} element={<FormInstitution/>} />
     </Routes>
   );
 };

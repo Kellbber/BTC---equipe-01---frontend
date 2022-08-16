@@ -203,3 +203,30 @@ width: 100%;
 background-color: black;
 
 `
+
+export const addButton = styled.button`
+${({theme})=>css`
+
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  background-color: ${theme.colors.secundaryColor};
+  color: ${theme.colors.primaryColors};
+  font-family: ${theme.constants.headingFontFamily};
+  font-weight: 600;
+  outline: none;
+  list-style: none;
+  border: transparent;
+  border-radius: .2rem;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: ease-in-out .5s;
+
+  :hover{
+    background-color: ${theme.colors.primaryColors};
+    color: ${theme.colors.secundaryColor};
+    transform: scale(1.1);
+  }
+`}
+`

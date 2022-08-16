@@ -24,7 +24,7 @@ const navigate = useNavigate();
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/admin')}/>
+          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/dashboard')}/>
         </S.logins>
       </S.heading>
       <S.content>

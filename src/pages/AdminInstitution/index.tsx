@@ -24,7 +24,7 @@ const navigate = useNavigate();
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/admin')}/>
+          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/dashboard')}/>
         </S.logins>
       </S.heading>
       <S.content>
@@ -36,7 +36,7 @@ const navigate = useNavigate();
             value={search}
           />
         </S.adminSearch>
-        <button onClick={()=> navigate('/criarinstituicao')}>Adicionar</button>
+        <S.addButton onClick={()=> navigate('/forminstituicao')}>Adicionar</S.addButton>
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
