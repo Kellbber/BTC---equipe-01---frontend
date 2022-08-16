@@ -102,13 +102,15 @@ export const registerborder = styled.section`
 export const p = styled.p`
   ${({ theme }) => css`
     text-align: center;
-    font-family: "Poppins";
+    font-family: ${theme.constants.headingFontFamily};
     font-style: normal;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1rem;
     line-height: 30px;
     justify-content: center;
+    align-items: center;
     color: ${theme.colors.primaryColors};
+
   `}
 `;
 export const iconConfig = styled.div`

@@ -17,8 +17,8 @@ const create = () => {
           className="BiArrowBack"
           cursor="pointer"
           size={30}
-          onClick={() => navigate("/dashboard")}
-        />melhor
+          onClick={() => navigate("/usuarios")}
+        />
       </S.heading>
       <section className="containerregister">
         <S.registerSection>
