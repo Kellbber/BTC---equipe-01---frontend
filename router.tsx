@@ -14,7 +14,7 @@ const Router = () => {
       <Route path={RoutePath.START} element={<StartPage />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path={RoutePath.ADMINST} element={<AdminConfig />} />
-      <Route path={RoutePath.CREATE} element={<Create />} />
+      <Route path={RoutePath.FORMUSER} element={<Create />} />
       <Route path={RoutePath.STUDENT} element={<Student />} />
       <Route path={RoutePath.USERS} element={<Users/>} />
       <Route path={RoutePath.DASHBOARD} element={<Admin/>} />
