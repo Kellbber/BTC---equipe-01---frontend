@@ -1,7 +1,7 @@
 export enum RoutePath{
     START='/',
     LOGIN='/login',
-    CREATE='/create',
+    FORMUSER='/formusuario',
     ADMINST = '/instituicoes',
     STUDENT = '/alunos',
     USERS = "/usuarios",
