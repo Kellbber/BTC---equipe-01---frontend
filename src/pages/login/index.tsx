@@ -28,8 +28,8 @@ const Login = () => {
             <S.p>Fazer login</S.p>
           </S.loginborder>
           <S.div>
-            <input type="email" placeholder="Digite seu email aqui" />
-            <input type="text" placeholder="Digite sua senha aqui" />
+            <input type="email" placeholder="Email:" />
+            <input type="text" placeholder="Senha:" />
             <button>
               <p onClick={() => navigate('/dashboard')}>Entrar</p>
             </button>
