@@ -112,17 +112,19 @@ export const cardOptions = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 export const cardOptionsUnique = styled.div`
   ${({ theme }) => css`
     display: flex;
-    width: 25%;
+    width: 300px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: ${theme.colors.primaryColors};
     padding: .5rem;
+    margin-bottom: 1rem;
     p{
       width: 100%;
       background-color: ${theme.colors.secundaryColor};

@@ -15,38 +15,44 @@ interface Institution {
   state: string;
 }
 
-type Update={
-  update?:boolean
-}
-const FormInstitution = (props:Update) => {
+type Update = {
+  update?: boolean;
+};
+
+const FormInstitution = (props: Update) => {
   const { register, setValue, setFocus } = useForm();
+
   const navigate = useNavigate();
 
-  const checkCEP = (e: any) => {
+  const checkCEP = async (e: any) => {
+
     const cep = e.target.value.replace(/\D/g, "");
+
     if (!e.target.value) return;
-    fetch(`https://viacep.com.br/ws/${cep}/json`)
-      .then((res) => res.json())
-      .then((data) => {
-        setValue("address", data.logradouro);
-        setFocus("addressNumber");
-        setValue("neighborhood", data.bairro);
-        setValue("city", data.localidade);
-        setValue("state", data.uf);
-      });
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+    const result = await response.json();
+
+    if (result) {
+      setValue("address", result.logradouro);
+      setFocus("addressNumber");
+      setValue("neighborhood", result.bairro);
+      setValue("city", result.localidade);
+      setValue("state", result.uf);
+    }
   };
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const newInst: Institution ={
-        address: event.currentTarget.address.value,
-        name: event.currentTarget.Nome.value,
-        fone: event.currentTarget.fone.value,
-        addressNumber: event.currentTarget.adressNumber.value,
-        city: event.currentTarget.city.value,
-        neighborhood: event.currentTarget.neighborhood.value,
-        state: event.currentTarget.state.value
-    }
-    console.log(newInst)
+    const newInst: Institution = {
+      address: event.currentTarget.address.value,
+      name: event.currentTarget.Nome.value,
+      fone: event.currentTarget.fone.value,
+      addressNumber: event.currentTarget.adressNumber.value,
+      city: event.currentTarget.city.value,
+      neighborhood: event.currentTarget.neighborhood.value,
+      state: event.currentTarget.state.value,
+    };
+    console.log(newInst);
   }
 
   return (
@@ -73,18 +79,14 @@ const FormInstitution = (props:Update) => {
 
           <form onSubmit={handleSubmit}>
             <input
-        
               {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
-              
             />
             <input
-           
               {...register("telefone", { required: true })}
               placeholder="(xx)(xxxxx)(xxxx)"
               name="fone"
-              
             />
             <input
               {...register("cep", { required: true })}
@@ -118,7 +120,7 @@ const FormInstitution = (props:Update) => {
               name="state"
             />
 
-            <SendButton/>
+            <SendButton />
           </form>
         </S.formDiv>
       </S.formContent>
