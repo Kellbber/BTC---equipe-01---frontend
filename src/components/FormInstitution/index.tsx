@@ -3,16 +3,19 @@ import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import SendButton from "../../components/SendButton";
+import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 
 interface Institution {
-  name: string;
-  fone: string;
-  address: string;
-  addressNumber: string;
-  neighborhood: string;
+   name: string;
+  phone: string;
+  cep: string;
+  adressNumber: string;
+  street: string;
+  district: string;
   city: string;
   state: string;
+  complement: string;
 }
 
 type Update = {
@@ -35,24 +38,30 @@ const FormInstitution = (props: Update) => {
     if (result) {
       setValue("address", result.logradouro);
       setFocus("addressNumber");
-      setValue("neighborhood", result.bairro);
+      setValue("district", result.bairro);
       setValue("city", result.localidade);
       setValue("state", result.uf);
     }
   };
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+ async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const newInst: Institution = {
-      address: event.currentTarget.address.value,
       name: event.currentTarget.Nome.value,
-      fone: event.currentTarget.fone.value,
-      addressNumber: event.currentTarget.adressNumber.value,
+      phone: event.currentTarget.phone.value,
+      cep: event.currentTarget.cepInst.value,
+      street: event.currentTarget.street.value,
+      adressNumber: event.currentTarget.adressNumber.value,
       city: event.currentTarget.city.value,
-      neighborhood: event.currentTarget.neighborhood.value,
+      district: event.currentTarget.district.value,
       state: event.currentTarget.state.value,
+      complement: event.currentTarget.complement.value
     };
-    console.log(newInst);
+    
+    const req = await institutionService.postInstitution(newInst);
+    if(req?.status===201){
+      navigate('/instituicoes')
+    }
   }
 
   return (
@@ -86,28 +95,34 @@ const FormInstitution = (props: Update) => {
             <input
               {...register("telefone", { required: true })}
               placeholder="(xx)(xxxxx)(xxxx)"
-              name="fone"
+              name="phone"
             />
             <input
               {...register("cep", { required: true })}
               onBlur={checkCEP}
               placeholder="CEP:"
-              name="CEP"
+              name="cepInst"
             />
             <input
               {...register("address", { required: true })}
-              placeholder="RUA:"
-              name="address"
+              placeholder="Rua:"
+              name="street"
             />
             <input
-              {...register("addressNumber", { required: true })}
+              {...register("adressNumber", { required: true })}
               placeholder="Num:"
               name="adressNumber"
+              type="text"
+            />
+              <input
+              {...register("complement", { required: true })}
+              placeholder="complement:"
+              name="complement"
             />
             <input
-              {...register("neighborhood", { required: true })}
+              {...register("district", { required: true })}
               placeholder="Bairro:"
-              name="neighborhood"
+              name="district"
             />
             <input
               {...register("city", { required: true })}
@@ -119,6 +134,7 @@ const FormInstitution = (props: Update) => {
               placeholder="UF:"
               name="state"
             />
+
 
             <SendButton />
           </form>
