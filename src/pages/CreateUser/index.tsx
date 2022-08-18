@@ -1,8 +1,28 @@
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import React from "react";
+import { User } from "types/User";
+import { userService } from "../../services/userService";
+import SendButton from "../../components/SendButton";
+
 const create = () => {
+
   const navigate = useNavigate();
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+    event.preventDefault();
+    const newUser: User = {
+      name: event.currentTarget.Name.value,
+      email: event.currentTarget.email.value,
+      password: event.currentTarget.password.value,
+      confirmPassword: event.currentTarget.confirmPassword.value
+    };
+    const req = await userService.postUser(newUser);
+    if(req?.status===201){
+      navigate('/login');
+    };
+  }
   return (
     <S.createcss>
       <S.heading>
@@ -26,12 +46,15 @@ const create = () => {
             <S.p>Registro de usuário</S.p>
           </S.registerborder>
           <S.div>
-            <input type="Email" placeholder="Email" />
-            <input type="Email" placeholder="Confirmar email" />
-            <input type="text" placeholder="Senha" />
-            <button>
-              <p>Criar usuário</p>
-            </button>
+          <S.formUser onSubmit={handleSubmit}>
+
+      
+            <input type='text' placeholder="Nome:" name="Name"/>
+            <input type="Email" placeholder="Email:" name="email" />
+            <input type="password" placeholder="Senha:" name="password"/>
+            <input type="password" placeholder="Confirmar senha:" name="confirmPassword" />
+            <SendButton/>
+            </S.formUser>
           </S.div>
         </S.registerSection>
       </section>

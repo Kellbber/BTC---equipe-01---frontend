@@ -58,17 +58,17 @@ export const LoginSection = styled.section`
 `;
 
 export const div = styled.div`
+  ${({ theme }) => css`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 4rem;
-  ${({ theme }) => css`
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
       width: 100%;
-      padding: 0.5rem 0.9rem;
+      padding: 0.3rem 0.9rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
     }
@@ -89,6 +89,14 @@ export const div = styled.div`
       transform: scale(1.1);
       cursor: pointer;
     }
+
+  a{
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: .8rem;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+  }
   `}
 `;
 

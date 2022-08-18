@@ -6,5 +6,6 @@ export enum RoutePath{
     STUDENT = '/alunos',
     USERS = "/usuarios",
     DASHBOARD = "/dashboard",
-    FORMINST='/forminstituicao'
+    FORMINST='/forminstituicao',
+    CREATEUSER='/createuser'
 }

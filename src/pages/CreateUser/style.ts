@@ -59,15 +59,17 @@ export const registerSection = styled.section`
 export const div = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
+width: 100%;
+ align-items: center;
+ justify-content: center;
+
   ${({ theme }) => css`
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      width: 100%;
-      padding: 0.9rem 0.9rem;
+      width: 50%;
+      padding: 0.5rem 0.9rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
     }
@@ -110,7 +112,6 @@ export const p = styled.p`
     justify-content: center;
     align-items: center;
     color: ${theme.colors.primaryColors};
-
   `}
 `;
 export const iconConfig = styled.div`
@@ -137,3 +138,18 @@ export const iconConfig = styled.div`
     }
   `}
 `;
+
+export const formUser = styled.form`
+  ${({theme})=>css`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  input{
+    margin: .5rem 0 .5rem 0;
+  }
+
+  `}
+
+`

@@ -33,6 +33,7 @@ const Login = () => {
             <button>
               <p onClick={() => navigate('/dashboard')}>Entrar</p>
             </button>
+            <a onClick={()=>navigate('/createuser')}>Não possui conta? Clique aqui</a>
           </S.div>
         </S.LoginSection>
       </section>
