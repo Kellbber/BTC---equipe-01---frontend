@@ -1,5 +1,3 @@
-import { StringLiteral } from "typescript";
-
 export type Institution = {
     id?:string;
     name: string;

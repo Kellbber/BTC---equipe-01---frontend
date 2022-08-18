@@ -10,4 +10,6 @@ export const constants = {
   textInitialFontFamily: 'Nunito',
 
   textFinalFontFamily: 'Montserrat',
+
+  nameInstitutionFamily:'Bebas Neue',
 };
