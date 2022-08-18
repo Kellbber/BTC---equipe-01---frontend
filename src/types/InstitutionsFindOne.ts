@@ -1,6 +1,4 @@
-import { StringLiteral } from "typescript";
-
-export type Institution = {
+export type InstitutionComplete = {
     id?:string;
     name: string;
     phone: string;
@@ -11,4 +9,6 @@ export type Institution = {
     city: string;
     state: string;
     complement: string;
+    students:[];
+
 }

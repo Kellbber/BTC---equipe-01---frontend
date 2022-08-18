@@ -41,5 +41,13 @@ export const institutionService = {
         }catch(err){
             alert(err)
         }
+    },
+    oneInstitution: async (id:string)=>{
+        try{
+            const req = axios.get(`/institutions/${id}`)
+            return req;
+        }catch(err){
+            alert(err)
+        }
     }
     }

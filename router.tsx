@@ -9,6 +9,7 @@ import Users from './src/pages/AdminUsers/index'
 import Admin from './src/pages/AdminPage/index'
 import FormInstitution from "./src/components/FormInstitution/index";
 import CreateUser from './src/pages/CreateUser/index'
+import DetailsInstitution from "./src/pages/DetailsInstitution";
 const Router = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ const Router = () => {
       <Route path={RoutePath.DASHBOARD} element={<Admin/>} />
       <Route path={RoutePath.FORMINST} element={<FormInstitution/>} />
       <Route path={RoutePath.CREATEUSER} element={<CreateUser/>} />
+      <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution/>} />
     </Routes>
   );
 };

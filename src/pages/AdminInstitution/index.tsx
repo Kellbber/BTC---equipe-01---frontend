@@ -7,28 +7,30 @@ import { Institution } from "types/Institution";
 import * as S from "./style";
 
 const AdminConfig = () => {
-  
   const [search, setSearch] = useState<string>("");
 
-  const [institutions, setInstitutions]= useState<Institution[]>([]);
+  const [institutions, setInstitutions] = useState<Institution[]>([]);
 
   const filteredInst =
     search.length > 0
       ? institutions.filter((institution) => institution.name.includes(search))
       : [];
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const getAllInst = async () => {
+    const response = await institutionService.allInstitution();
+    if (response) {
+      setInstitutions(response.data);
+    }
+  };
 
-const getAllInst = async () =>{
-  const response = await institutionService.allInstitution();
-  if(response){
-    setInstitutions(response.data)
+  function goToDetails(id: string) {
+    navigate(`/instituicao/detalhes/${id}`);
   }
-}
 
-useEffect(()=>{
-  getAllInst()
-},[])
+  useEffect(() => {
+    getAllInst();
+  }, []);
   return (
     <S.background>
       <S.heading>
@@ -40,7 +42,11 @@ useEffect(()=>{
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiArrowBack cursor="pointer" size={30} onClick={()=>navigate('/dashboard')}/>
+          <BiArrowBack
+            cursor="pointer"
+            size={30}
+            onClick={() => navigate("/dashboard")}
+          />
         </S.logins>
       </S.heading>
       <S.content>
@@ -52,7 +58,9 @@ useEffect(()=>{
             value={search}
           />
         </S.adminSearch>
-        <S.addButton onClick={()=> navigate('/forminstituicao')}>Adicionar</S.addButton>
+        <S.addButton onClick={() => navigate("/forminstituicao")}>
+          Adicionar
+        </S.addButton>
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
@@ -64,7 +72,13 @@ useEffect(()=>{
               <S.divTable>
                 {filteredInst.map((institution) => {
                   return (
-                    <div className="divmain" key={institution.name}>
+                    <div
+                      className="divmain"
+                      key={institution.name}
+                      onClick={() => {
+                        goToDetails(institution.id ?? "");
+                      }}
+                    >
                       <div>{institution.name}</div>
                       <div>{institution.phone}</div>
                       <div>{institution.cep}</div>
@@ -83,7 +97,13 @@ useEffect(()=>{
               <S.divTable>
                 {institutions.map((institution) => {
                   return (
-                    <div className="divmain" key={institution.name}>
+                    <div
+                      className="divmain"
+                      key={institution.name}
+                      onClick={() => {
+                        goToDetails(institution.id ?? "");
+                      }}
+                    >
                       <div>{institution.name}</div>
                       <div>{institution.phone}</div>
                       <div>{institution.cep}</div>
