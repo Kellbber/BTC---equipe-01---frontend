@@ -1,18 +1,34 @@
-import * as S from "./style";
+import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { useState} from "react";
-import { Institutions } from "../../mocks/institutions";
 import { useNavigate } from "react-router-dom";
-import FormInstitution from "../../components/FormInstitution";
+import { institutionService } from "../../services/institutionService";
+import { Institution } from "types/Institution";
+
+import * as S from "./style";
 
 const AdminConfig = () => {
+  
   const [search, setSearch] = useState<string>("");
+
+  const [institutions, setInstitutions]= useState<Institution[]>([]);
 
   const filteredInst =
     search.length > 0
-      ? Institutions.filter((institution) => institution.name.includes(search))
+      ? institutions.filter((institution) => institution.name.includes(search))
       : [];
 const navigate = useNavigate();
+
+
+const getAllInst = async () =>{
+  const response = await institutionService.allInstitution();
+  if(response){
+    setInstitutions(response.data)
+  }
+}
+
+useEffect(()=>{
+  getAllInst()
+},[])
   return (
     <S.background>
       <S.heading>
@@ -50,7 +66,7 @@ const navigate = useNavigate();
                   return (
                     <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
-                      <div>{institution.fone}</div>
+                      <div>{institution.phone}</div>
                       <div>{institution.cep}</div>
                     </div>
                   );
@@ -65,11 +81,11 @@ const navigate = useNavigate();
                 <p>Cep</p>
               </S.nameTable>
               <S.divTable>
-                {Institutions.map((institution) => {
+                {institutions.map((institution) => {
                   return (
                     <div className="divmain" key={institution.name}>
                       <div>{institution.name}</div>
-                      <div>{institution.fone}</div>
+                      <div>{institution.phone}</div>
                       <div>{institution.cep}</div>
                     </div>
                   );

@@ -37,7 +37,7 @@ const FormInstitution = (props: Update) => {
 
     if (result) {
       setValue("address", result.logradouro);
-      setFocus("addressNumber");
+      setFocus("adressNumber");
       setValue("district", result.bairro);
       setValue("city", result.localidade);
       setValue("state", result.uf);

@@ -32,5 +32,14 @@ export const institutionService = {
         }catch(err){
             alert(err)
         }
-    }    
-}
+    },
+    
+    allInstitution: async () =>{
+        try{
+            const req = axios.get('/institutions/find-all')
+            return req;
+        }catch(err){
+            alert(err)
+        }
+    }
+    }
