@@ -7,7 +7,7 @@ import Create from "./src/pages/CreateUser/index";
 import Student from './src/pages/AdminStudent/index';
 import Users from './src/pages/AdminUsers/index'
 import Admin from './src/pages/AdminPage/index'
-import FormInstitution from "./src/components/FormInstitution/index";
+import ConfigInstitution from "./src/pages/ConfigInstitution";
 import CreateUser from './src/pages/CreateUser/index'
 import DetailsInstitution from "./src/pages/DetailsInstitution";
 const Router = () => {
@@ -20,7 +20,8 @@ const Router = () => {
       <Route path={RoutePath.STUDENT} element={<Student />} />
       <Route path={RoutePath.USERS} element={<Users/>} />
       <Route path={RoutePath.DASHBOARD} element={<Admin/>} />
-      <Route path={RoutePath.FORMINST} element={<FormInstitution/>} />
+      <Route path={RoutePath.FORMINST} element={<ConfigInstitution/>} />
+      <Route path={RoutePath.INSTUP} element={<ConfigInstitution update={true}/>} />
       <Route path={RoutePath.CREATEUSER} element={<CreateUser/>} />
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution/>} />
     </Routes>

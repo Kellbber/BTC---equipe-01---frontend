@@ -45,7 +45,7 @@ const DetailsInstitution = () => {
         <S.divMain>
           <S.Title>{institution?.name}</S.Title>
           <S.divButtons>
-          <S.buttonEdit>Editar</S.buttonEdit>
+          <S.buttonEdit onClick={()=> navigate(`/forminstituicao/${id}`)}>Editar</S.buttonEdit>
           </S.divButtons>
          
             <S.Details>Detalhes</S.Details>

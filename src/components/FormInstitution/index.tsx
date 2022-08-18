@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
@@ -18,15 +19,15 @@ interface Institution {
   complement: string;
 }
 
-type Update = {
-  update?: boolean;
-};
 
-const FormInstitution = (props: Update) => {
+
+const FormInstitution = (props:{ update?:boolean}) => {
+
   const { register, setValue, setFocus } = useForm();
 
   const navigate = useNavigate();
-
+  const {id} = useParams();
+  const [institution, setInstitution] = useState<Institution>();
   const checkCEP = async (e: any) => {
 
     const cep = e.target.value.replace(/\D/g, "");
@@ -57,13 +58,30 @@ const FormInstitution = (props: Update) => {
       state: event.currentTarget.state.value,
       complement: event.currentTarget.complement.value
     };
-    
+    if(props.update){
+    await institutionService.UpInstitution(id??"",newInst)
+    navigate('/instituicoes')
+    }else{
     const req = await institutionService.postInstitution(newInst);
     if(req?.status===201){
       navigate('/instituicoes')
     }
   }
+ }
+ async function getInstitutionForUpdate(){
+  if(id){
+    const institutionUp = await institutionService.oneInstitution(id)
+    setInstitution(institutionUp?.data)
+    console.log(institution)
+  }
+ }
 
+ useEffect(()=>{
+  if(props.update){
+    getInstitutionForUpdate()
+  }
+ },[])
+ 
   return (
     <S.background>
       <S.heading>
@@ -84,55 +102,64 @@ const FormInstitution = (props: Update) => {
       </S.heading>
       <S.formContent>
         <S.formDiv>
-          <p>Criar Instituição</p>
+          <p>{props.update?"Editar Instituição":"Criar Instituição"}</p>
 
           <form onSubmit={handleSubmit}>
             <input
               {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
+              defaultValue={props.update? institution?.name : ""}
             />
             <input
               {...register("telefone", { required: true })}
               placeholder="(xx)(xxxxx)(xxxx)"
               name="phone"
+              defaultValue={props.update? institution?.phone : ""}
             />
             <input
               {...register("cep", { required: true })}
               onBlur={checkCEP}
               placeholder="CEP:"
               name="cepInst"
+              defaultValue={props.update? institution?.cep : ""}
             />
             <input
               {...register("address", { required: true })}
               placeholder="Rua:"
               name="street"
+              defaultValue={props.update? institution?.street : ""}
             />
             <input
               {...register("adressNumber", { required: true })}
               placeholder="Num:"
               name="adressNumber"
               type="text"
+              defaultValue={props.update? institution?.adressNumber : ""}
             />
               <input
               {...register("complement", { required: true })}
               placeholder="complement:"
               name="complement"
+              defaultValue={props.update? institution?.complement : ""}
             />
             <input
               {...register("district", { required: true })}
               placeholder="Bairro:"
               name="district"
+              defaultValue={props.update? institution?.district: ""}
             />
             <input
               {...register("city", { required: true })}
               placeholder="Cidade:"
               name="city"
+              defaultValue={props.update? institution?.city : ""}
             />
             <input
               {...register("state", { required: true })}
               placeholder="UF:"
               name="state"
+              defaultValue={props.update? institution?.state: ""}
             />
 
 
