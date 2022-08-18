@@ -83,7 +83,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
  },[])
  
   return (
-    <S.background>
+    <>
       <S.heading>
         <S.iconConfig>
           <p>
@@ -167,7 +167,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
           </form>
         </S.formDiv>
       </S.formContent>
-    </S.background>
+  </>
   );
 };
 
