@@ -1,11 +1,11 @@
 import axios from "axios";
-import { FormStudent } from "../../src/types/FormStudent";
+import {FormStudents } from "../../src/types/FormStudent";
 
 axios.defaults.baseURL = "http://localhost:3333/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export const studentService = {
-  postStudent: async (newStudent: FormStudent) => {
+  postStudent: async (newStudent: FormStudents) => {
     try {
         const req = await axios.post('/student',{
             name: newStudent.name,
@@ -18,7 +18,7 @@ export const studentService = {
       alert(err);
     }
   },
-  UpStudent: async (studentId: string, Student: FormStudent)=>{
+  UpStudent: async (studentId: string, Student: FormStudents)=>{
     try{
         const req = await axios.patch(`/student/${studentId}`,{
             name: Student.name,

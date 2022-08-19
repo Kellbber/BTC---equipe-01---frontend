@@ -10,6 +10,7 @@ import Admin from './src/pages/AdminPage/index'
 import ConfigInstitution from "./src/pages/ConfigInstitution";
 import CreateUser from './src/pages/CreateUser/index'
 import DetailsInstitution from "./src/pages/DetailsInstitution";
+import ConfigStudent from "./src/pages/ConfigStudent";
 const Router = () => {
   return (
     <Routes>
@@ -22,6 +23,8 @@ const Router = () => {
       <Route path={RoutePath.DASHBOARD} element={<Admin/>} />
       <Route path={RoutePath.FORMINST} element={<ConfigInstitution/>} />
       <Route path={RoutePath.INSTUP} element={<ConfigInstitution update={true}/>} />
+      <Route path={RoutePath.FORMSTUD} element={<ConfigStudent/>} />
+      <Route path={RoutePath.STUDUP} element={<ConfigStudent update={true}/>} />
       <Route path={RoutePath.CREATEUSER} element={<CreateUser/>} />
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution/>} />
     </Routes>

@@ -4,20 +4,21 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import * as S from './style'
-import { FormStudent } from "types/FormStudent";
+
 import { useParams } from "react-router-dom";
-import { studentService } from "services/studentService";
+import { studentService } from "../../services/studentService";
 import { Institution } from "types/Institution";
-import { institutionService } from "services/institutionService";
+import { institutionService } from "../../services/institutionService";
+import { FormStudents } from "types/FormStudent";
 
 
-const FormStudent = (props:{update?:boolean}) => {
+const FormStudent = (props: { update?: boolean }) => {
 
     const { id } = useParams();
 
     const { register} = useForm();
 
-    const [aluno, setAluno] = useState<FormStudent>();
+    const [aluno, setAluno] = useState<FormStudents>();
 
     const [institutions, setInstitutions]=useState<Institution[]>([]);
 
@@ -25,7 +26,7 @@ const FormStudent = (props:{update?:boolean}) => {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        const newStudent: FormStudent ={
+        const newStudent: FormStudents ={
             name: event.currentTarget.Nome.value,
             age: event.currentTarget.age.value,
             phone: event.currentTarget.phone.value,
