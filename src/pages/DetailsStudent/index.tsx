@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { StudentComplete } from "types/StudentFindOne";
 import { studentService } from "../../services/studentService";
+import { p } from "pages/login/style";
+import { Consult } from "types/consult";
 
 const DetailsStudent = () => {
   const navigate = useNavigate();
@@ -55,6 +57,20 @@ const DetailsStudent = () => {
           <S.uniqueCard>{aluno?.phone}</S.uniqueCard>
           <S.uniqueCard>{aluno?.institution.name}</S.uniqueCard>
          </S.cardDetails>
+
+         <S.Details>
+          Consultas
+         </S.Details>
+         <S.titleInfo><p>Hora</p><p>Cronograma</p></S.titleInfo>
+         <S.cardDetailsConsult>
+          {aluno?.consult[0]?aluno?.consult.find((consulta,index)=>(
+            <S.uniqueCardConsult key={index} >
+              <div>{consulta}</div>
+            </S.uniqueCardConsult>
+          )): <S.uniqueCardConsult>
+            <p>Aluno não possui consultas</p>
+            </S.uniqueCardConsult>}
+         </S.cardDetailsConsult>
       </S.divMain>
      </S.content>
     </S.background>

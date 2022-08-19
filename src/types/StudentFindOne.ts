@@ -3,7 +3,10 @@ export type StudentComplete ={
     name: string;
     age: string;
     phone: string;
-    consult:[];
+    consult?:[
+        hour:string,
+        schedule:string,
+    ];
     institution:{
         name: string;
     }

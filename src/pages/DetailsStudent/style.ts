@@ -155,7 +155,7 @@ justify-content: center;
 
 `}
 `
-export const uniqueCardStudent = styled.div`
+export const uniqueCardConsult = styled.div`
 ${({theme})=>css`
 font-family: ${theme.constants.headingFontFamily};
 font-size: .8rem;
@@ -210,7 +210,7 @@ p{
 `}
 
 `
-export const cardDetailsStudent = styled.div`
+export const cardDetailsConsult= styled.div`
 ${({theme})=>css`
 display: flex;
 width: 90%;
