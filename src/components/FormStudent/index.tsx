@@ -73,7 +73,7 @@ const FormStudent = (props: { update?: boolean }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/instituicoes")}
+            onClick={() => navigate("/alunos")}
           />
         </S.logins>
     </S.heading>
@@ -102,9 +102,10 @@ const FormStudent = (props: { update?: boolean }) => {
               type="text"
               defaultValue={props.update ? aluno?.phone : ""}
             />
-            <select {...register("institutionId", {required: true})}name="institutionId">
+            <select {...register("institutionId", {required: true})}name="institutionId"
+                          defaultValue={props.update ? aluno?.institutionId : ""}>
                 {institutions?.map((institution:Institution, index)=>(
-                    <option key={index}>{institution.id}</option>
+                    <option  value={institution.id} key={index}>{institution.name}</option>
                 ))}
             </select>
             <SendButton />

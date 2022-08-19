@@ -99,5 +99,12 @@ ${({theme})=>css`
         padding: .5rem;
         border: 1px solid ${theme.colors.backgroundColor}
     }
+    select{
+      width: 107%;
+      border: 1px solid ${theme.colors.backgroundColor};
+      padding: .5rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
     `}
 `

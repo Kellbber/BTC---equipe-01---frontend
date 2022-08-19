@@ -69,7 +69,7 @@ const navigate = useNavigate();
                       <div>{student.name}</div>
                       <div>{student.age}</div>
                       <div>{student.phone}</div>
-                      <div>{student.institutionId}</div>
+                      <div>{student.institution?.name}</div>
                     </div>
                   );
                 })}
@@ -90,7 +90,7 @@ const navigate = useNavigate();
                       <div>{student.name}</div>
                       <div>{student.age}</div>
                       <div>{student.phone}</div>
-                      <div>{student.institutionId}</div>
+                      <div>{student.institution?.name}</div>
                     </div>
                   );
                 })}
