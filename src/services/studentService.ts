@@ -37,5 +37,13 @@ export const studentService = {
     }catch(err){
         alert(err)
     }
+  },
+  allStudent: async ()=>{
+    try{
+      const req = axios.get('/student/find-all');
+      return req;
+    }catch(err){
+      alert(err)
+    }
   }
 };

@@ -1,17 +1,30 @@
 import * as S from './style'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
-import { students } from '../../mocks/students';
+
+import { FormStudents } from 'types/FormStudent';
+import { studentService } from '../../services/studentService';
 const AdminStudent = () => {
 
   const [search, setSearch] = useState<string>("");
 
+  const [alunos, setAlunos]=useState<FormStudents[]>([]);
+
   const filteredStudents =
     search.length > 0
-      ? students.filter((student) => student.name.includes(search))
+      ? alunos.filter((student) => student.name.includes(search))
       : [];
 
+      const getAllStudent = async () =>{
+        const response = await studentService.allStudent();
+        if(response){
+          setAlunos(response.data)
+        }
+      }
+ useEffect(()=>{
+  getAllStudent();
+ },[])     
 const navigate = useNavigate();
   return (
     <S.background>
@@ -29,6 +42,7 @@ const navigate = useNavigate();
       </S.heading>
       <S.content>
       <S.adminSearch>
+
           <input
             type="text"
             placeholder="Digite o nome do aluno..."
@@ -36,6 +50,9 @@ const navigate = useNavigate();
             value={search}
           />
         </S.adminSearch>
+        <S.addButton onClick={() => navigate("/formaluno")}>
+          Adicionar
+        </S.addButton>
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
@@ -50,9 +67,9 @@ const navigate = useNavigate();
                   return (
                     <div className="divmain" key={student.name}>
                       <div>{student.name}</div>
-                      <div>{student.data_nasc}</div>
-                      <div>{student.telefone}</div>
-                      <div>{student.instituicao}</div>
+                      <div>{student.age}</div>
+                      <div>{student.phone}</div>
+                      <div>{student.institutionId}</div>
                     </div>
                   );
                 })}
@@ -67,13 +84,13 @@ const navigate = useNavigate();
                 <p>Instituição</p>
               </S.nameTable>
               <S.divTable>
-                {students.map((student) => {
+                {alunos.map((student) => {
                   return (
                     <div className="divmain" key={student.name}>
                       <div>{student.name}</div>
-                      <div>{student.data_nasc}</div>
-                      <div>{student.telefone}</div>
-                      <div>{student.instituicao}</div>
+                      <div>{student.age}</div>
+                      <div>{student.phone}</div>
+                      <div>{student.institutionId}</div>
                     </div>
                   );
                 })}

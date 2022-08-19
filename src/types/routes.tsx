@@ -10,6 +10,6 @@ export enum RoutePath{
     INSTUP='/forminstituicao/:id',
     CREATEUSER='/createuser',
     DETAILSINST="/instituicao/detalhes/:id",
-    FORMSTUD='/formstudent',
+    FORMSTUD='/formaluno',
     STUDUP='/formaluno/:id'
 }

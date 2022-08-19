@@ -79,7 +79,7 @@ const FormStudent = (props: { update?: boolean }) => {
     </S.heading>
     <S.formContent>
         <S.formDiv>
-          <p>{props.update ? "Editar Instituição" : "Criar Instituição"}</p>
+          <p>{props.update ? "Editar Aluno" : "Criar Aluno"}</p>
 
           <form onSubmit={handleSubmit}>
             <input
@@ -90,14 +90,14 @@ const FormStudent = (props: { update?: boolean }) => {
             />
             <input
               {...register("age", { required: true })}
-              placeholder="(xx)(xxxxx)(xxxx)"
+              placeholder="idade"
               name="age"
               defaultValue={props.update ? aluno?.age : ""}
             />
            
             <input
               {...register("phone", { required: true })}
-              placeholder="Num:"
+              placeholder="Telefone:"
               name="phone"
               type="text"
               defaultValue={props.update ? aluno?.phone : ""}
