@@ -4,7 +4,7 @@ export type Institution = {
     phone: string;
     cep: string;
     adressNumber: string;
-    street: String;
+    street: string;
     district: string;
     city: string;
     state: string;

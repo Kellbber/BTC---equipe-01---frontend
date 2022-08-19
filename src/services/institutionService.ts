@@ -7,7 +7,17 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 export const institutionService = {
   postInstitution: async (newInstitution: Institution) => {
     try {
-      const req = await axios.post("/institutions", newInstitution);
+      const req = await axios.post("/institutions",{
+        name: newInstitution.name,
+        phone: newInstitution.phone,
+        cep: newInstitution.cep,
+        adressNumber: newInstitution.adressNumber,
+        street: newInstitution.street,
+        district: newInstitution.district,
+        city: newInstitution.city,
+        state: newInstitution.state,
+        complement: newInstitution.complement,
+      });
       return req;
     } catch (err) {
       alert(err);

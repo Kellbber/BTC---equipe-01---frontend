@@ -37,7 +37,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
     const result = await response.json();
 
     if (result) {
-      setValue("address", result.logradouro);
+      setValue("street", result.logradouro);
       setFocus("adressNumber");
       setValue("district", result.bairro);
       setValue("city", result.localidade);
@@ -58,11 +58,13 @@ const FormInstitution = (props:{ update?:boolean}) => {
       state: event.currentTarget.state.value,
       complement: event.currentTarget.complement.value
     };
+
     if(props.update){
     await institutionService.UpInstitution(id??"",newInst)
     navigate('/instituicoes')
     }else{
     const req = await institutionService.postInstitution(newInst);
+    console.log(newInst)
     if(req?.status===201){
       navigate('/instituicoes')
     }
@@ -72,7 +74,6 @@ const FormInstitution = (props:{ update?:boolean}) => {
   if(id){
     const institutionUp = await institutionService.oneInstitution(id)
     setInstitution(institutionUp?.data)
-    console.log(institution)
   }
  }
 
@@ -125,7 +126,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
               defaultValue={props.update? institution?.cep : ""}
             />
             <input
-              {...register("address", { required: true })}
+              {...register("street", { required: true })}
               placeholder="Rua:"
               name="street"
               defaultValue={props.update? institution?.street : ""}
@@ -138,7 +139,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
               defaultValue={props.update? institution?.adressNumber : ""}
             />
               <input
-              {...register("complement", { required: true })}
+              {...register("complement", { required: false })}
               placeholder="complement:"
               name="complement"
               defaultValue={props.update? institution?.complement : ""}
