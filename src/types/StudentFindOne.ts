@@ -1,11 +1,10 @@
-
-export type FormStudents = {
+export type StudentComplete ={
     id?:string;
     name: string;
     age: string;
     phone: string;
-    institutionId: string;
-    institution?:{
+    consult:[];
+    institution:{
         name: string;
     }
 }

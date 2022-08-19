@@ -18,7 +18,7 @@ const DetailsInstitution = () => {
       setInstitution(get?.data);
     }
   };
-  console.log(institution);
+
   useEffect(() => {
     getOneInstitution();
   }, []);
