@@ -9,5 +9,7 @@ export enum RoutePath{
     FORMINST='/forminstituicao',
     INSTUP='/forminstituicao/:id',
     CREATEUSER='/createuser',
-    DETAILSINST="/instituicao/detalhes/:id"
+    DETAILSINST="/instituicao/detalhes/:id",
+    FORMSTUD='/formstudent',
+    STUDUP='/formaluno/:id'
 }

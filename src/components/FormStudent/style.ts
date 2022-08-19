@@ -1,14 +1,5 @@
 import styled, {css} from 'styled-components'
 import icon from "../../assets/images/icon.svg";
-
-export const background = styled.section`
-  ${({ theme }) => css`
-    min-height: 100vh;
-    min-width: 100vw;
-    background: ${theme.colors.backgroundColor};
-  `}
-`;
-
 export const heading = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -63,7 +54,6 @@ export const logins = styled.div`
     }
   `}
 `;
-
 export const formContent = styled.main`
 width: 100%;
 height: 100vh;

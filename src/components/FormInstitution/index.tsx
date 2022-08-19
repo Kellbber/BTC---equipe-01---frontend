@@ -8,7 +8,7 @@ import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 
 interface Institution {
-   name: string;
+  name: string;
   phone: string;
   cep: string;
   adressNumber: string;
@@ -19,17 +19,13 @@ interface Institution {
   complement: string;
 }
 
-
-
-const FormInstitution = (props:{ update?:boolean}) => {
-
+const FormInstitution = (props: { update?: boolean }) => {
   const { register, setValue, setFocus } = useForm();
 
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
   const [institution, setInstitution] = useState<Institution>();
   const checkCEP = async (e: any) => {
-
     const cep = e.target.value.replace(/\D/g, "");
 
     if (!e.target.value) return;
@@ -45,7 +41,7 @@ const FormInstitution = (props:{ update?:boolean}) => {
     }
   };
 
- async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const newInst: Institution = {
       name: event.currentTarget.Nome.value,
@@ -56,33 +52,33 @@ const FormInstitution = (props:{ update?:boolean}) => {
       city: event.currentTarget.city.value,
       district: event.currentTarget.district.value,
       state: event.currentTarget.state.value,
-      complement: event.currentTarget.complement.value
+      complement: event.currentTarget.complement.value,
     };
 
-    if(props.update){
-    await institutionService.UpInstitution(id??"",newInst)
-    navigate('/instituicoes')
-    }else{
-    const req = await institutionService.postInstitution(newInst);
-    console.log(newInst)
-    if(req?.status===201){
-      navigate('/instituicoes')
+    if (props.update) {
+      await institutionService.UpInstitution(id ?? "", newInst);
+      navigate("/instituicoes");
+    } else {
+      const req = await institutionService.postInstitution(newInst);
+      console.log(newInst);
+      if (req?.status === 201) {
+        navigate("/instituicoes");
+      }
     }
   }
- }
- async function getInstitutionForUpdate(){
-  if(id){
-    const institutionUp = await institutionService.oneInstitution(id)
-    setInstitution(institutionUp?.data)
+  async function getInstitutionForUpdate() {
+    if (id) {
+      const institutionUp = await institutionService.oneInstitution(id);
+      setInstitution(institutionUp?.data);
+    }
   }
- }
 
- useEffect(()=>{
-  if(props.update){
-    getInstitutionForUpdate()
-  }
- },[])
- 
+  useEffect(() => {
+    if (props.update) {
+      getInstitutionForUpdate();
+    }
+  }, []);
+
   return (
     <>
       <S.heading>
@@ -103,72 +99,70 @@ const FormInstitution = (props:{ update?:boolean}) => {
       </S.heading>
       <S.formContent>
         <S.formDiv>
-          <p>{props.update?"Editar Instituição":"Criar Instituição"}</p>
+          <p>{props.update ? "Editar Instituição" : "Criar Instituição"}</p>
 
           <form onSubmit={handleSubmit}>
             <input
               {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
-              defaultValue={props.update? institution?.name : ""}
+              defaultValue={props.update ? institution?.name : ""}
             />
             <input
               {...register("telefone", { required: true })}
               placeholder="(xx)(xxxxx)(xxxx)"
               name="phone"
-              defaultValue={props.update? institution?.phone : ""}
+              defaultValue={props.update ? institution?.phone : ""}
             />
             <input
               {...register("cep", { required: true })}
               onBlur={checkCEP}
               placeholder="CEP:"
               name="cepInst"
-              defaultValue={props.update? institution?.cep : ""}
+              defaultValue={props.update ? institution?.cep : ""}
             />
             <input
               {...register("street", { required: true })}
               placeholder="Rua:"
               name="street"
-              defaultValue={props.update? institution?.street : ""}
+              defaultValue={props.update ? institution?.street : ""}
             />
             <input
               {...register("adressNumber", { required: true })}
               placeholder="Num:"
               name="adressNumber"
               type="text"
-              defaultValue={props.update? institution?.adressNumber : ""}
+              defaultValue={props.update ? institution?.adressNumber : ""}
             />
-              <input
+            <input
               {...register("complement", { required: false })}
               placeholder="complement:"
               name="complement"
-              defaultValue={props.update? institution?.complement : ""}
+              defaultValue={props.update ? institution?.complement : ""}
             />
             <input
               {...register("district", { required: true })}
               placeholder="Bairro:"
               name="district"
-              defaultValue={props.update? institution?.district: ""}
+              defaultValue={props.update ? institution?.district : ""}
             />
             <input
               {...register("city", { required: true })}
               placeholder="Cidade:"
               name="city"
-              defaultValue={props.update? institution?.city : ""}
+              defaultValue={props.update ? institution?.city : ""}
             />
             <input
               {...register("state", { required: true })}
               placeholder="UF:"
               name="state"
-              defaultValue={props.update? institution?.state: ""}
+              defaultValue={props.update ? institution?.state : ""}
             />
-
-
             <SendButton />
           </form>
         </S.formDiv>
       </S.formContent>
-  </>
+    </>
   );
 };
 
