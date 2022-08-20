@@ -1,14 +1,12 @@
-import { BiArrowBack } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import * as S from "./style";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { BiArrowBack } from "react-icons/bi";
+import { useNavigate, useParams } from "react-router-dom";
 import { StudentComplete } from "types/StudentFindOne";
 import { studentService } from "../../services/studentService";
-import { p } from "pages/login/style";
-import { Consult } from "types/consult";
+import * as S from "./style";
 
 const DetailsStudent = () => {
+  
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -22,6 +20,7 @@ const DetailsStudent = () => {
   };
   useEffect(() => {
     getOneStudent();
+
   }, []);
   return (
     <S.background>
@@ -45,9 +44,11 @@ const DetailsStudent = () => {
       <S.divMain>
         <S.Title>{aluno?.name}</S.Title>
         <S.divButtons>
+          
         <S.buttonEdit onClick={()=> navigate(`/formaluno/${id}`)}>
           Editar
         </S.buttonEdit>
+
         </S.divButtons>
         <S.Details>Detalhes</S.Details>
         <S.titleInfo><p>Nome</p><p>Idade</p><p>Telefone</p><p>Instituição</p></S.titleInfo>

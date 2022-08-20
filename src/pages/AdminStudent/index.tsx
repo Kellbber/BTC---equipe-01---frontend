@@ -1,7 +1,7 @@
-import * as S from "./style";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import * as S from "./style";
 
 import { FormStudents } from "types/FormStudent";
 import { studentService } from "../../services/studentService";
@@ -15,11 +15,16 @@ const AdminStudent = () => {
       ? alunos.filter((student) => student.name.includes(search))
       : [];
 
+  const jwt = localStorage.getItem("jwt");
+
+
   const getAllStudent = async () => {
+    if(jwt){
     const response = await studentService.allStudent();
     if (response) {
       setAlunos(response.data);
     }
+  }
   };
 
   function goToDetails(id: string) {
@@ -56,6 +61,7 @@ const AdminStudent = () => {
             value={search}
           />
         </S.adminSearch>
+     
         <S.addButton onClick={() => navigate("/formaluno")}>
           Adicionar
         </S.addButton>
