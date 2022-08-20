@@ -12,6 +12,7 @@ import CreateUser from "./src/pages/CreateUser/index";
 import DetailsInstitution from "./src/pages/DetailsInstitution";
 import ConfigStudent from "./src/pages/ConfigStudent";
 import DetailsStudent from "./src/pages/DetailsStudent";
+import DetailsUser from "./src/pages/DetailsUser";
 const Router = () => {
   return (
     <Routes>
@@ -35,6 +36,7 @@ const Router = () => {
       <Route path={RoutePath.CREATEUSER} element={<CreateUser />} />
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution />} />
       <Route path={RoutePath.DETAILSSTUD} element={<DetailsStudent/>} />
+      <Route path={RoutePath.DETAILSUSER} element={<DetailsUser/>} />
     </Routes>
   );
 };

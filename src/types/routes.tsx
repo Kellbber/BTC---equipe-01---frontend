@@ -12,5 +12,6 @@ export enum RoutePath{
     DETAILSINST="/instituicao/detalhes/:id",
     FORMSTUD='/formaluno',
     STUDUP='/formaluno/:id',
-    DETAILSSTUD='/alunos/detalhes/:id'
+    DETAILSSTUD='/alunos/detalhes/:id',
+    DETAILSUSER='/usuarios/detalhes/:id',
 }

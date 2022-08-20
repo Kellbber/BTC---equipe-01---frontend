@@ -1,19 +1,47 @@
-import { useState } from "react";
-import * as S from "./style";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { listaUser } from "../../mocks/users";
-
+import { useNavigate } from "react-router-dom";
+import * as S from "./style";
+import swall from 'sweetalert'
+import { User } from "types/User";
+import { userApiService } from "../../services/userService";
+import { userLoggedService } from "../../services/authService";
+interface UserLogged {
+  id: string;
+  email: string;
+  name: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+}
 const AdminUsers = () => {
-  const [search, setSearch] = useState<string>("");
-
-  const filteredUsers =
-    search.length > 0
-      ? listaUser.filter((user) => user.name.includes(search))
-      : [];
 
   const navigate = useNavigate();
 
+  const [search, setSearch] = useState<string>("");
+
+  const [users, setUsers]=useState<User[]>([]);
+
+  const filteredUsers =
+    search.length > 0
+      ? users.filter((user) => user.name.includes(search))
+      : [];
+  const jwt = localStorage.getItem("jwt");
+
+const getAllUsers = async () =>{
+  if(jwt){
+const response = await  userApiService.allUsers();
+  setUsers(response?.data)
+
+  }
+}
+function goToDetails(id: string) {
+  navigate(`/usuarios/detalhes/${id}`);
+}
+  useEffect(()=>{
+    getAllUsers();
+
+  })
   return (
     <S.background>
       <S.heading>
@@ -48,15 +76,17 @@ const AdminUsers = () => {
               <S.nameTable>
                 <p>Nome</p>
                 <p>Email</p>
-                <p>Vinculado a</p>
+           
               </S.nameTable>
               <S.divTable>
                 {filteredUsers.map((user) => {
                   return (
-                    <div className="divmain" key={user.name}>
+                    <div className="divmain" key={user.name}
+                    onClick={() => {
+                      goToDetails(user.id ?? "");
+                    }}>
                       <div>{user.name}</div>
                       <div>{user.email}</div>
-                      <div>{user.institution[0].name}</div>
                     </div>
                   );
                 })}
@@ -67,15 +97,18 @@ const AdminUsers = () => {
               <S.nameTable>
                 <p>Nome</p>
                 <p>Email</p>
-                <p>Vinculado a</p>
+         
               </S.nameTable>
               <S.divTable>
-                {listaUser.map((user) => {
+                {users.map((user) => {
                   return (
-                    <div className="divmain" key={user.name}>
+                    <div className="divmain" key={user.name}
+                    onClick={() => {
+                      goToDetails(user.id ?? "");
+                    }}>
                       <div>{user.name}</div>
                       <div>{user.email}</div>
-                      <div>{user.institution[0].name}</div>
+
                     </div>
                   );
                 })}
