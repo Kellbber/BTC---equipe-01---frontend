@@ -7,6 +7,7 @@ import { Student } from "types/student";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 
+
 const DetailsInstitution = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,16 +31,20 @@ const DetailsInstitution = () => {
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response.data);
+
   };
+
   const jwt = localStorage.getItem("jwt");
 
   const getOneInstitution = async () => {
+   
     if(jwt){
     if (id) {
       const get = await institutionService.oneInstitution(id);
       setInstitution(get?.data);
     }
   }
+
   };
   
   useEffect(() => {
