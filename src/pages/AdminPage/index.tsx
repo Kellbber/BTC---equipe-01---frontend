@@ -11,6 +11,7 @@ const AdminPage = () => {
     confirmPassword: "",
     email: "",
     role: "",
+    name:"",
   });
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
@@ -18,6 +19,7 @@ const AdminPage = () => {
   };
   interface User {
     id: string;
+    name: string;
     email: string;
     password: string;
     confirmPassword: string;
@@ -43,7 +45,7 @@ const AdminPage = () => {
         </S.logins>
       </S.heading>
       <S.title>Bem-vindo(a),</S.title>
-      <S.nameUser>{userLogged.role}</S.nameUser>
+      <S.nameUser>{userLogged.name}</S.nameUser>
       <S.options>O que gostaria de fazer?</S.options>
       {userLogged.role === "ADMIN" || "BACKOFFICE" ? (
         <S.cardOptions>
