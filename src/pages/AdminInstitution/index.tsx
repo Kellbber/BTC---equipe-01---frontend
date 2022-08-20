@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { institutionService } from "../../services/institutionService";
 import { Institution } from "types/Institution";
+import { institutionService } from "../../services/institutionService";
 
+import { userLoggedService } from "../../services/authService";
 import * as S from "./style";
 
 const AdminConfig = () => {
+
   const [search, setSearch] = useState<string>("");
 
   const [institutions, setInstitutions] = useState<Institution[]>([]);
@@ -16,12 +18,33 @@ const AdminConfig = () => {
       ? institutions.filter((institution) => institution.name.includes(search))
       : [];
   const navigate = useNavigate();
+  interface User {
+    id: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    role: string;
+  }
+  const [userLogged, setUserLogged] = useState<User>({
+    id: "",
+    password: "",
+    confirmPassword: "",
+    email: "",
+    role: "",
+  });
 
+  const getUserLogged = async () => {
+    const response = await userLoggedService.userLogged();
+    setUserLogged(response.data);
+  };
+  const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
+    if(jwt){
     const response = await institutionService.allInstitution();
     if (response) {
       setInstitutions(response.data);
     }
+  }
   };
 
   function goToDetails(id: string) {
@@ -29,7 +52,9 @@ const AdminConfig = () => {
   }
 
   useEffect(() => {
-    getAllInst();
+      getAllInst();
+      getUserLogged();
+    
   }, []);
   return (
     <S.background>
@@ -58,9 +83,11 @@ const AdminConfig = () => {
             value={search}
           />
         </S.adminSearch>
+        {userLogged.role!=="CAMPO"?
         <S.addButton onClick={() => navigate("/forminstituicao")}>
           Adicionar
         </S.addButton>
+        :""}
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>

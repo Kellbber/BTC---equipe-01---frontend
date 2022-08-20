@@ -1,13 +1,12 @@
-import axios from "axios";
+import api from './Api'
 import { Institution } from "types/Institution";
 
-axios.defaults.baseURL = "http://localhost:3333/";
-axios.defaults.headers.post["Content-Type"] = "application/json";
+
 
 export const institutionService = {
   postInstitution: async (newInstitution: Institution) => {
     try {
-      const req = await axios.post("/institutions",{
+      const req = await api.post("/institutions",{
         name: newInstitution.name,
         phone: newInstitution.phone,
         cep: newInstitution.cep,
@@ -25,7 +24,7 @@ export const institutionService = {
   },
   UpInstitution: async (InstitutionId: string, Institution: Institution) => {
     try {
-      const req = await axios.patch(`/institutions/${InstitutionId}`, {
+      const req = await api.patch(`/institutions/${InstitutionId}`, {
         name: Institution.name,
         phone: Institution.phone,
         cep: Institution.cep,
@@ -44,7 +43,7 @@ export const institutionService = {
 
   allInstitution: async () => {
     try {
-      const req = axios.get("/institutions/find-all");
+      const req = api.get("/institutions/find-all");
       return req;
     } catch (err) {
       alert(err);
@@ -52,7 +51,7 @@ export const institutionService = {
   },
   oneInstitution: async (id: string) => {
     try {
-      const req = axios.get(`/institutions/${id}`);
+      const req = api.get(`/institutions/${id}`);
       return req;
     } catch (err) {
       alert(err);

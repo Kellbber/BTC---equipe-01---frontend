@@ -1,13 +1,12 @@
-import axios from "axios";
+import api from './Api'
 import {FormStudents } from "../../src/types/FormStudent";
 
-axios.defaults.baseURL = "http://localhost:3333/";
-axios.defaults.headers.post["Content-Type"] = "application/json";
+
 
 export const studentService = {
   postStudent: async (newStudent: FormStudents) => {
     try {
-        const req = await axios.post('/student',{
+        const req = await api.post('/student',{
             name: newStudent.name,
             age: newStudent.age,
             phone: newStudent.phone,
@@ -20,7 +19,7 @@ export const studentService = {
   },
   UpStudent: async (studentId: string, Student: FormStudents)=>{
     try{
-        const req = await axios.patch(`/student/${studentId}`,{
+        const req = await api.patch(`/student/${studentId}`,{
             name: Student.name,
             age: Student.age,
             phone: Student.phone,
@@ -32,7 +31,7 @@ export const studentService = {
   },
   oneStudent: async (id: string)=>{
     try{
-        const req = axios.get(`/student/${id}`);
+        const req = api.get(`/student/${id}`);
         return req;
     }catch(err){
         alert(err)
@@ -40,7 +39,7 @@ export const studentService = {
   },
   allStudent: async ()=>{
     try{
-      const req = axios.get('/student/find-all');
+      const req = api.get('/student/find-all');
       return req;
     }catch(err){
       alert(err)
