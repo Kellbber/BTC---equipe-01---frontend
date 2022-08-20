@@ -16,15 +16,15 @@ const AdminStudent = () => {
       : [];
 
   const jwt = localStorage.getItem("jwt");
-
-
   const getAllStudent = async () => {
-    if(jwt){
+
     const response = await studentService.allStudent();
+    if(jwt){
     if (response) {
       setAlunos(response.data);
     }
-  }
+    }
+
   };
 
   function goToDetails(id: string) {
