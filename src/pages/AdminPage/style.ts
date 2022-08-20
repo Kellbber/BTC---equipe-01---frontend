@@ -135,23 +135,17 @@ export const cardOptionsUnique = styled.div`
       margin-top: -1rem;
       text-align: center;
     }
-    div{
-      display: flex;
-      width: 70%;
-      font-family: ${theme.constants.headingFontFamily};
-      font-size: .8rem;
-      text-align: center;
-      flex-direction: column;
-      align-items: center;
+
       a{
       margin: .5rem 0 .5rem 0;
       cursor: pointer;
       transition: ease .5s;
+      font-family: ${theme.constants.headingFontFamily};
     }
     a:hover{
       font-weight: 600;
     }
-    }
+    
 
   `}
 `;
