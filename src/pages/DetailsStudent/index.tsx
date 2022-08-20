@@ -63,7 +63,7 @@ const DetailsStudent = () => {
          </S.Details>
          <S.titleInfo><p>Hora</p><p>Cronograma</p></S.titleInfo>
          <S.cardDetailsConsult>
-          {aluno?.consult[0]?aluno?.consult.find((consulta,index)=>(
+          {aluno?.consult?aluno?.consult.find((consulta,index)=>(
             <S.uniqueCardConsult key={index} >
               <div>{consulta}</div>
             </S.uniqueCardConsult>

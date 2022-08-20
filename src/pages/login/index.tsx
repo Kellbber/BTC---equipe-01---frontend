@@ -1,9 +1,46 @@
 import * as S from "./style";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { loginService } from "../../services/authService";
+import swall from 'sweetalert'
+import SendButton from "../../components/SendButton";
 
 const Login = () => {
+
   const navigate = useNavigate();
+  const [values, setValues] = useState({
+    email: "",
+    password:"",
+
+  });
+
+  interface userLoginObjt{
+    email: string;
+    password: string;
+  }
+  const handleChangeValues = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValues((values: userLoginObjt) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
+  }
+  const loginUser = async (event: React.BaseSyntheticEvent)=>{
+    event.preventDefault();
+    const response = await loginService.login(values);
+    const jwt = response.data.token;
+    if(jwt){
+      localStorage.setItem("jwt", jwt);
+      swall({
+        title: "Seja Bem-vindo!",
+        icon: "success",
+        timer: 3000,
+      })
+      navigate(`/dashboard`)
+    }
+
+  }  
+  console.log(values)
   return (
     <S.logincss>
       <S.heading>
@@ -27,12 +64,10 @@ const Login = () => {
           <S.loginborder>
             <S.p>Fazer login</S.p>
           </S.loginborder>
-          <S.div>
-            <input type="email" placeholder="Email:" />
-            <input type="password" placeholder="Senha:" />
-            <button>
-              <p onClick={() => navigate('/dashboard')}>Entrar</p>
-            </button>
+          <S.div onSubmit={loginUser}>
+            <input type="email" placeholder="Email:" name="email" required onChange={handleChangeValues}/>
+            <input type="password" placeholder="Senha:" name="password" required onChange={handleChangeValues}/>
+            <SendButton/>
             <a onClick={()=>navigate('/createuser')}>Não possui conta? Clique aqui</a>
           </S.div>
         </S.LoginSection>

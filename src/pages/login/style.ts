@@ -57,7 +57,7 @@ export const LoginSection = styled.section`
   `}
 `;
 
-export const div = styled.div`
+export const div = styled.form`
   ${({ theme }) => css`
   display: flex;
   flex-direction: column;
