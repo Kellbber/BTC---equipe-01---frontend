@@ -60,7 +60,6 @@ const FormInstitution = (props: { update?: boolean }) => {
       navigate("/instituicoes");
     } else {
       const req = await institutionService.postInstitution(newInst);
-      console.log(newInst);
       if (req?.status === 201) {
         navigate("/instituicoes");
       }

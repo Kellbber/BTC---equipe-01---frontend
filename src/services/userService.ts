@@ -33,5 +33,19 @@ export const userApiService = {
     }catch(err){
         alert(err)
     }
+  },
+  UpUser: async (userId: string, User: User)=>{
+    try{
+      const req = await api.patch(`/user/${userId}`,{
+        name: User.name,
+        email: User.email,
+        password: User.password,
+        confirmPassword: User.confirmPassword,
+        role: User.role
+      });
+      return req;
+    }catch(err){
+      alert(err)
+    }
   }
 };
