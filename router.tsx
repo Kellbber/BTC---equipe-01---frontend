@@ -13,13 +13,15 @@ import DetailsInstitution from "./src/pages/DetailsInstitution";
 import ConfigStudent from "./src/pages/ConfigStudent";
 import DetailsStudent from "./src/pages/DetailsStudent";
 import DetailsUser from "./src/pages/DetailsUser";
+import ConfigUser from "./src/pages/ConfigUser";
 const Router = () => {
   return (
     <Routes>
       <Route path={RoutePath.START} element={<StartPage />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path={RoutePath.ADMINST} element={<AdminConfig />} />
-      <Route path={RoutePath.FORMUSER} element={<Create />} />
+      <Route path={RoutePath.FORMUSER} element={<ConfigUser />} />
+      <Route path={RoutePath.USERUP} element={<ConfigUser update={true}/>} />
       <Route path={RoutePath.STUDENT} element={<Student />} />
       <Route path={RoutePath.USERS} element={<Users />} />
       <Route path={RoutePath.DASHBOARD} element={<Admin />} />

@@ -36,11 +36,9 @@ export const userApiService = {
   },
   UpUser: async (userId: string, User: User)=>{
     try{
-      const req = await api.patch(`/user/${userId}`,{
+      const req = await api.patch(`/users/${userId}`,{
         name: User.name,
         email: User.email,
-        password: User.password,
-        confirmPassword: User.confirmPassword,
         role: User.role
       });
       return req;

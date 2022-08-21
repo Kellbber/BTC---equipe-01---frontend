@@ -1,18 +1,16 @@
-import React, { ReactPropTypes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { userApiService, userService } from "services/userService";
+import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
+import { userApiService, userService } from "../../services/userService";
 import * as S from "./style";
 
 interface User {
   id?: string;
   name: string;
   email: string;
-  password: string;
-  confirmPassword: string;
+
   role?: string;
 }
 const FormUser = (props: { update?: boolean }) => {
@@ -27,8 +25,6 @@ const FormUser = (props: { update?: boolean }) => {
     const newUser: User = {
       name: event.currentTarget.Nome.value,
       email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
-      confirmPassword: event.currentTarget.confirmPassword.value,
       role: event.currentTarget.role.value,
     };
     if (props.update) {
@@ -70,6 +66,7 @@ const FormUser = (props: { update?: boolean }) => {
             onClick={() => navigate("/usuarios")}
           />
         </S.logins>
+        </S.heading>
         <S.formContent>
           <S.formDiv>
             <p>{props.update ? "Editar Usuário" : "Criar Usuário"}</p>
@@ -89,20 +86,6 @@ const FormUser = (props: { update?: boolean }) => {
                 type="email"
                 defaultValue={props.update ? user?.email : ""}
               />
-              <input
-                {...register("password", { required: true })}
-                placeholder="Senha:"
-                name="password"
-                type="password"
-                defaultValue={props.update ? user?.password : ""}
-              />
-              <input
-                {...register("confirmPassword", { required: true })}
-                placeholder="Confirmar Senha:"
-                name="confirmPassword"
-                type="password"
-                defaultValue={props.update ? user?.confirmPassword : ""}
-              />
               <select
                 {...register("role", { required: true })}
                 name="role"
@@ -113,10 +96,11 @@ const FormUser = (props: { update?: boolean }) => {
                 <option>CAMPO</option>
                 
               </select>
+              <SendButton />
             </form>
           </S.formDiv>
         </S.formContent>
-      </S.heading>
+      
     </>
   );
 };

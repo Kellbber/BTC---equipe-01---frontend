@@ -1,6 +1,5 @@
-import React from 'react'
 import FormStudent from '../../components/FormStudent';
-import * as S from './style'
+import * as S from './style';
 type Update ={
     update?:boolean
 }
