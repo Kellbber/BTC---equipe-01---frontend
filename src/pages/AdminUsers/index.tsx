@@ -81,11 +81,6 @@ useEffect(()=>{
             value={search}
           />
         </S.adminSearch>
-        {userLogged.role==="ADMIN"?
-        <S.addButton onClick={() => navigate("/formusuario")}>
-          Adicionar
-        </S.addButton>
-        :""}
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
