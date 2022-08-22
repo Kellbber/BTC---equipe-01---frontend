@@ -3,7 +3,6 @@ import { RoutePath } from "./src/types/routes";
 import StartPage from "./src/pages/StartPage";
 import Login from "./src/pages/login/index";
 import AdminConfig from "./src/pages/AdminInstitution";
-import Create from "./src/pages/CreateUser/index";
 import Student from "./src/pages/AdminStudent/index";
 import Users from "./src/pages/AdminUsers/index";
 import Admin from "./src/pages/AdminPage/index";
@@ -21,7 +20,7 @@ const Router = () => {
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path={RoutePath.ADMINST} element={<AdminConfig />} />
       <Route path={RoutePath.FORMUSER} element={<ConfigUser />} />
-      <Route path={RoutePath.USERUP} element={<ConfigUser update={true}/>} />
+      <Route path={RoutePath.USERUP} element={<ConfigUser update={true} />} />
       <Route path={RoutePath.STUDENT} element={<Student />} />
       <Route path={RoutePath.USERS} element={<Users />} />
       <Route path={RoutePath.DASHBOARD} element={<Admin />} />
@@ -37,8 +36,8 @@ const Router = () => {
       />
       <Route path={RoutePath.CREATEUSER} element={<CreateUser />} />
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution />} />
-      <Route path={RoutePath.DETAILSSTUD} element={<DetailsStudent/>} />
-      <Route path={RoutePath.DETAILSUSER} element={<DetailsUser/>} />
+      <Route path={RoutePath.DETAILSSTUD} element={<DetailsStudent />} />
+      <Route path={RoutePath.DETAILSUSER} element={<DetailsUser />} />
     </Routes>
   );
 };
