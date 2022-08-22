@@ -3,19 +3,21 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { loginService } from "../../services/authService";
-import swall from 'sweetalert'
+import swall from "sweetalert";
+
 import SendButton from "../../components/SendButton";
-
+import Loading from "../../components/Loading";
 const Login = () => {
-
   const navigate = useNavigate();
+
+  const [showLoading, setShowLoading] = useState(false);
+
   const [values, setValues] = useState({
     email: "",
-    password:"",
-
+    password: "",
   });
 
-  interface userLoginObjt{
+  interface userLoginObjt {
     email: string;
     password: string;
   }
@@ -24,28 +26,31 @@ const Login = () => {
       ...values,
       [event.target.name]: event.target.value,
     }));
-  }
-  const loginUser = async (event: React.BaseSyntheticEvent)=>{
+  };
+  console.log(showLoading)
+  const loginUser = async (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
+    setShowLoading(true);
     const response = await loginService.login(values);
-    console.log(response)
+    setShowLoading(false);
     const jwt = response?.data.token;
     const role = response?.data.user.role;
-    if(jwt){
+    if (jwt) {
       localStorage.setItem("jwt", jwt);
-      localStorage.setItem("role",role);
+      localStorage.setItem("role", role);
       swall({
         title: "Seja Bem-vindo!",
         icon: "success",
         timer: 3000,
-      })
-      navigate(`/dashboard`)
-    }
+      });
 
-  }  
+      navigate(`/dashboard`);
+    }
+  };
 
   return (
     <S.logincss>
+
       <S.heading>
         <S.iconConfig>
           <p>
@@ -58,7 +63,7 @@ const Login = () => {
           className="BiArrowBack"
           cursor="pointer"
           size={30}
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         />
       </S.heading>
 
@@ -68,13 +73,32 @@ const Login = () => {
             <S.p>Fazer login</S.p>
           </S.loginborder>
           <S.div onSubmit={loginUser}>
-            <input type="email" placeholder="Email:" name="email" required onChange={handleChangeValues}/>
-            <input type="password" placeholder="Senha:" name="password" required onChange={handleChangeValues}/>
-            <SendButton/>
-            <a onClick={()=>navigate('/createuser')}>Não possui conta? Clique aqui</a>
+            <input
+              type="email"
+              placeholder="Email:"
+              name="email"
+              required
+              onChange={handleChangeValues}
+            />
+            <input
+              type="password"
+              placeholder="Senha:"
+              name="password"
+              required
+              onChange={handleChangeValues}
+            />
+            <SendButton />
+            <a onClick={() => navigate("/createuser")}>
+              Não possui conta? Clique aqui
+            </a>
           </S.div>
         </S.LoginSection>
       </section>
+      {showLoading?
+      <S.loaderDiv>
+         <Loading/>
+      </S.loaderDiv>
+      :""}
     </S.logincss>
   );
 };
