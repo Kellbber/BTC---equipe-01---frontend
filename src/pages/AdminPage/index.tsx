@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { userLoggedService } from "../../services/authService";
+import swall from 'sweetalert'
 import * as S from "./style";
 
 const AdminPage = () => {
@@ -15,7 +16,7 @@ const AdminPage = () => {
   });
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
+    setUserLogged(response?.data);
   };
   interface User {
     id: string;
@@ -27,6 +28,26 @@ const AdminPage = () => {
   }
   const navigate = useNavigate();
 
+  function logout (){
+    setUserLogged({
+      id: "",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      role:"",
+    })
+    localStorage.removeItem(`jwt`)
+    localStorage.removeItem(`role`)
+    swall({
+      title: "Certinho!",
+      text: "Usuário deslogado com sucesso!",
+      icon: "success",
+      timer: 5000,
+    
+    })
+    navigate('/')
+  }
   useEffect(() => {
     getUserLogged();
   }, []);
@@ -41,7 +62,7 @@ const AdminPage = () => {
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiLogOut cursor="pointer" size={30} onClick={() => navigate("/")} />
+          <BiLogOut cursor="pointer" size={30} onClick={logout} />
         </S.logins>
       </S.heading>
       <S.title>Bem-vindo(a),</S.title>

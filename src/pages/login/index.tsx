@@ -95,9 +95,7 @@ const Login = () => {
         </S.LoginSection>
       </section>
       {showLoading?
-      <S.loaderDiv>
          <Loading/>
-      </S.loaderDiv>
       :""}
     </S.logincss>
   );
