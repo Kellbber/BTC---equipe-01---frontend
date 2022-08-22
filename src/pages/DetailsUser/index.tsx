@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import { BiArrowBack } from "react-icons/bi";
-import * as S from "./style";
 import { useNavigate, useParams } from "react-router-dom";
-import { userApiService } from "../../services/userService";
 import { User } from "types/User";
 import { userLoggedService } from "../../services/authService";
+import { userApiService } from "../../services/userService";
+import * as S from "./style";
 const DetailsUser = () => {
   const jwt = localStorage.getItem("jwt");
   const navigate = useNavigate();

@@ -28,9 +28,12 @@ const Login = () => {
   const loginUser = async (event: React.BaseSyntheticEvent)=>{
     event.preventDefault();
     const response = await loginService.login(values);
-    const jwt = response.data.token;
+    console.log(response)
+    const jwt = response?.data.token;
+    const role = response?.data.user.role;
     if(jwt){
       localStorage.setItem("jwt", jwt);
+      localStorage.setItem("role",role);
       swall({
         title: "Seja Bem-vindo!",
         icon: "success",
@@ -40,7 +43,7 @@ const Login = () => {
     }
 
   }  
-  console.log(values)
+
   return (
     <S.logincss>
       <S.heading>
