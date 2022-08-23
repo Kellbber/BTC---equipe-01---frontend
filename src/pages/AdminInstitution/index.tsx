@@ -40,6 +40,7 @@ const AdminConfig = () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
   };
+  
   const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
  

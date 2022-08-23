@@ -4,21 +4,37 @@ import { useNavigate } from "react-router-dom";
 import swall from "sweetalert";
 import * as S from "./style";
 import Loading from "../../components/Loading";
-import { useLocalStorage } from "react-use";
+
+import { userLoggedService } from "../../services/authService";
 const AdminPage = () => {
-
   const [showLoading, setShowLoading] = useState(false);
-  const [valueRole] = useLocalStorage('role');
-
-  const [valueJwt]= useLocalStorage('jwt');
- 
-  const[name]=useLocalStorage<string>('userName');
-
   const navigate = useNavigate();
+const jwt = localStorage.getItem('jwt')
+interface User {
+  id: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+  name:string;
+}
+const [userLogged, setUserLogged] = useState<User>({
+  id: "",
+  password: "",
+  confirmPassword: "",
+  email: "",
+  role: "",
+  name:"",
+});
+
+const getUserLogged = async () => {
+  setShowLoading(true);
+  const response = await userLoggedService.userLogged();
+  setUserLogged(response?.data);
+};
 
   function logout() {
     localStorage.removeItem(`jwt`);
-    localStorage.removeItem(`role`);
     swall({
       title: "Certo!",
       text: "Deslogado com sucesso!",
@@ -26,6 +42,16 @@ const AdminPage = () => {
       timer: 3000,
     });
     navigate("/");
+  }
+
+  if(!jwt){
+    swall({
+      title: "ERRO",
+      text: "Necessário estar logado!",
+      icon: "error",
+      timer: 3000,
+    });
+    navigate("/login");
   }
   return (
     <S.background>
@@ -42,9 +68,9 @@ const AdminPage = () => {
         </S.logins>
       </S.heading>
       <S.title>Bem-vindo(a),</S.title>
-      <S.nameUser>{name}</S.nameUser>
+      <S.nameUser>{userLogged.name}</S.nameUser>
       <S.options>O que gostaria de fazer?</S.options>
-      {valueRole === "ADMIN" || "BACKOFFICE" ? (
+      {userLogged.role === "ADMIN" || "BACKOFFICE" ? (
         <S.cardOptions>
           <S.cardOptionsUnique>
             <p>Instituições</p>
@@ -58,7 +84,7 @@ const AdminPage = () => {
             <a onClick={() => navigate("/alunos")}>Ver todos</a>
             <S.divSeparator />
           </S.cardOptionsUnique>
-          {valueRole === "ADMIN" ? (
+          {userLogged.role === "ADMIN" ? (
             <S.cardOptionsUnique>
               <p>Usuários</p>
 

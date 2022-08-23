@@ -9,14 +9,7 @@ import SendButton from "../../components/SendButton";
 import Loading from "../../components/Loading";
 const Login = () => {
   const navigate = useNavigate();
-
-  const [valueRole, setValueRole] = useLocalStorage('role');
-
-  const [valueJwt, setValueJwt] = useLocalStorage('jwt');
-
-  const[valueName, setValueName]= useLocalStorage('userName');
-
-  const [showLoading, setShowLoading] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
 
   const [values, setValues] = useState({
     email: "",
@@ -42,9 +35,7 @@ const Login = () => {
     console.log(response);
     const jwt = response?.data.token;
     if (jwt) {
-      setValueJwt(jwt)
-      setValueRole(response.data.user.role);
-      setValueName(response.data.user.name)
+        localStorage.setItem("jwt",jwt);
       swall({
         title: "Seja Bem-vindo!",
         icon: "success",
