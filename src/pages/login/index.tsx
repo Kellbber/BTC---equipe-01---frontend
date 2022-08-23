@@ -27,7 +27,7 @@ const Login = () => {
       [event.target.name]: event.target.value,
     }));
   };
-  console.log(showLoading)
+
   const loginUser = async (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
     setShowLoading(true);

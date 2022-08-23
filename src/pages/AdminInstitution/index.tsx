@@ -6,10 +6,12 @@ import { institutionService } from "../../services/institutionService";
 
 import { userLoggedService } from "../../services/authService";
 import * as S from "./style";
+import Loading from "../../components/Loading";
 
 const AdminConfig = () => {
 
   const [search, setSearch] = useState<string>("");
+  const [showLoading, setShowLoading] = useState(false);
 
   const [institutions, setInstitutions] = useState<Institution[]>([]);
 
@@ -34,13 +36,16 @@ const AdminConfig = () => {
   });
 
   const getUserLogged = async () => {
+    setShowLoading(true);
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
   };
   const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
+ 
     if(jwt){
     const response = await institutionService.allInstitution();
+    setShowLoading(false);
     if (response) {
       setInstitutions(response.data);
     }
@@ -52,8 +57,8 @@ const AdminConfig = () => {
   }
 
   useEffect(() => {
+    getUserLogged();
       getAllInst();
-      getUserLogged();
     
   }, []);
   return (
@@ -142,6 +147,9 @@ const AdminConfig = () => {
           )}
         </S.searchList>
       </S.content>
+      {showLoading?
+         <Loading/>
+      :""}
     </S.background>
   );
 };

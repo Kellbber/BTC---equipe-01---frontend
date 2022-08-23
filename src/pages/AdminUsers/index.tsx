@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import * as S from "./style";
-import swall from "sweetalert";
 import { User } from "types/User";
-import { userApiService } from "../../services/userService";
+import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
+import { userApiService } from "../../services/userService";
+import * as S from "./style";
 
 interface UserLogged {
   id: string;
@@ -20,6 +20,7 @@ const AdminUsers = () => {
   const [search, setSearch] = useState<string>("");
 
   const [users, setUsers] = useState<User[]>([]);
+  const [showLoading, setShowLoading] = useState(false);
 
   const [userLogged, setUserLogged] = useState<UserLogged>({
     id: "",
@@ -30,7 +31,7 @@ const AdminUsers = () => {
   });
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
+    setUserLogged(response?.data);
   };
   const filteredUsers =
     search.length > 0 ? users.filter((user) => user.name.includes(search)) : [];
@@ -38,11 +39,13 @@ const AdminUsers = () => {
   const jwt = localStorage.getItem("jwt");
 
   const getAllUsers = async ()   => {
+    setShowLoading(true);
     if (jwt) {
       const response = await userApiService.allUsers();
       if (response) {
         setUsers(response?.data);
       }
+      setShowLoading(false);
     }
   };
 useEffect(()=>{
@@ -131,6 +134,9 @@ useEffect(()=>{
           )}
         </S.searchList>
       </S.content>
+      {showLoading?
+         <Loading/>
+      :""}
     </S.background>
   );
 };
