@@ -3,6 +3,7 @@ import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import Loading from "../../components/Loading";
+import swall from 'sweetalert'
 import { userLoggedService } from "../../services/authService";
 const AdminPage = () => {
   const [userLogged, setUserLogged] = useState<User>({
@@ -11,12 +12,13 @@ const AdminPage = () => {
     confirmPassword: "",
     email: "",
     role: "",
-    name:"",
+    name: "",
   });
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
   };
+
   interface User {
     id: string;
     name: string;
@@ -25,8 +27,29 @@ const AdminPage = () => {
     confirmPassword: string;
     role: string;
   }
+  function isPermited(){
+    const isPermit = userLogged.role
+    if(isPermit==="ADMIN"){
+      return true
+    }
+    else{
+      return false;
+    }
+  }
+  const name = localStorage.getItem("userName");
   const navigate = useNavigate();
+function logout(){
+  localStorage.removeItem("jwt");
+  localStorage.removeItem("userName");
+  swall({
+    title: `Até a próxima, ${name}!`,
+    icon: "success",
+    timer: 3000,
+  });
 
+  navigate(`/`);
+
+}
   useEffect(() => {
     getUserLogged();
   }, []);
@@ -41,13 +64,12 @@ const AdminPage = () => {
           </p>
         </S.iconConfig>
         <S.logins>
-          <BiLogOut cursor="pointer" size={30} onClick={() => navigate("/")} />
+          <BiLogOut cursor="pointer" size={30} onClick={logout} />
         </S.logins>
       </S.heading>
       <S.title>Bem-vindo(a),</S.title>
-      <S.nameUser>{userLogged.name}</S.nameUser>
+      <S.nameUser>{name}</S.nameUser>
       <S.options>O que gostaria de fazer?</S.options>
-      {userLogged.role === "ADMIN" || "BACKOFFICE" ? (
         <S.cardOptions>
           <S.cardOptionsUnique>
             <p>Instituições</p>
@@ -61,20 +83,14 @@ const AdminPage = () => {
             <a onClick={() => navigate("/alunos")}>Ver todos</a>
             <S.divSeparator />
           </S.cardOptionsUnique>
-          {userLogged.role === "ADMIN" ? (
+          {isPermited()?
             <S.cardOptionsUnique>
               <p>Usuários</p>
-
               <a onClick={() => navigate("/usuarios")}>Ver todos</a>
               <S.divSeparator />
             </S.cardOptionsUnique>
-          ) : (
-            ""
-          )}
+        :""}
         </S.cardOptions>
-      ) : (
-        ""
-      )}
     </S.background>
   );
 };

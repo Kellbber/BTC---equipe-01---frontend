@@ -32,10 +32,11 @@ const Login = () => {
     setShowLoading(true);
     const response = await loginService.login(values);
     setShowLoading(false);
-    console.log(response);
+
     const jwt = response?.data.token;
     if (jwt) {
         localStorage.setItem("jwt",jwt);
+        localStorage.setItem("userName", response.data.user.name)
       swall({
         title: "Seja Bem-vindo!",
         icon: "success",

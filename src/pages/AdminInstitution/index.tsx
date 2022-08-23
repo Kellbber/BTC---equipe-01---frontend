@@ -9,7 +9,6 @@ import * as S from "./style";
 import Loading from "../../components/Loading";
 
 const AdminConfig = () => {
-
   const [search, setSearch] = useState<string>("");
   const [showLoading, setShowLoading] = useState(false);
 
@@ -39,28 +38,37 @@ const AdminConfig = () => {
     setShowLoading(true);
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
+
   };
-  
+console.log(isPermited())
   const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
- 
-    if(jwt){
-    const response = await institutionService.allInstitution();
-    setShowLoading(false);
-    if (response) {
-      setInstitutions(response.data);
+    if (jwt) {
+      const response = await institutionService.allInstitution();
+      setShowLoading(true);
+
+      if (response) {
+        setInstitutions(response.data);
+      }
+      setShowLoading(false);
+    }
+  };
+  function isPermited(){
+    const isPermit = userLogged.role
+    if(isPermit==="ADMIN"|| isPermit=== "BACKOFFICE"){
+      return true;
+    }
+    else{
+      return false;
     }
   }
-  };
-
   function goToDetails(id: string) {
     navigate(`/instituicao/detalhes/${id}`);
   }
 
   useEffect(() => {
+    getAllInst();
     getUserLogged();
-      getAllInst();
-    
   }, []);
   return (
     <S.background>
@@ -89,11 +97,11 @@ const AdminConfig = () => {
             value={search}
           />
         </S.adminSearch>
-        {userLogged.role!=="CAMPO"?
-        <S.addButton onClick={() => navigate("/forminstituicao")}>
-          Adicionar
-        </S.addButton>
-        :""}
+      {isPermited()?
+          <S.addButton onClick={() => navigate("/forminstituicao")}>
+            Adicionar
+          </S.addButton>
+:""}
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>
@@ -148,9 +156,7 @@ const AdminConfig = () => {
           )}
         </S.searchList>
       </S.content>
-      {showLoading?
-         <Loading/>
-      :""}
+      {showLoading ? <Loading /> : "none"}
     </S.background>
   );
 };

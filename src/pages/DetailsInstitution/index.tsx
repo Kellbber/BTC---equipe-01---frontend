@@ -31,29 +31,34 @@ const DetailsInstitution = () => {
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
-
   };
 
   const jwt = localStorage.getItem("jwt");
 
   const getOneInstitution = async () => {
     setShowLoading(true);
-    if(jwt){
-    if (id) {
-      const get = await institutionService.oneInstitution(id);
-      setInstitution(get?.data);
-
+    if (jwt) {
+      if (id) {
+        const get = await institutionService.oneInstitution(id);
+        setInstitution(get?.data);
+      }
+      setShowLoading(false);
     }
-    setShowLoading(false);
-  }
-
   };
-  
+
   useEffect(() => {
     getOneInstitution();
     getUserLogged();
   }, []);
 
+  function isPermited() {
+    const isPermit = userLogged.role;
+    if (isPermit === "ADMIN" || isPermit === "BACKOFFICE") {
+      return true;
+    } else {
+      return false;
+    }
+  }
   return (
     <S.background>
       <S.heading>
@@ -75,13 +80,15 @@ const DetailsInstitution = () => {
       <S.content>
         <S.divMain>
           <S.Title>{institution?.name}</S.Title>
-            {userLogged.role!=="CAMPO"?
-          <S.divButtons>
-            <S.buttonEdit onClick={() => navigate(`/forminstituicao/${id}`)}>
-              Editar
-            </S.buttonEdit>
-          </S.divButtons>
-            :""}
+          {isPermited() ? (
+            <S.divButtons>
+              <S.buttonEdit onClick={() => navigate(`/forminstituicao/${id}`)}>
+                Editar
+              </S.buttonEdit>
+            </S.divButtons>
+          ) : (
+            ""
+          )}
 
           <S.Details>Detalhes</S.Details>
           <S.titleInfo>
@@ -123,9 +130,7 @@ const DetailsInstitution = () => {
           </S.cardDetailsStudent>
         </S.divMain>
       </S.content>
-      {showLoading?
-         <Loading/>
-      :""}
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };
