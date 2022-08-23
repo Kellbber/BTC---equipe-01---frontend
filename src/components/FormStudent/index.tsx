@@ -90,7 +90,7 @@ const FormStudent = (props: { update?: boolean }) => {
             />
             <input
               {...register("age", { required: true })}
-              placeholder="idade"
+              placeholder="Data Nasc:"
               name="age"
               defaultValue={props.update ? aluno?.age : ""}
             />

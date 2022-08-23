@@ -74,40 +74,30 @@ export const content = styled.main`
   align-items: center;
   justify-content: flex-start;
 
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
 `;
 
 export const adminSearch = styled.div<setaType>`
   ${({ theme }) => css`
     display: flex;
-    min-width: 30%;
+    min-width: 50%;
     justify-content: center;
     margin-top: 0.7rem;
     padding: 1rem 3rem;
     border-radius: 0.2rem;
     background-color: ${theme.colors.primaryColors};
-    flex-wrap: wrap;
+
 
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      width: 90%;
+      width: 40%;
       padding: .5rem 0.2rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
 
-    }
-    option {
-      list-style: none;
-      outline: none;
-      border: 1px solid black;
-      border-radius: 0.2rem;
-      font-family: ${theme.constants.textInitialFontFamily};
-    }
-    select{
-      font-family: ${theme.constants.textInitialFontFamily};
     }
 
   `}
@@ -162,7 +152,7 @@ ${({theme})=>css`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 1rem 0 1rem;
+    
     font-family: ${theme.constants.headingFontFamily};
     font-size: .8rem;
   }

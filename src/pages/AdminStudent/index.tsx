@@ -6,8 +6,10 @@ import * as S from "./style";
 import { FormStudents } from "types/FormStudent";
 import { studentService } from "../../services/studentService";
 import Loading from "../../components/Loading";
+import { FileWatcherEventKind } from "typescript";
 const AdminStudent = () => {
   const [search, setSearch] = useState<string>("");
+  const [filterSearch, setFilterSearch] = useState<string>("");
   const [showLoading, setShowLoading] = useState(false);
   const [alunos, setAlunos] = useState<FormStudents[]>([]);
 
@@ -16,19 +18,32 @@ const AdminStudent = () => {
       ? alunos.filter((student) => student.name.includes(search))
       : [];
 
+  const filter =
+    filterSearch.length > 0
+      ? alunos.filter((institutions) =>
+          institutions.institution?.name.includes(filterSearch)
+        )
+      : [];
+
+      const joinFilters = 
+      search.length > 0 && filter.length > 0
+      ? filteredStudents.filter((student)=> student.institution?.name.includes(filterSearch))
+      :[]
+
+      console.log(filteredStudents)
+      console.log(filter)
+      console.log(joinFilters)
   const jwt = localStorage.getItem("jwt");
   const getAllStudent = async () => {
     setShowLoading(true);
     const response = await studentService.allStudent();
-    if(jwt){
-    if (response) {
-      setAlunos(response.data);
+    if (jwt) {
+      if (response) {
+        setAlunos(response.data);
+      }
+      setShowLoading(false);
     }
-    setShowLoading(false);
-    }
-
   };
-
   function goToDetails(id: string) {
     navigate(`/alunos/detalhes/${id}`);
   }
@@ -62,13 +77,18 @@ const AdminStudent = () => {
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
+          <input
+            type="text"
+            placeholder="Digite uma instituição para filtrar"
+            onChange={(e) => setFilterSearch(e.target.value)}
+          />
         </S.adminSearch>
-     
+
         <S.addButton onClick={() => navigate("/formaluno")}>
           Adicionar
         </S.addButton>
         <S.searchList>
-          {search.length > 0 ? (
+          {search.length>0&&filter.length>0?
             <S.itemList>
               <S.nameTable>
                 <p>Nome</p>
@@ -77,7 +97,7 @@ const AdminStudent = () => {
                 <p>Instituição</p>
               </S.nameTable>
               <S.divTable>
-                {filteredStudents.map((student) => {
+                {joinFilters.map((student) => {
                   return (
                     <div
                       className="divmain"
@@ -92,11 +112,14 @@ const AdminStudent = () => {
                       <div>{student.institution?.name}</div>
                     </div>
                   );
-                })}
+                })
+                }
               </S.divTable>
             </S.itemList>
-          ) : (
+          :(
+            
             <S.itemList>
+            
               <S.nameTable>
                 <p>Nome</p>
                 <p>Data Nasc.</p>
@@ -123,11 +146,10 @@ const AdminStudent = () => {
               </S.divTable>
             </S.itemList>
           )}
+          
         </S.searchList>
       </S.content>
-      {showLoading?
-         <Loading/>
-      :""}
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };
