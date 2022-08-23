@@ -74,6 +74,7 @@ function logout(){
       <S.title>Bem-vindo(a),</S.title>
       <S.nameUser>{name}</S.nameUser>
       <S.options>O que gostaria de fazer?</S.options>
+      {!showLoading?
         <S.cardOptions>
           <S.cardOptionsUnique>
             <p>Instituições</p>
@@ -96,6 +97,7 @@ function logout(){
 
         :""}
         </S.cardOptions>
+        :""}
         {showLoading ? <Loading /> : ""}
     </S.background>
   );

@@ -8,7 +8,7 @@ import { studentService } from "../../services/studentService";
 import Loading from "../../components/Loading";
 const AdminStudent = () => {
   const [search, setSearch] = useState<string>("");
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
   const [alunos, setAlunos] = useState<FormStudents[]>([]);
 
   const filteredStudents =
@@ -18,7 +18,7 @@ const AdminStudent = () => {
 
   const jwt = localStorage.getItem("jwt");
   const getAllStudent = async () => {
-    setShowLoading(true);
+ 
     const response = await studentService.allStudent();
     if(jwt){
     if (response) {
@@ -54,6 +54,7 @@ const AdminStudent = () => {
           />
         </S.logins>
       </S.heading>
+      {!showLoading?
       <S.content>
         <S.adminSearch>
           <input
@@ -124,7 +125,9 @@ const AdminStudent = () => {
             </S.itemList>
           )}
         </S.searchList>
+
       </S.content>
+      :""}
       {showLoading?
          <Loading/>
       :""}

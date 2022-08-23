@@ -87,6 +87,7 @@ const AdminConfig = () => {
           />
         </S.logins>
       </S.heading>
+      {!showLoading?
       <S.content>
         <S.adminSearch>
           <input
@@ -158,7 +159,9 @@ const AdminConfig = () => {
             </S.itemList>
           )}
         </S.searchList>
+      
       </S.content>
+      :""}
       {showLoading ? <Loading /> : ""}
     </S.background>
   );
