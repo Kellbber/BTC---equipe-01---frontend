@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { userLoggedService } from "../../services/authService";
-import swall from 'sweetalert'
+import swall from "sweetalert";
 import * as S from "./style";
-
+import Loading from "../../components/Loading";
 const AdminPage = () => {
   const [userLogged, setUserLogged] = useState<User>({
     id: "",
@@ -12,12 +12,16 @@ const AdminPage = () => {
     confirmPassword: "",
     email: "",
     role: "",
-    name:"",
+    name: "",
   });
+  const [showLoading, setShowLoading] = useState(false);
   const getUserLogged = async () => {
+    setShowLoading(true);
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
+    setShowLoading(false);
   };
+
   interface User {
     id: string;
     name: string;
@@ -28,25 +32,24 @@ const AdminPage = () => {
   }
   const navigate = useNavigate();
 
-  function logout (){
+  function logout() {
     setUserLogged({
       id: "",
       name: "",
       email: "",
       password: "",
       confirmPassword: "",
-      role:"",
-    })
-    localStorage.removeItem(`jwt`)
-    localStorage.removeItem(`role`)
+      role: "",
+    });
+    localStorage.removeItem(`jwt`);
+    localStorage.removeItem(`role`);
     swall({
-      title: "Certinho!",
-      text: "Usuário deslogado com sucesso!",
+      title: "Certo!",
+      text: "Deslogado com sucesso!",
       icon: "success",
-      timer: 5000,
-    
-    })
-    navigate('/')
+      timer: 3000,
+    });
+    navigate("/");
   }
   useEffect(() => {
     getUserLogged();
@@ -96,6 +99,7 @@ const AdminPage = () => {
       ) : (
         ""
       )}
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };
