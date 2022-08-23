@@ -9,11 +9,11 @@ const DetailsStudent = () => {
   
   const navigate = useNavigate();
   const { id } = useParams();
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
   const [aluno, setAluno] = useState<StudentComplete>();
 
   const getOneStudent = async () => {
-    setShowLoading(true);
+
     if (id) {
       const get = await studentService.oneStudent(id);
       setAluno(get?.data);
@@ -42,6 +42,7 @@ const DetailsStudent = () => {
           />
         </S.logins>
       </S.heading>
+      {!showLoading?
      <S.content>
       <S.divMain>
         <S.Title>{aluno?.name}</S.Title>
@@ -76,6 +77,7 @@ const DetailsStudent = () => {
          </S.cardDetailsConsult>
       </S.divMain>
      </S.content>
+     :""}
      {showLoading?
          <Loading/>
       :""}

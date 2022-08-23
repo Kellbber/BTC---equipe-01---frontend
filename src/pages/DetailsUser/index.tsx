@@ -10,7 +10,7 @@ import Loading from "../../components/Loading";
 const DetailsUser = () => {
   const jwt = localStorage.getItem("jwt");
   const navigate = useNavigate();
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
   const [user, setUser] = useState<User>();
 
   interface UserLogged {
@@ -30,7 +30,6 @@ const DetailsUser = () => {
   const { id } = useParams();
 
   const getOneUser = async () => {
-    setShowLoading(true);
     if (jwt) {
       if (id) {
         const get = await userApiService.oneUser(id);
@@ -65,6 +64,7 @@ const DetailsUser = () => {
           />
         </S.logins>
       </S.heading>
+      {!showLoading?
       <S.content>
         <S.divMain>
           <S.Title>{user?.name}</S.Title>
@@ -90,6 +90,7 @@ const DetailsUser = () => {
           </S.cardDetails>
         </S.divMain>
       </S.content>
+      :""}
       {showLoading ? <Loading /> : ""}
     </S.background>
   );

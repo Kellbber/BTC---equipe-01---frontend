@@ -11,7 +11,7 @@ import Loading from "../../components/Loading";
 const DetailsInstitution = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
   const [institution, setInstitution] = useState<InstitutionComplete>();
   interface User {
     id: string;
@@ -36,7 +36,7 @@ const DetailsInstitution = () => {
   const jwt = localStorage.getItem("jwt");
 
   const getOneInstitution = async () => {
-    setShowLoading(true);
+ 
     if (jwt) {
       if (id) {
         const get = await institutionService.oneInstitution(id);
@@ -77,6 +77,7 @@ const DetailsInstitution = () => {
           />
         </S.logins>
       </S.heading>
+    {!showLoading?
       <S.content>
         <S.divMain>
           <S.Title>{institution?.name}</S.Title>
@@ -130,6 +131,7 @@ const DetailsInstitution = () => {
           </S.cardDetailsStudent>
         </S.divMain>
       </S.content>
+      :""}
       {showLoading ? <Loading /> : ""}
     </S.background>
   );
