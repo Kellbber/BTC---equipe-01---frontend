@@ -9,6 +9,7 @@ import * as S from "./style";
 import Loading from "../../components/Loading";
 
 const AdminConfig = () => {
+
   const [search, setSearch] = useState<string>("");
   const [showLoading, setShowLoading] = useState(false);
 
@@ -40,7 +41,7 @@ const AdminConfig = () => {
     setUserLogged(response?.data);
 
   };
-console.log(isPermited())
+
   const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
     if (jwt) {
@@ -98,9 +99,13 @@ console.log(isPermited())
           />
         </S.adminSearch>
       {isPermited()?
+        <S.divButtonAdd>
+
+       
           <S.addButton onClick={() => navigate("/forminstituicao")}>
-            Adicionar
+            <p>Adicionar</p>
           </S.addButton>
+          </S.divButtonAdd>
 :""}
         <S.searchList>
           {search.length > 0 ? (
@@ -156,7 +161,7 @@ console.log(isPermited())
           )}
         </S.searchList>
       </S.content>
-      {showLoading ? <Loading /> : "none"}
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };
