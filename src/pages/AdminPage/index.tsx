@@ -15,7 +15,7 @@ const AdminPage = () => {
   });
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
+    setUserLogged(response?.data);
   };
   interface User {
     id: string;

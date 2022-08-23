@@ -17,7 +17,7 @@ const AdminStudent = () => {
 
   const jwt = localStorage.getItem("jwt");
   const getAllStudent = async () => {
-
+    
     const response = await studentService.allStudent();
     if(jwt){
     if (response) {

@@ -35,7 +35,7 @@ const AdminConfig = () => {
 
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
+    setUserLogged(response?.data);
   };
   const jwt = localStorage.getItem("jwt");
   const getAllInst = async () => {
