@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { userLoggedService } from "../../services/authService";
 import swall from "sweetalert";
 import * as S from "./style";
 import Loading from "../../components/Loading";
