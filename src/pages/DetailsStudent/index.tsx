@@ -4,19 +4,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { StudentComplete } from "types/StudentFindOne";
 import { studentService } from "../../services/studentService";
 import * as S from "./style";
-
+import Loading from "../../components/Loading";
 const DetailsStudent = () => {
   
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const [showLoading, setShowLoading] = useState(false);
   const [aluno, setAluno] = useState<StudentComplete>();
 
   const getOneStudent = async () => {
+    setShowLoading(true);
     if (id) {
       const get = await studentService.oneStudent(id);
       setAluno(get?.data);
     }
+    setShowLoading(false);
   };
   useEffect(() => {
     getOneStudent();
@@ -74,6 +76,9 @@ const DetailsStudent = () => {
          </S.cardDetailsConsult>
       </S.divMain>
      </S.content>
+     {showLoading?
+         <Loading/>
+      :""}
     </S.background>
   );
 };

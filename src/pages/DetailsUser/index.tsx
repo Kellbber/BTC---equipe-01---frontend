@@ -6,10 +6,11 @@ import { User } from "types/User";
 import { userLoggedService } from "../../services/authService";
 import { userApiService } from "../../services/userService";
 import * as S from "./style";
+import Loading from "../../components/Loading";
 const DetailsUser = () => {
   const jwt = localStorage.getItem("jwt");
   const navigate = useNavigate();
-
+  const [showLoading, setShowLoading] = useState(false);
   const [user, setUser] = useState<User>();
 
   interface UserLogged {
@@ -29,17 +30,18 @@ const DetailsUser = () => {
   const { id } = useParams();
 
   const getOneUser = async () => {
+    setShowLoading(true);
     if (jwt) {
       if (id) {
         const get = await userApiService.oneUser(id);
         setUser(get?.data);
       }
     }
+    setShowLoading(false);
   };
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
-    
+    setUserLogged(response?.data);
   };
   useEffect(() => {
     getOneUser();
@@ -88,6 +90,7 @@ const DetailsUser = () => {
           </S.cardDetails>
         </S.divMain>
       </S.content>
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };

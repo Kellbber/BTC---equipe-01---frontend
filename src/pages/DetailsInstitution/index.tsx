@@ -6,12 +6,12 @@ import { InstitutionComplete } from "types/InstitutionsFindOne";
 import { Student } from "types/student";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
-
+import Loading from "../../components/Loading";
 
 const DetailsInstitution = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const [showLoading, setShowLoading] = useState(false);
   const [institution, setInstitution] = useState<InstitutionComplete>();
   interface User {
     id: string;
@@ -30,19 +30,21 @@ const DetailsInstitution = () => {
 
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
-    setUserLogged(response.data);
+    setUserLogged(response?.data);
 
   };
 
   const jwt = localStorage.getItem("jwt");
 
   const getOneInstitution = async () => {
-   
+    setShowLoading(true);
     if(jwt){
     if (id) {
       const get = await institutionService.oneInstitution(id);
       setInstitution(get?.data);
+
     }
+    setShowLoading(false);
   }
 
   };
@@ -121,6 +123,9 @@ const DetailsInstitution = () => {
           </S.cardDetailsStudent>
         </S.divMain>
       </S.content>
+      {showLoading?
+         <Loading/>
+      :""}
     </S.background>
   );
 };
