@@ -20,7 +20,7 @@ const AdminUsers = () => {
   const [search, setSearch] = useState<string>("");
 
   const [users, setUsers] = useState<User[]>([]);
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
 
   const [userLogged, setUserLogged] = useState<UserLogged>({
     id: "",
@@ -39,7 +39,7 @@ const AdminUsers = () => {
   const jwt = localStorage.getItem("jwt");
 
   const getAllUsers = async ()   => {
-    setShowLoading(true);
+
     if (jwt) {
       const response = await userApiService.allUsers();
       if (response) {
@@ -75,6 +75,7 @@ useEffect(()=>{
           />
         </S.logins>
       </S.heading>
+      {!showLoading?
       <S.content>
         <S.adminSearch>
           <input
@@ -134,6 +135,7 @@ useEffect(()=>{
           )}
         </S.searchList>
       </S.content>
+      :""}
       {showLoading?
          <Loading/>
       :""}
