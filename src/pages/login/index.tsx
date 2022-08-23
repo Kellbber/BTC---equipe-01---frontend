@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { loginService } from "../../services/authService";
 import swall from "sweetalert";
-
+import { useLocalStorage } from 'react-use';
 import SendButton from "../../components/SendButton";
 import Loading from "../../components/Loading";
 const Login = () => {
   const navigate = useNavigate();
 
+  const [valueRole, setValueRole, removeRole] = useLocalStorage('role');
+  const [valueJwt, setValueJwt, removeJwt] = useLocalStorage('jwt')
   const [showLoading, setShowLoading] = useState(false);
 
   const [values, setValues] = useState({
@@ -34,10 +36,9 @@ const Login = () => {
     const response = await loginService.login(values);
     setShowLoading(false);
     const jwt = response?.data.token;
-    const role = response?.data.user.role;
     if (jwt) {
-      localStorage.setItem("jwt", jwt);
-      localStorage.setItem("role", role);
+      setValueJwt(jwt)
+      setValueRole(response.data.user.role);
       swall({
         title: "Seja Bem-vindo!",
         icon: "success",
