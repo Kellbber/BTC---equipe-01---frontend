@@ -116,7 +116,7 @@ const DetailsInstitution = () => {
           <S.Details>Alunos</S.Details>
           <S.titleInfo>
             <p>Nome</p>
-            <p>Idade</p>
+            <p>Data Nasc</p>
             <p>Telefone</p>
           </S.titleInfo>
           <S.cardDetailsStudent>

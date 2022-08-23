@@ -53,7 +53,7 @@ const DetailsStudent = () => {
 
         </S.divButtons>
         <S.Details>Detalhes</S.Details>
-        <S.titleInfo><p>Nome</p><p>Idade</p><p>Telefone</p><p>Instituição</p></S.titleInfo>
+        <S.titleInfo><p>Nome</p><p>Data Nasc</p><p>Telefone</p><p>Instituição</p></S.titleInfo>
          <S.cardDetails>
           <S.uniqueCard>{aluno?.name}</S.uniqueCard>
           <S.uniqueCard>{aluno?.age}</S.uniqueCard>

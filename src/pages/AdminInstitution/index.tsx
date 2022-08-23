@@ -11,7 +11,7 @@ import Loading from "../../components/Loading";
 const AdminConfig = () => {
 
   const [search, setSearch] = useState<string>("");
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
 
   const [institutions, setInstitutions] = useState<Institution[]>([]);
 
@@ -36,9 +36,9 @@ const AdminConfig = () => {
   });
 
   const getUserLogged = async () => {
-    setShowLoading(true);
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
+
 
   };
 
@@ -46,8 +46,6 @@ const AdminConfig = () => {
   const getAllInst = async () => {
     if (jwt) {
       const response = await institutionService.allInstitution();
-      setShowLoading(true);
-
       if (response) {
         setInstitutions(response.data);
       }

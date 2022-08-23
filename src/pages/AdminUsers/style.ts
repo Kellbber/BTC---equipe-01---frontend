@@ -9,7 +9,7 @@ type setaType = {
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
     background: ${theme.colors.backgroundColor};
   `}
 `;
@@ -74,7 +74,7 @@ export const content = styled.main`
   align-items: center;
   justify-content: flex-start;
 
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
 `;
 
@@ -162,7 +162,7 @@ ${({theme})=>css`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 1rem 0 1rem;
+ 
     font-family: ${theme.constants.headingFontFamily};
     font-size: .8rem;
   }

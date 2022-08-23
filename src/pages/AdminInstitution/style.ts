@@ -9,7 +9,7 @@ type setaType = {
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100%;
-    min-width: 100%;
+    min-width: 100vh;
     background: ${theme.colors.backgroundColor};
   `}
 `;

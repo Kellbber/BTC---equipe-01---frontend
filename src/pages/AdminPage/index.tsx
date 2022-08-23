@@ -14,9 +14,13 @@ const AdminPage = () => {
     role: "",
     name: "",
   });
+
+  const [showLoading, setShowLoading]=useState<boolean>(true);
+
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
+    setShowLoading(false);
   };
 
   interface User {
@@ -30,7 +34,7 @@ const AdminPage = () => {
   function isPermited(){
     const isPermit = userLogged.role
     if(isPermit==="ADMIN"){
-      return true
+      return true;
     }
     else{
       return false;
@@ -89,8 +93,10 @@ function logout(){
               <a onClick={() => navigate("/usuarios")}>Ver todos</a>
               <S.divSeparator />
             </S.cardOptionsUnique>
+
         :""}
         </S.cardOptions>
+        {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };
