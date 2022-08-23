@@ -6,38 +6,35 @@ interface userLoginObjt {
 }
 
 const loginService = {
-  login: (values: userLoginObjt) =>
-    api
-      .post("/auth", values)
-      .then((response: any) => {
-        return response;
-      })
-      .catch((error: any) =>
-        swall({
-          title: "Erro",
-          text: "Usuário ou senha inválido!",
-          icon: "error",
-          timer: 5000,
-        })
-      ),
+  login: async (values: userLoginObjt) => {
+    try {
+      const req = await api.post(`/auth`, values);
+      return req;
+    } catch (err) {
+      swall({
+        title: "Erro",
+        text: "Usuário ou senha inválido!",
+        icon: "error",
+        timer: 5000,
+      });
+    }
+  },
 };
 
 const userLoggedService = {
-  userLogged: () =>
-    api
-      .get("/auth")
-
-      .then((response: any) => response)
-      .then((response: any) => response)
-
-      .catch((error: any) => {
-        swall({
-          title: "Erro",
-          text: `${error.message}`,
-          icon: "error",
-          timer: 7000,
-        });
-      }),
+  userLogged: async () => {
+    try {
+      const req = api.get("/auth");
+      return req;
+    } catch (err) {
+      swall({
+        title: "Erro",
+        text: `erro ao acessar o usuário`,
+        icon: "error",
+        timer: 5000,
+      });
+    }
+  },
 };
 
-export {loginService, userLoggedService};
+export { loginService, userLoggedService };

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { userLoggedService } from "../../services/authService";
 import * as S from "./style";
-
+import Loading from "../../components/Loading";
+import { userLoggedService } from "../../services/authService";
 const AdminPage = () => {
   const [userLogged, setUserLogged] = useState<User>({
     id: "",

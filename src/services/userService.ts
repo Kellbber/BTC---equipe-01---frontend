@@ -2,7 +2,6 @@ import axios from "axios";
 import { User } from "types/User";
 axios.defaults.baseURL = "http://localhost:3333/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
-import swall from "sweetalert";
 import api from "./Api";
 
 export const userService = {

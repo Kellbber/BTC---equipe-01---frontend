@@ -5,9 +5,10 @@ import * as S from "./style";
 
 import { FormStudents } from "types/FormStudent";
 import { studentService } from "../../services/studentService";
+import Loading from "../../components/Loading";
 const AdminStudent = () => {
   const [search, setSearch] = useState<string>("");
-
+  const [showLoading, setShowLoading] = useState(false);
   const [alunos, setAlunos] = useState<FormStudents[]>([]);
 
   const filteredStudents =
@@ -17,12 +18,13 @@ const AdminStudent = () => {
 
   const jwt = localStorage.getItem("jwt");
   const getAllStudent = async () => {
-    
+    setShowLoading(true);
     const response = await studentService.allStudent();
     if(jwt){
     if (response) {
       setAlunos(response.data);
     }
+    setShowLoading(false);
     }
 
   };
@@ -123,6 +125,9 @@ const AdminStudent = () => {
           )}
         </S.searchList>
       </S.content>
+      {showLoading?
+         <Loading/>
+      :""}
     </S.background>
   );
 };
