@@ -162,7 +162,7 @@ ${({theme})=>css`
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 1rem 0 1rem;
+
     font-family: ${theme.constants.headingFontFamily};
     font-size: .8rem;
   }
