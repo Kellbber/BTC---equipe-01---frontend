@@ -133,10 +133,10 @@ const AdminStudent = () => {
                 setControl(true);
               }}
               value={idInst}
-              defaultValue="default"
+              defaultValue=""
             >
               <option
-              value="default"
+              value=""
               disabled
               style={{display:"none"}}>
 
