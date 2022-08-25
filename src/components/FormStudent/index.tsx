@@ -42,7 +42,7 @@ const FormStudent = (props: { update?: boolean }) => {
     }
 
     const getAllInstitutions = async () =>{
-        const response = await institutionService.allInstitution();
+        const response = await institutionService.allInstitutionNoPaged();
         setInstitutions(response?.data);
     }
 

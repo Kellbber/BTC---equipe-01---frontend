@@ -184,7 +184,7 @@ const AdminConfig = () => {
                 setControl(true);
               }}
             >
-              Próxima
+            
             </MdLastPage>
           ) : (
             ""

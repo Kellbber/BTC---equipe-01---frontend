@@ -49,6 +49,14 @@ export const institutionService = {
       alert(err);
     }
   },
+  allInstitutionNoPaged: async ()=>{
+    try{
+      const req = api.get(`institutions/find-all-no-paged`);
+      return req;
+    }catch(err){
+      alert(err)
+    }
+  },
   oneInstitution: async (id: string) => {
     try {
       const req = api.get(`/institutions/${id}`);

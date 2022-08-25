@@ -24,7 +24,9 @@ export const studentService = {
             age: Student.age,
             phone: Student.phone,
             institutionId: Student.institutionId 
+          
         })
+        return req;
     }catch(err){
         alert(err)
     }
@@ -37,9 +39,18 @@ export const studentService = {
         alert(err)
     }
   },
-  allStudent: async ()=>{
+  allStudent: async (pageNumber:number)=>{
     try{
-      const req = api.get('/student/find-all');
+      const req = api.get(`/student/find-all?page=${pageNumber}`);
+      return req;
+    }catch(err){
+      alert(err)
+    }
+  },
+
+  allStudentFilterInst: async (pageNumber: number, idInst: string)=>{
+    try{
+      const req = api.get(`/student/find-all-filter?page=${pageNumber}&search=${idInst}`)
       return req;
     }catch(err){
       alert(err)

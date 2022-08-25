@@ -74,26 +74,26 @@ export const content = styled.main`
   align-items: center;
   justify-content: flex-start;
 
-  height: 100vh;
+
   flex-direction: column;
 `;
 
 export const adminSearch = styled.div<setaType>`
   ${({ theme }) => css`
     display: flex;
-    min-width: 30%;
+    min-width: 50%;
     justify-content: center;
     margin-top: 0.7rem;
     padding: 1rem 3rem;
     border-radius: 0.2rem;
     background-color: ${theme.colors.primaryColors};
-    flex-wrap: wrap;
+  
 
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      width: 90%;
+      width: 50%;
       padding: .5rem 0.2rem;
       border: 1px solid ${theme.colors.backgroundColor};
       margin-right: 2rem;
@@ -221,4 +221,21 @@ ${({theme})=>css`
     transform: scale(1.1);
   }
 `}
+`
+export const clearFilter = styled.button`
+${({theme})=>css`
+  display: flex;
+  width: 20%;
+  background: ${theme.colors.secundaryColor};
+  border: none;
+  outline: none;
+  cursor: pointer;
+  list-style: none;
+  color: ${theme.colors.primaryColors};
+  align-items: center;
+  margin-left: 1rem;
+  font-family: ${theme.constants.headingFontFamily};
+  font-weight: 500;
+`}
+
 `
