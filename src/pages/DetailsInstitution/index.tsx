@@ -114,12 +114,15 @@ const DetailsInstitution = () => {
             <S.uniqueCard>{institution?.state}</S.uniqueCard>
             <S.uniqueCard>{institution?.street}</S.uniqueCard>
           </S.cardDetails>
+          <S.viewCep>
+            <p>Clique no cep para visualizar</p>
           <S.styleCep
             href={`https://www.google.com.br/maps/place/${institution?.cep}`}
             target="_blank"
           >
             {institution?.cep}
           </S.styleCep>
+          </S.viewCep>
           <S.Details>Alunos</S.Details>
           <S.titleInfo>
             <p>Nome</p>
@@ -135,6 +138,7 @@ const DetailsInstitution = () => {
               </S.uniqueCardStudent>
             ))}
           </S.cardDetailsStudent>
+     
         </S.divMain>
       </S.content>
       :""}
