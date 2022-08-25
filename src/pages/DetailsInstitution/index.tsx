@@ -102,7 +102,13 @@ const DetailsInstitution = () => {
           </S.titleInfo>
           <S.cardDetails>
             <S.uniqueCard>{institution?.city}</S.uniqueCard>
+            {institution?.complement?
             <S.uniqueCard>{institution?.complement}</S.uniqueCard>
+            :
+            <S.uniqueCard>
+              <p>Não informado</p>
+            </S.uniqueCard>
+            }
             <S.uniqueCard>{institution?.district}</S.uniqueCard>
             <S.uniqueCard>{institution?.phone}</S.uniqueCard>
             <S.uniqueCard>{institution?.state}</S.uniqueCard>
