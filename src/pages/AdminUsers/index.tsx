@@ -14,14 +14,18 @@ interface UserLogged {
   confirmPassword: string;
   role: string;
 }
+interface UserAll{
+  users: User[];
+  totalPages: number;
+}
 const AdminUsers = () => {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState<string>("");
 
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserAll>();
   const [showLoading, setShowLoading] = useState(true);
-
+  const [page, setPage] = useState<number>(1);
   const [userLogged, setUserLogged] = useState<UserLogged>({
     id: "",
     password: "",
@@ -34,14 +38,14 @@ const AdminUsers = () => {
     setUserLogged(response?.data);
   };
   const filteredUsers =
-    search.length > 0 ? users.filter((user) => user.name.includes(search)) : [];
+    search.length > 0 ? users?.users.filter((user) => user.name.includes(search)) : [];
 
   const jwt = localStorage.getItem("jwt");
 
   const getAllUsers = async ()   => {
 
     if (jwt) {
-      const response = await userApiService.allUsers();
+      const response = await userApiService.allUsers(page);
       if (response) {
         setUsers(response?.data);
       }
@@ -93,7 +97,7 @@ useEffect(()=>{
                 <p>Email</p>
               </S.nameTable>
               <S.divTable>
-                {filteredUsers.map((user) => {
+                {filteredUsers?.map((user) => {
                   return (
                     <div
                       className="divmain"
@@ -116,7 +120,7 @@ useEffect(()=>{
                 <p>Email</p>
               </S.nameTable>
               <S.divTable>
-                {users.map((user) => {
+                {users?.users.map((user) => {
                   return (
                     <div
                       className="divmain"

@@ -16,9 +16,9 @@ export const userService = {
 };
 
 export const userApiService = {
-  allUsers: async () => {
+  allUsers: async (pageNumber:number) => {
     try {
-      const req = api.get("/users/find-all");
+      const req = api.get(`/users/find-all?page=${pageNumber}`);
       return req;
     } catch (err) {
       alert(err);
