@@ -109,7 +109,7 @@ const DetailsInstitution = () => {
             <S.uniqueCard>{institution?.street}</S.uniqueCard>
           </S.cardDetails>
           <S.styleCep
-            href={`https://www.google.com.br/maps/place/${institution?.cep}`}
+            href={`https://www.google.com.br/maps/place/${institution?.city}-${institution?.state},${institution?.cep}`}
             target="_blank"
           >
             {institution?.cep}
