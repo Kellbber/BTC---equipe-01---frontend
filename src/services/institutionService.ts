@@ -41,9 +41,9 @@ export const institutionService = {
     }
   },
 
-  allInstitution: async () => {
+  allInstitution: async (pageNumber: number) => {
     try {
-      const req = api.get("/institutions/find-all");
+      const req = api.get(`/institutions/find-all?page=${pageNumber}`);
       return req;
     } catch (err) {
       alert(err);

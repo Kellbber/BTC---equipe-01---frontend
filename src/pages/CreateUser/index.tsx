@@ -15,8 +15,8 @@ const create = () => {
     const newUser: User = {
       name: event.currentTarget.Name.value,
       email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
-      confirmPassword: event.currentTarget.confirmPassword.value
+      password: "Tahdsgs@123456",
+      confirmPassword: "Tahdsgs@123456",
     };
     const req = await userService.postUser(newUser);
     if(req?.status===201){
@@ -47,12 +47,8 @@ const create = () => {
           </S.registerborder>
           <S.div>
           <S.formUser onSubmit={handleSubmit}>
-
-      
             <input type='text' placeholder="Nome:" name="Name"/>
             <input type="Email" placeholder="Email:" name="email" />
-            <input type="password" placeholder="Senha:" name="password"/>
-            <input type="password" placeholder="Confirmar senha:" name="confirmPassword" />
             <SendButton/>
             </S.formUser>
           </S.div>

@@ -9,16 +9,21 @@ import * as S from "./style";
 import Loading from "../../components/Loading";
 
 const AdminConfig = () => {
-
   const [search, setSearch] = useState<string>("");
   const [showLoading, setShowLoading] = useState(true);
+  const [page, setPage] = useState<number>(1);
+  const [control, setControl] = useState<boolean>(false);
+  const [institutions, setInstitutions] = useState<InstitutionAll>();
 
-  const [institutions, setInstitutions] = useState<Institution[]>([]);
+  // const filteredInst =
+  //   search.length > 0
+  //     ? institutions.filter((institution) => institution.name.includes(search))
+  //     : [];
 
-  const filteredInst =
-    search.length > 0
-      ? institutions.filter((institution) => institution.name.includes(search))
-      : [];
+  interface InstitutionAll {
+    institutions: Institution[];
+    totalPages: number;
+  }
   const navigate = useNavigate();
   interface User {
     id: string;
@@ -38,39 +43,50 @@ const AdminConfig = () => {
   const getUserLogged = async () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
-
-
   };
 
   const jwt = localStorage.getItem("jwt");
+
   const getAllInst = async () => {
+    setShowLoading(true);
     if (jwt) {
-      const response = await institutionService.allInstitution();
+      const response = await institutionService.allInstitution(page);
       if (response) {
         setInstitutions(response.data);
       }
       setShowLoading(false);
+      setControl(false);
     }
   };
-  function isPermited(){
-    const isPermit = userLogged.role
-    if(isPermit==="ADMIN"|| isPermit=== "BACKOFFICE"){
-      return true;
+  const totalPage:number|undefined = institutions?.totalPages
+
+
+    function displayButton(){
+      if(totalPage){
+        if(totalPage>page){
+          return true;
+      }else{
+        return false;
+      }
+      }
     }
-    else{
+  function isPermited() {
+    const isPermit = userLogged.role;
+    if (isPermit === "ADMIN" || isPermit === "BACKOFFICE") {
+      return true;
+    } else {
       return false;
     }
   }
-  function goToDetails(id: string) {
-    navigate(`/instituicao/detalhes/${id}`);
-  }
+
 
   useEffect(() => {
     getAllInst();
     getUserLogged();
-  }, []);
+  }, [control]);
   return (
     <S.background>
+
       <S.heading>
         <S.iconConfig>
           <p>
@@ -87,81 +103,53 @@ const AdminConfig = () => {
           />
         </S.logins>
       </S.heading>
-      {!showLoading?
-      <S.content>
-        <S.adminSearch>
-          <input
-            type="text"
-            placeholder="Digite o nome da instituição..."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-        </S.adminSearch>
-      {isPermited()?
-        <S.divButtonAdd>
-
-       
-          <S.addButton onClick={() => navigate("/forminstituicao")}>
-            <p>Adicionar</p>
-          </S.addButton>
-          </S.divButtonAdd>
-:""}
-        <S.searchList>
-          {search.length > 0 ? (
-            <S.itemList>
-              <S.nameTable>
-                <p>Nome</p>
-                <p>Telefone</p>
-                <p>Cep</p>
-              </S.nameTable>
-              <S.divTable>
-                {filteredInst.map((institution) => {
-                  return (
-                    <div
-                      className="divmain"
-                      key={institution.name}
-                      onClick={() => {
-                        goToDetails(institution.id ?? "");
-                      }}
-                    >
-                      <div>{institution.name}</div>
-                      <div>{institution.phone}</div>
-                      <div>{institution.cep}</div>
-                    </div>
-                  );
-                })}
-              </S.divTable>
-            </S.itemList>
+      {!showLoading ? (
+        <S.content>
+          <S.adminSearch>
+            <input
+              type="text"
+              placeholder="Digite o nome da instituição..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+          </S.adminSearch>
+          {isPermited() ? (
+            <S.divButtonAdd>
+              <S.addButton onClick={() => navigate("/forminstituicao")}>
+                <p>Adicionar</p>
+              </S.addButton>
+            </S.divButtonAdd>
           ) : (
+            ""
+          )}
+          <S.searchList>
             <S.itemList>
-              <S.nameTable>
+          <S.nameTable>
                 <p>Nome</p>
+                <p>CEP</p>
                 <p>Telefone</p>
-                <p>Cep</p>
               </S.nameTable>
               <S.divTable>
-                {institutions.map((institution) => {
-                  return (
-                    <div
-                      className="divmain"
-                      key={institution.name}
-                      onClick={() => {
-                        goToDetails(institution.id ?? "");
-                      }}
-                    >
-                      <div>{institution.name}</div>
-                      <div>{institution.phone}</div>
-                      <div>{institution.cep}</div>
-                    </div>
-                  );
-                })}
-              </S.divTable>
+            {institutions?.institutions.map((inst, index)=>(
+              <div key={index}>
+                <div>{inst.name}</div>
+                <div>{inst.cep}</div>
+                <div>{inst.phone}</div>
+              </div>
+            ))}
+            </S.divTable>
             </S.itemList>
-          )}
-        </S.searchList>
-      
-      </S.content>
-      :""}
+          </S.searchList>
+        {displayButton()?
+          <button onClick={() => {setPage(page + 1)
+          setControl(true)}}>Próxima</button>
+            :""}
+      <button onClick={() => {setPage(page - 1)
+      setControl(true)}}>Anterior</button>
+        </S.content>
+      ) : (
+        ""
+      )}
       {showLoading ? <Loading /> : ""}
     </S.background>
   );
