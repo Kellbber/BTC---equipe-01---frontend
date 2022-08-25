@@ -133,8 +133,14 @@ const AdminStudent = () => {
                 setControl(true);
               }}
               value={idInst}
-              defaultValue=""
+              defaultValue="default"
             >
+              <option
+              value="default"
+              disabled
+              style={{display:"none"}}>
+
+              </option>
               {institution.map((inst, index) => (
                 <option value={inst.id} key={index}>
                   {inst.name}
