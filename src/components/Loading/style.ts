@@ -6,7 +6,7 @@ min-width: 100vw;
 min-width: 100vh;
 align-items: center;
 justify-content: center;
-background: rgba(0,0,0,0.4);
+background-color: rgba(0,0,0,0.4);
 position: fixed;
 top: 0;
 right: 0;

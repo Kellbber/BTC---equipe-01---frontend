@@ -8,9 +8,9 @@ type setaType = {
 };
 export const background = styled.section`
   ${({ theme }) => css`
-    min-height: 100%;
-    min-width: 100%;
-    background-color: ${theme.colors.backgroundColor};
+    min-height: 100vh;
+    min-width: 100vw;
+    background: ${theme.colors.backgroundColor};
   `}
 `;
 
@@ -70,11 +70,11 @@ export const logins = styled.div`
 `;
 export const content = styled.main`
   display: flex;
-  width: 100%;
+  min-width: 100%;
   align-items: center;
   justify-content: flex-start;
 
-  height: 100%;
+
   flex-direction: column;
 `;
 
@@ -236,3 +236,17 @@ export const divButtonAdd = styled.div`
     width: 30%;
   }
 `;
+
+export const buttonBack = styled.button`
+${({theme})=>css`
+  border: transparent;
+  outline: none;
+  background-color: transparent;
+  color: ${theme.colors.secundaryColor};
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`}
+`

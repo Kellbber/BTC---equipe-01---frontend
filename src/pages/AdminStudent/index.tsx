@@ -30,9 +30,6 @@ const AdminStudent = () => {
       ? filteredStudents.filter((student)=> student.institution?.name.includes(filterSearch))
       :[]
 
-      console.log(filteredStudents)
-      console.log(filter)
-      console.log(joinFilters)
   const jwt = localStorage.getItem("jwt");
   const getAllStudent = async () => {
  

@@ -3,6 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { Institution } from "types/Institution";
 import { institutionService } from "../../services/institutionService";
+import { MdFirstPage, MdLastPage } from "react-icons/md";
 
 import { userLoggedService } from "../../services/authService";
 import * as S from "./style";
@@ -15,10 +16,12 @@ const AdminConfig = () => {
   const [control, setControl] = useState<boolean>(false);
   const [institutions, setInstitutions] = useState<InstitutionAll>();
 
-  // const filteredInst =
-  //   search.length > 0
-  //     ? institutions.filter((institution) => institution.name.includes(search))
-  //     : [];
+  const filteredInst =
+    search.length > 0
+      ? institutions?.institutions.filter((institution) =>
+          institution.name.includes(search)
+        )
+      : [];
 
   interface InstitutionAll {
     institutions: Institution[];
@@ -47,6 +50,10 @@ const AdminConfig = () => {
 
   const jwt = localStorage.getItem("jwt");
 
+  function goToDetails(id: string) {
+    navigate(`/instituicao/detalhes/${id}`);
+  }
+
   const getAllInst = async () => {
     setShowLoading(true);
     if (jwt) {
@@ -58,18 +65,17 @@ const AdminConfig = () => {
       setControl(false);
     }
   };
-  const totalPage:number|undefined = institutions?.totalPages
+  const totalPage: number | undefined = institutions?.totalPages;
 
-
-    function displayButton(){
-      if(totalPage){
-        if(totalPage>page){
-          return true;
-      }else{
+  function displayButton() {
+    if (totalPage) {
+      if (totalPage > page) {
+        return true;
+      } else {
         return false;
       }
-      }
     }
+  }
   function isPermited() {
     const isPermit = userLogged.role;
     if (isPermit === "ADMIN" || isPermit === "BACKOFFICE") {
@@ -79,14 +85,13 @@ const AdminConfig = () => {
     }
   }
 
-
   useEffect(() => {
     getAllInst();
     getUserLogged();
   }, [control]);
+
   return (
     <S.background>
-
       <S.heading>
         <S.iconConfig>
           <p>
@@ -122,30 +127,81 @@ const AdminConfig = () => {
           ) : (
             ""
           )}
+
           <S.searchList>
-            <S.itemList>
-          <S.nameTable>
-                <p>Nome</p>
-                <p>CEP</p>
-                <p>Telefone</p>
-              </S.nameTable>
-              <S.divTable>
-            {institutions?.institutions.map((inst, index)=>(
-              <div key={index}>
-                <div>{inst.name}</div>
-                <div>{inst.cep}</div>
-                <div>{inst.phone}</div>
-              </div>
-            ))}
-            </S.divTable>
-            </S.itemList>
+            {search.length > 0 ? (
+              <S.itemList>
+                <S.nameTable>
+                  <p>Nome</p>
+                  <p>CEP</p>
+                  <p>Telefone</p>
+                </S.nameTable>
+                <S.divTable>
+                  {filteredInst?.map((institution, index) => {
+                    return (
+                      <div className="divmain" key={index}
+                      onClick={() => {
+                        goToDetails(institution.id ?? "");
+                      }}>
+                        <div>{institution.name}</div>
+                        <div>{institution.cep}</div>
+                        <div>{institution.phone}</div>
+                      </div>
+                    );
+                  })}
+                </S.divTable>
+              </S.itemList>
+            ) : (
+              <S.itemList>
+                <S.nameTable>
+                  <p>Nome</p>
+                  <p>CEP</p>
+                  <p>Telefone</p>
+                </S.nameTable>
+                <S.divTable>
+                  {institutions?.institutions.map((inst, index) => (
+                    <div key={index}
+                    className="divmain"
+                    onClick={() => {
+                      goToDetails(inst.id ?? "");
+                    }}>
+                      <div>{inst.name}</div>
+                      <div>{inst.cep}</div>
+                      <div>{inst.phone}</div>
+                    </div>
+                  ))}
+                </S.divTable>
+              </S.itemList>
+            )}
           </S.searchList>
-        {displayButton()?
-          <button onClick={() => {setPage(page + 1)
-          setControl(true)}}>Próxima</button>
-            :""}
-      <button onClick={() => {setPage(page - 1)
-      setControl(true)}}>Anterior</button>
+          {displayButton() ? (
+            <MdLastPage
+            size={25}
+            color="2EA8DC"
+            cursor="pointer"
+              onClick={() => {
+                setPage(page + 1);
+                setControl(true);
+              }}
+            >
+              Próxima
+            </MdLastPage>
+          ) : (
+            ""
+          )}
+          {page === 1 ? (
+            ""
+          ) : (
+            <MdFirstPage
+              size={25}
+              color="2EA8DC"
+              cursor="pointer"
+              onClick={() => {
+                setPage(page - 1);
+                setControl(true);
+              }}
+            ></MdFirstPage>
+          )}
         </S.content>
       ) : (
         ""
