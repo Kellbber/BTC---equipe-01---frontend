@@ -41,51 +41,53 @@ const DetailsStudent = () => {
       </S.heading>
       {!showLoading ? (
         <S.content>
-          <S.divMain>
-            <S.Title>{aluno?.name}</S.Title>
-            <S.divButtons>
-              <S.buttonEdit onClick={() => navigate(`/formaluno/${id}`)}>
+          <S.Details>Detalhes</S.Details>
+          <S.organize>
+            <S.divStudentDetails>
+              <S.cardDetails>
+                <S.uniqueCard>
+                  <div>
+                    <p>nome</p>
+                    {aluno?.name}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Data Nasc</p>
+                    {aluno?.age}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Telefone</p>
+                    {aluno?.phone}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Instituição</p>
+                    {aluno?.institution.name}
+                  </div>
+                  <S.division />
+                  <S.buttonEdit onClick={() => navigate(`/formaluno/${id}`)}>
                 Editar
               </S.buttonEdit>
-            </S.divButtons>
-            <S.Details>Detalhes</S.Details>
-            <S.titleInfo>
-              <p>Nome</p>
-              <p>Data Nasc</p>
-              <p>Telefone</p>
-              <p>Instituição</p>
-            </S.titleInfo>
-            <S.cardDetails>
-              <S.uniqueCard>{aluno?.name}</S.uniqueCard>
-              <S.uniqueCard>{aluno?.age}</S.uniqueCard>
-              <S.uniqueCard>{aluno?.phone}</S.uniqueCard>
-              <S.uniqueCard>{aluno?.institution.name}</S.uniqueCard>
-            </S.cardDetails>
+                </S.uniqueCard>
+              </S.cardDetails>
 
-            <S.Details>Acompanhamento</S.Details>
 
-            <S.titleInfo>
-              <p>Histórico</p>
-            </S.titleInfo>
-
-            <S.cardDetailsConsult>
+            </S.divStudentDetails>
+            <S.divStudentHistoric>
               {aluno?.followUp?.map((historic, index) => (
-                <S.divConsult key={index}>
-
-                  <S.organize>
-                    <div>
-                      <p>consulta do dia: {historic.startDate}</p>
-                    </div>
-                    <button>Visualizar</button>
-                  </S.organize>
+                <S.cardDetails key={index}>
+                  <S.uniqueCardHistoric>
+                    <p>consulta</p> {historic.startDate}
+                    <S.addHistoric>Visualizar</S.addHistoric>
+                  </S.uniqueCardHistoric>
                   <S.division />
-                </S.divConsult>
+                </S.cardDetails>
               ))}
 
-            </S.cardDetailsConsult>
-                  <S.addHistoric>Agendar Consulta</S.addHistoric>
-
-          </S.divMain>
+              <S.addHistoric>Agendar Consulta</S.addHistoric>
+            </S.divStudentHistoric>
+          </S.organize>
         </S.content>
       ) : (
         ""

@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components";
 import icon from "../../assets/images/icon.svg";
-import backgroundname from "../../assets/images/background-name-inst.png";
-import { div } from "pages/login/style";
+import fundoAluno from "../../assets/images/fundo-aluno.png";
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
     min-width: 100vw;
-    background: ${theme.colors.backgroundColor};
+    background: url(${fundoAluno});
   `}
 `;
 export const heading = styled.div`
@@ -17,6 +16,7 @@ export const heading = styled.div`
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
     justify-content: center;
+  
   `}
 `;
 export const iconConfig = styled.div`
@@ -67,10 +67,9 @@ export const content = styled.main`
   ${({ theme }) => css`
     display: flex;
     width: 100%;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
-    align-self: center;
   `}
 `;
 
@@ -79,32 +78,14 @@ export const Title = styled.h1`
     display: flex;
     width: 100%;
     font-family: ${theme.constants.nameInstitutionFamily};
-    color: ${theme.colors.primaryColors};
-    font-size: 400%;
-    font-weight: 900;
-    background-image: url(${backgroundname});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 2rem 0 2rem 0;
+
     text-align: center;
     align-items: center;
     justify-content: center;
     margin-top: -0.2rem;
   `}
 `;
-export const divMain = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: ${theme.colors.primaryColors};
-    margin-top: 1rem;
-    border-radius: 0.2rem;
-  `}
-`;
+
 export const styleCep = styled.a`
   ${({ theme }) => css`
     margin-top: 1rem;
@@ -134,11 +115,11 @@ export const cardDetails = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 90%;
-    align-items: center;
-    justify-content: space-around;
+
+    justify-content: center;
+    flex-direction: column;
     height: 80px;
     margin-bottom: 1rem;
-    background-color: ${theme.colors.backgroundColor};
   `}
 `;
 export const uniqueCard = styled.div`
@@ -146,11 +127,40 @@ export const uniqueCard = styled.div`
     font-family: ${theme.constants.headingFontFamily};
     font-size: 0.8rem;
     display: flex;
-    min-width: 15%;
+    width: 100%;
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    margin-top: 1rem;
+    p {
+      color: gray;
+    }
+    div{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .5rem;
+    }
+  `}
+`;
+export const uniqueCardHistoric = styled.div`
+  ${({ theme }) => css`
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    display: flex;
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    p {
+      color: gray;
+      margin: -1rem;
+    }
   `}
 `;
 export const uniqueCardConsult = styled.div`
@@ -176,12 +186,14 @@ export const uniqueCardConsult = styled.div`
 export const Details = styled.h5`
   ${({ theme }) => css`
     display: flex;
-    width: 100%;
+    width: 15%;
+    border-radius: 0.2rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-family: ${theme.constants.textFinalFontFamily};
     font-size: 1.5rem;
+    background-color: ${theme.colors.primaryColors};
   `}
 `;
 export const titleInfo = styled.div`
@@ -211,9 +223,6 @@ export const cardDetailsConsult = styled.div`
     margin-bottom: 1rem;
     background-color: ${theme.colors.backgroundColor};
     flex-direction: column;
-
-
-
   `}
 `;
 export const divisionLine = styled.div`
@@ -225,73 +234,33 @@ export const divisionLine = styled.div`
 export const buttonEdit = styled.button`
   ${({ theme }) => css`
     display: flex;
-    width: 10%;
-    justify-content: center;
     align-items: center;
-    list-style: none;
-    outline: none;
-    border: transparent;
-    cursor: pointer;
+    justify-content: center;
+
     background-color: ${theme.colors.secundaryColor};
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0.2rem;
     font-family: ${theme.constants.headingFontFamily};
-    font-size: 0.8rem;
-    font-weight: 400;
+    align-self: center;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    
+    width: 50%;
     color: ${theme.colors.primaryColors};
-    margin-right: 1rem;
-    border-radius: 0.3rem;
-    padding: 0.5rem 0 0.5rem 0;
-    :hover {
-      font-weight: 600;
-    }
   `}
 `;
 
 export const divButtons = styled.div`
   display: flex;
-  width: 100%;
+  width: 50%;
   align-items: center;
   justify-content: flex-end;
+  margin-top: 5rem;
+  margin-bottom: -1rem;
 `;
 
 //historico
-
-export const divConsult = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    transition: ease-in-out 0.4s;
-   flex-direction: column;
-  
-    :hover {
-      background-color: whitesmoke;
-    }
-    p {
-      font-family: ${theme.constants.headingFontFamily};
-      margin-top: -0.1rem;
-      margin-bottom: -0.1rem;
-      margin-left: 0.5rem;
-      font-size: .9rem;
-
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      background-color: ${theme.colors.secundaryColor};
-      border: none;
-      outline: none;
-      margin-right: 1rem;
-      
-      border-radius: 0.2rem;
-      color: ${theme.colors.primaryColors};
-      font-family: ${theme.constants.headingFontFamily};
-      cursor: pointer;
-    }
-
-  `}
-`;
 export const addHistoric = styled.button`
   ${({ theme }) => css`
     display: flex;
@@ -306,28 +275,61 @@ export const addHistoric = styled.button`
     align-self: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-right: 1rem;
-    width: 15%;
+
+    width: 30%;
     color: ${theme.colors.primaryColors};
-
-
   `}
 `;
 
 export const division = styled.div`
-display: flex;
-width: 100%;
-align-self: center;
-justify-content: center;
-align-items: center;
-background-color: gray;
-padding: 0.1% 0 0.1% 0;
-`
+  display: flex;
+  width: 100%;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 0.1% 0 0.1% 0;
+`;
+
+export const divStudentDetails = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.primaryColors};
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+    padding-top: 1rem;
+    min-height: 340px;
+    button{
+      display: flex;
+      justify-content: center;
+    }
+  `}
+`;
+export const divStudentHistoric = styled.button`
+  ${({ theme }) => css`
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.primaryColors};
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+    padding-top: 1rem;
+    border: transparent;
+  `}
+`;
 
 export const organize = styled.div`
 display: flex;
 width: 100%;
-justify-content: space-between;
-margin: .3rem 0 .3rem 0;
+align-items: center;
+justify-content: center;
 
 `
