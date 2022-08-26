@@ -3,9 +3,18 @@ export type StudentComplete ={
     name: string;
     age: string;
     phone: string;
-    consult?:[
-        hour:string,
-        schedule:string,
+    followUp?:[
+      {
+        id: string;
+        startDate: string;
+        firstPhoto: string;
+        secondPhoto: string;
+        returnDate: string;
+        note: string;
+        studentId: string;
+        forwarding:string[];
+      }
+
     ];
     institution:{
         name: string;

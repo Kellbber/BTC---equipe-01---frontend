@@ -63,17 +63,17 @@ const DetailsStudent = () => {
          </S.cardDetails>
 
          <S.Details>
-          Consultas
+          Acompanhamento
          </S.Details>
-         <S.titleInfo><p>Hora</p><p>Cronograma</p></S.titleInfo>
+         <S.titleInfo><p>Histórico</p></S.titleInfo>
          <S.cardDetailsConsult>
-          {aluno?.consult?aluno?.consult.find((consulta,index)=>(
-            <S.uniqueCardConsult key={index} >
-              <div>{consulta}</div>
-            </S.uniqueCardConsult>
-          )): <S.uniqueCardConsult>
-            <p>Aluno não possui consultas</p>
-            </S.uniqueCardConsult>}
+          {aluno?.followUp?.map((student, index)=>(
+            <div key={index}>
+              <div>consulta do dia:{student.startDate}</div>
+              <S.firstPhoto src={student.firstPhoto}/>
+
+            </div>
+          ))}
          </S.cardDetailsConsult>
       </S.divMain>
      </S.content>

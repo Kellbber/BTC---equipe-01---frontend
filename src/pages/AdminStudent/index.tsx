@@ -67,7 +67,7 @@ const AdminStudent = () => {
     }
   }
 
-  console.log(control);
+
 
   const getStudentsFill = async () => {
     const response = await studentService.allStudentFilterInst(
@@ -89,7 +89,6 @@ const AdminStudent = () => {
       setControl(false);
     }
   };
-  console.log(filteredForInst);
   useEffect(() => {
     getAllStudent();
     getAllInstitution();
