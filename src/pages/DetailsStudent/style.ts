@@ -206,12 +206,14 @@ export const cardDetailsConsult = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 90%;
-    align-items: center;
-    justify-content: space-around;
-
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-bottom: 1rem;
     background-color: ${theme.colors.backgroundColor};
     flex-direction: column;
+
+
+
   `}
 `;
 export const divisionLine = styled.div`
@@ -253,9 +255,79 @@ export const divButtons = styled.div`
 
 //historico
 
-export const firstPhoto = styled.img`
-  display: flex;
-  width: 20%;
-  align-items: center;
-  justify-content: center;
+export const divConsult = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    transition: ease-in-out 0.4s;
+   flex-direction: column;
+  
+    :hover {
+      background-color: whitesmoke;
+    }
+    p {
+      font-family: ${theme.constants.headingFontFamily};
+      margin-top: -0.1rem;
+      margin-bottom: -0.1rem;
+      margin-left: 0.5rem;
+      font-size: .9rem;
+
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      background-color: ${theme.colors.secundaryColor};
+      border: none;
+      outline: none;
+      margin-right: 1rem;
+      
+      border-radius: 0.2rem;
+      color: ${theme.colors.primaryColors};
+      font-family: ${theme.constants.headingFontFamily};
+      cursor: pointer;
+    }
+
+  `}
 `;
+export const addHistoric = styled.button`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${theme.colors.secundaryColor};
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0.2rem;
+    font-family: ${theme.constants.headingFontFamily};
+    align-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 15%;
+    color: ${theme.colors.primaryColors};
+
+
+  `}
+`;
+
+export const division = styled.div`
+display: flex;
+width: 100%;
+align-self: center;
+justify-content: center;
+align-items: center;
+background-color: gray;
+padding: 0.1% 0 0.1% 0;
+`
+
+export const organize = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-between;
+margin: .3rem 0 .3rem 0;
+
+`
