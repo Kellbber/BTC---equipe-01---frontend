@@ -29,9 +29,8 @@ const FormMailUser = () => {
       confirmPassword: event.currentTarget.confirmPassword.value,
     };
     const req = await userService.createUser(id ?? "", newUser);
-    if (req?.status === 201) {
       navigate("/login");
-    }
+    
   }
 
   async function getUserUpdate() {

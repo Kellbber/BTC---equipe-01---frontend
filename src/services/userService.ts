@@ -21,8 +21,9 @@ export const userService = {
   },
   createUser: async (userId:string, newUser:NewUser)=>{
     try{
-      const req = await axios.patch(`/users/mail/${userId}`,{
+      const req = await axios.patch(`/users/email/${userId}`,{
         name: newUser.name,
+        email: newUser.email,
         password: newUser.password,
         confirmPassword: newUser.confirmPassword,
       })
