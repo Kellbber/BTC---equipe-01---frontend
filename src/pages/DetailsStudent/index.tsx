@@ -18,6 +18,8 @@ const DetailsStudent = () => {
     }
     setShowLoading(false);
   };
+
+
   useEffect(() => {
     getOneStudent();
   }, []);
@@ -79,7 +81,7 @@ const DetailsStudent = () => {
                 <S.cardDetails key={index}>
                   <S.uniqueCardHistoric>
                     <p>consulta</p> {historic.startDate}
-                    <S.addHistoric>Visualizar</S.addHistoric>
+                    <S.addHistoric onClick={()=> navigate(`/historico/detalhes/${historic.id}`)}>Visualizar</S.addHistoric>
                   </S.uniqueCardHistoric>
                   <S.division />
                 </S.cardDetails>

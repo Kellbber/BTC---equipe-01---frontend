@@ -14,6 +14,7 @@ import DetailsStudent from "./src/pages/DetailsStudent";
 import DetailsUser from "./src/pages/DetailsUser";
 import ConfigUser from "./src/pages/ConfigUser";
 import FormMailUser from "./src/components/FormMailUser";
+import DetailsHistoric from "./src/pages/DetailsHistoric";
 const Router = () => {
   return (
     <Routes>
@@ -26,20 +27,15 @@ const Router = () => {
       <Route path={RoutePath.USERS} element={<Users />} />
       <Route path={RoutePath.DASHBOARD} element={<Admin />} />
       <Route path={RoutePath.FORMINST} element={<ConfigInstitution />} />
-      <Route
-        path={RoutePath.INSTUP}
-        element={<ConfigInstitution update={true} />}
-      />
+      <Route path={RoutePath.INSTUP}element={<ConfigInstitution update={true} />}/>
       <Route path={RoutePath.FORMSTUD} element={<ConfigStudent />} />
-      <Route
-        path={RoutePath.STUDUP}
-        element={<ConfigStudent update={true} />}
-      />
+      <Route path={RoutePath.STUDUP} element={<ConfigStudent update={true} />}/>
       <Route path={RoutePath.CREATEUSER} element={<CreateUser />} />
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution />} />
       <Route path={RoutePath.DETAILSSTUD} element={<DetailsStudent />} />
       <Route path={RoutePath.DETAILSUSER} element={<DetailsUser />} />
       <Route path={RoutePath.MAILUSER} element={<FormMailUser />} />
+      <Route path={RoutePath.DETAILSHIST} element={<DetailsHistoric/>} />
     </Routes>
   );
 };
