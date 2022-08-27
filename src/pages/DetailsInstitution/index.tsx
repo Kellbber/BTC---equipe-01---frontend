@@ -9,6 +9,7 @@ import * as S from "./style";
 import Loading from "../../components/Loading";
 
 const DetailsInstitution = () => {
+  
   const { id } = useParams();
   const navigate = useNavigate();
   const [showLoading, setShowLoading] = useState(true);

@@ -83,6 +83,7 @@ const DetailsStudent = () => {
                     <p>consulta</p> {historic.startDate}
                     <S.addHistoric onClick={()=> navigate(`/historico/detalhes/${historic.id}`)}>Visualizar</S.addHistoric>
                   </S.uniqueCardHistoric>
+                  
                   <S.division />
                 </S.cardDetails>
               ))}
