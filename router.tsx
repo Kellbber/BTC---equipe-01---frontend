@@ -13,6 +13,7 @@ import ConfigStudent from "./src/pages/ConfigStudent";
 import DetailsStudent from "./src/pages/DetailsStudent";
 import DetailsUser from "./src/pages/DetailsUser";
 import ConfigUser from "./src/pages/ConfigUser";
+import FormMailUser from "./src/components/FormMailUser";
 const Router = () => {
   return (
     <Routes>
@@ -38,6 +39,7 @@ const Router = () => {
       <Route path={RoutePath.DETAILSINST} element={<DetailsInstitution />} />
       <Route path={RoutePath.DETAILSSTUD} element={<DetailsStudent />} />
       <Route path={RoutePath.DETAILSUSER} element={<DetailsUser />} />
+      <Route path={RoutePath.MAILUSER} element={<FormMailUser />} />
     </Routes>
   );
 };

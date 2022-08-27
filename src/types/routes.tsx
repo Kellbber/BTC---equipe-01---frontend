@@ -15,5 +15,5 @@ export enum RoutePath{
     DETAILSSTUD='/alunos/detalhes/:id',
     DETAILSUSER='/usuarios/detalhes/:id',
     USERUP = 'formusuario/:id',
-
+    MAILUSER = 'criarusuario/:id'
 }

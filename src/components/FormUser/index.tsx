@@ -10,7 +10,6 @@ interface User {
   id?: string;
   name: string;
   email: string;
-
   role?: string;
 }
 const FormUser = (props: { update?: boolean }) => {

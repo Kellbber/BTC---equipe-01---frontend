@@ -3,7 +3,13 @@ import { User } from "types/User";
 axios.defaults.baseURL = "http://localhost:3333/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 import api from "./Api";
-
+interface NewUser {
+  id?: string;
+  name: string;
+  email?: string;
+  password: string;
+  confirmPassword: string;
+}
 export const userService = {
   postUser: async (newUser: User) => {
     try {
@@ -13,6 +19,18 @@ export const userService = {
       alert(err);
     }
   },
+  createUser: async (userId:string, newUser:NewUser)=>{
+    try{
+      const req = await axios.patch(`/users/mail/${userId}`,{
+        name: newUser.name,
+        password: newUser.password,
+        confirmPassword: newUser.confirmPassword,
+      })
+      return req;
+    }catch(err){
+      alert(err)
+    }
+  }
 };
 
 export const userApiService = {

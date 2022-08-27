@@ -4,8 +4,10 @@ import fundoAluno from "../../assets/images/fundo-aluno.png";
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
-    min-width: 100vw;
     background: url(${fundoAluno});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   `}
 `;
 export const heading = styled.div`
