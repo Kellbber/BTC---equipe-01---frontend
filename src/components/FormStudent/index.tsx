@@ -103,7 +103,7 @@ const FormStudent = (props: { update?: boolean }) => {
               placeholder="(00) 0000-0000"
               name="phone"
               type="text"
-              mask="(00) 0000-0000"
+              mask="(00) 0000-00000"
               defaultValue={props.update ? aluno?.phone : ""}
             />
             <select

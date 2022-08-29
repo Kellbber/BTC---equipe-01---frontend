@@ -74,7 +74,10 @@ const FormMailUser = () => {
               defaultValue={user?.name}
             />
             <input
-              {...register("email", { required: true })}
+              {...register("email", { required: 'Entre com o seu E-mail!', pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'Enter a valid e-mail address',
+              },})}
               placeholder="Email:"
               name="email"
               type="email"
@@ -85,6 +88,8 @@ const FormMailUser = () => {
               placeholder="Senha:"
               name="password"
               type="password"
+              minLength={5}
+              maxLength={15}
             />
             <input
               {...register("confirmPassword", { required: true })}

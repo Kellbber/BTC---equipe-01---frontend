@@ -6,6 +6,7 @@ import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 import {IMaskInput} from 'react-imask'
+
 interface Institution {
   name: string;
   phone: string;
@@ -116,9 +117,11 @@ const FormInstitution = (props: { update?: boolean }) => {
             <IMaskInput
               {...register("telefone", { required: true })}
               mask="(00) 0000-0000"
+          
               placeholder="(XX) 0000-0000"
               name="phone"
               defaultValue={props.update ? institution?.phone : ""}
+              minLength={10}
             />
             <IMaskInput
               {...register("cep", { required: true })}
@@ -127,6 +130,8 @@ const FormInstitution = (props: { update?: boolean }) => {
               placeholder="CEP:"
               name="cepInst"
               defaultValue={props.update ? institution?.cep : ""}
+              minLength={9}
+              type="text"
             />
             <input
               {...register("street", { required: true })}
@@ -164,6 +169,9 @@ const FormInstitution = (props: { update?: boolean }) => {
               placeholder="UF:"
               name="state"
               defaultValue={props.update ? institution?.state : ""}
+              minLength={2}
+              maxLength={2}
+              type="text"
             />
    
             <SendButton />

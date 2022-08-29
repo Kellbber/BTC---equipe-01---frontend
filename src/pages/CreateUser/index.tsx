@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { User } from "types/User";
 import SendButton from "../../components/SendButton";
 import { userService } from "../../services/userService";
+import { useForm } from "react-hook-form";
 import * as S from "./style";
 
 const create = () => {
 
   const navigate = useNavigate();
-
+  const { register } = useForm();
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault();
     const newUser: User = {
@@ -47,8 +48,22 @@ const create = () => {
           </S.registerborder>
           <S.div>
           <S.formUser onSubmit={handleSubmit}>
-            <input type='text' placeholder="Nome:" name="Name"/>
-            <input type="Email" placeholder="Email:" name="email" />
+          <input
+              {...register("nome", { required: "Entre com o seu nome" })}
+              placeholder="Nome:"
+              name="Name"
+              type="text"
+
+            />
+            <input
+              {...register("email", { required: 'Entre com o seu E-mail!', pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'Enter a valid e-mail address',
+              },})}
+              placeholder="Email:"
+              name="email"
+              type="email"
+            />
             <SendButton/>
             </S.formUser>
           </S.div>

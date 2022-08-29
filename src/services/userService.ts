@@ -11,6 +11,7 @@ interface NewUser {
   confirmPassword: string;
 }
 export const userService = {
+  
   postUser: async (newUser: User) => {
     try {
       const req = await axios.post("/users/create", newUser);
