@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import background from "../../assets/images/background-register.png";
+import background from "../../assets/images/background-Register.png";
 import icon from "../../assets/images/icon.svg";
 
 export const createcss = styled.section`
