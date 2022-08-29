@@ -1,6 +1,6 @@
 import axios from "axios";
 import { User } from "types/User";
-axios.defaults.baseURL = "http://localhost:3333/";
+axios.defaults.baseURL = "https://colunareta-backend.herokuapp.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 import api from "./Api";
 interface NewUser {
