@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from "react"
-import * as S from './style'
+import { ButtonHTMLAttributes } from "react";
+import * as S from './style';
 type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>;
 
 const SendButton= ({...ButtonType}: ButtonType) => {

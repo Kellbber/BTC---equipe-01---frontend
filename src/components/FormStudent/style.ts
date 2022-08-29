@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components';
 import icon from "../../assets/images/icon.svg";
 export const heading = styled.div`
   ${({ theme }) => css`

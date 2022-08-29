@@ -1,5 +1,5 @@
-import * as S from './style'
 import FormInstitution from '../../components/FormInstitution'
+import * as S from './style'
 
 type Update = {
   update?:boolean

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
+import backgroundname from "../../assets/images/background-name-inst.png";
 import icon from "../../assets/images/icon.svg";
-import backgroundname from "../../assets/images/background-name-inst.png"
 
 
 export const background = styled.section`

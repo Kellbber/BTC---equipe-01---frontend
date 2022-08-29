@@ -1,5 +1,5 @@
-import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+import * as S from "./style";
 
 const StartPage = () => {
 

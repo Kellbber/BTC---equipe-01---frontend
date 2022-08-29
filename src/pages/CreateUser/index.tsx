@@ -1,10 +1,10 @@
-import * as S from "./style";
-import { useNavigate } from "react-router-dom";
-import { BiArrowBack } from "react-icons/bi";
 import React from "react";
+import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import { User } from "types/User";
-import { userService } from "../../services/userService";
 import SendButton from "../../components/SendButton";
+import { userService } from "../../services/userService";
+import * as S from "./style";
 
 const create = () => {
 

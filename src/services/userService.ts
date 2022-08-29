@@ -1,8 +1,8 @@
 import axios from "axios";
 import { User } from "types/User";
+import api from "./Api";
 axios.defaults.baseURL = "https://colunareta-backend.herokuapp.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
-import api from "./Api";
 interface NewUser {
   id?: string;
   name: string;

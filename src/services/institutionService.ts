@@ -1,5 +1,5 @@
-import api from './Api'
 import { Institution } from "types/Institution";
+import api from './Api';
 
 
 

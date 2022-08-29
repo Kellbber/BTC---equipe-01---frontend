@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { StudentComplete } from "types/StudentFindOne";
+import Loading from "../../components/Loading";
 import { studentService } from "../../services/studentService";
 import * as S from "./style";
-import Loading from "../../components/Loading";
 const DetailsStudent = () => {
   const navigate = useNavigate();
   const { id } = useParams();

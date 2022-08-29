@@ -1,5 +1,5 @@
-import api from './Api'
-import {FormStudents } from "../../src/types/FormStudent";
+import { FormStudents } from "../../src/types/FormStudent";
+import api from './Api';
 
 
 

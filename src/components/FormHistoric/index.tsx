@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { historicService } from "../../services/historicService";
-import { EventEmitter } from "stream";
+
 import SendButton from "../../components/SendButton";
-import { institutionService } from "../../services/institutionService";
+
 import * as S from "./style";
 
 interface Historic {

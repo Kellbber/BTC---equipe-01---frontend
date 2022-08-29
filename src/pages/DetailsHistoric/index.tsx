@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { historicService } from "../../services/historicService";
-import Loading from "../../components/Loading";
 import Modal from "react-modal";
+import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../../components/Loading";
+import { historicService } from "../../services/historicService";
+import * as S from "./style";
 
 const customStyles = {
   content: {

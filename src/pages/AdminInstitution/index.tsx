@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
+import { MdFirstPage, MdLastPage } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { Institution } from "types/Institution";
 import { institutionService } from "../../services/institutionService";
-import { MdFirstPage, MdLastPage } from "react-icons/md";
 
+import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import * as S from "./style";
-import Loading from "../../components/Loading";
 
 const AdminConfig = () => {
   const [search, setSearch] = useState<string>("");

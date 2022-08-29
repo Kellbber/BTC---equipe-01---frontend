@@ -6,10 +6,10 @@ import SendButton from "../../components/SendButton";
 import * as S from "./style";
 
 import { useParams } from "react-router-dom";
-import { studentService } from "../../services/studentService";
+import { FormStudents } from "types/FormStudent";
 import { Institution } from "types/Institution";
 import { institutionService } from "../../services/institutionService";
-import { FormStudents } from "types/FormStudent";
+import { studentService } from "../../services/studentService";
 
 const FormStudent = (props: { update?: boolean }) => {
   const { id } = useParams();

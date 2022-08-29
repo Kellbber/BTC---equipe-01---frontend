@@ -1,5 +1,5 @@
-import * as S from './style'
-import FormUser from '../../components/FormUser'
+import FormUser from '../../components/FormUser';
+import * as S from './style';
 
 type Update ={
     update?:boolean;

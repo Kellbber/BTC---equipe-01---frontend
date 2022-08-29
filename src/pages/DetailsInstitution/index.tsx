@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
-import { userLoggedService } from "../../services/authService";
 import { InstitutionComplete } from "types/InstitutionsFindOne";
 import { Student } from "types/student";
+import Loading from "../../components/Loading";
+import { userLoggedService } from "../../services/authService";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
-import Loading from "../../components/Loading";
 
 const DetailsInstitution = () => {
   

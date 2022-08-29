@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import icon from "../../assets/images/icon.svg";
 import backHistorico from "../../assets/images/back-historico.png";
+import icon from "../../assets/images/icon.svg";
 export const background = styled.section`
   min-height: 100vh;
   min-width: 100%;

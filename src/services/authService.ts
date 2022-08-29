@@ -1,5 +1,5 @@
-import api from "./Api";
 import swall from "sweetalert";
+import api from "./Api";
 interface userLoginObjt {
   email: string;
   password: string;
@@ -39,3 +39,4 @@ const userLoggedService = {
 };
 
 export { loginService, userLoggedService };
+

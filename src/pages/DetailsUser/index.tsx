@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { User } from "types/User";
+import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import { userApiService } from "../../services/userService";
 import * as S from "./style";
-import Loading from "../../components/Loading";
 const DetailsUser = () => {
   const jwt = localStorage.getItem("jwt");
   const navigate = useNavigate();

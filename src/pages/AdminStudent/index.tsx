@@ -3,12 +3,12 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
-import { FormStudents } from "types/FormStudent";
-import { studentService } from "../../services/studentService";
-import Loading from "../../components/Loading";
 import { MdFirstPage, MdLastPage } from "react-icons/md";
-import { institutionService } from "../../services/institutionService";
+import { FormStudents } from "types/FormStudent";
 import { Institution } from "types/Institution";
+import Loading from "../../components/Loading";
+import { institutionService } from "../../services/institutionService";
+import { studentService } from "../../services/studentService";
 
 const AdminStudent = () => {
   const [search, setSearch] = useState<string>("");

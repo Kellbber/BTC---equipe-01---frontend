@@ -1,12 +1,11 @@
-import * as S from "./style";
+import React, { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { loginService } from "../../services/authService";
 import swall from "sweetalert";
-import { useLocalStorage } from 'react-use';
-import SendButton from "../../components/SendButton";
 import Loading from "../../components/Loading";
+import SendButton from "../../components/SendButton";
+import { loginService } from "../../services/authService";
+import * as S from "./style";
 const Login = () => {
   const navigate = useNavigate();
     const [showLoading, setShowLoading] = useState(false);

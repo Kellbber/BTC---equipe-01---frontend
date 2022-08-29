@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
-import icon from "../../assets/images/icon.svg";
 import backgroundAdm from "../../assets/images/background-admin.png";
-import theme from "../../assets/styles/theme";
+import icon from "../../assets/images/icon.svg";
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
