@@ -5,8 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
-
-
+import {IMaskInput} from 'react-imask'
 interface Institution {
   name: string;
   phone: string;
@@ -19,9 +18,14 @@ interface Institution {
   complement: string;
 }
 
-const FormInstitution = (props: { update?: boolean }) => {
 
-  const { register, setValue, setFocus } = useForm();
+
+const FormInstitution = (props: { update?: boolean }) => {
+  const {
+    register,
+    setValue,
+    setFocus,
+  } = useForm();
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -103,20 +107,23 @@ const FormInstitution = (props: { update?: boolean }) => {
 
           <form onSubmit={handleSubmit}>
             <input
-              {...register("nome", { required: true })}
+              {...register("nome", { required: true})}
               placeholder="Nome:"
               name="Nome"
+              id="Nome"
               defaultValue={props.update ? institution?.name : ""}
             />
-            <input
+            <IMaskInput
               {...register("telefone", { required: true })}
-              placeholder="(xx)(xxxxx)(xxxx)"
+              mask="(00) 0000-0000"
+              placeholder="(XX) 0000-0000"
               name="phone"
               defaultValue={props.update ? institution?.phone : ""}
             />
-            <input
+            <IMaskInput
               {...register("cep", { required: true })}
               onBlur={checkCEP}
+              mask="00000-000"
               placeholder="CEP:"
               name="cepInst"
               defaultValue={props.update ? institution?.cep : ""}
@@ -158,6 +165,7 @@ const FormInstitution = (props: { update?: boolean }) => {
               name="state"
               defaultValue={props.update ? institution?.state : ""}
             />
+   
             <SendButton />
           </form>
         </S.formDiv>
