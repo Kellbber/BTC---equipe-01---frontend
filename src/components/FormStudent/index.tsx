@@ -4,7 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import * as S from "./style";
-
+import {IMaskInput} from 'react-imask'
 import { useParams } from "react-router-dom";
 import { FormStudents } from "types/FormStudent";
 import { Institution } from "types/Institution";
@@ -90,18 +90,20 @@ const FormStudent = (props: { update?: boolean }) => {
               name="Nome"
               defaultValue={props.update ? aluno?.name : ""}
             />
-            <input
-              {...register("age", { required: true })}
+            <IMaskInput
+              {...register("age", { required: true , minLength:10})}
               placeholder="Data Nasc:"
+              mask="00/00/0000"
               name="age"
               defaultValue={props.update ? aluno?.age : ""}
             />
 
-            <input
+            <IMaskInput
               {...register("phone", { required: true })}
-              placeholder="Telefone:"
+              placeholder="(00) 0000-0000"
               name="phone"
               type="text"
+              mask="(00) 0000-0000"
               defaultValue={props.update ? aluno?.phone : ""}
             />
             <select
