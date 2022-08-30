@@ -10,7 +10,7 @@ import { FormStudents } from "types/FormStudent";
 import { Institution } from "types/Institution";
 import { institutionService } from "../../services/institutionService";
 import { studentService } from "../../services/studentService";
-
+import swall from 'sweetalert'
 const FormStudent = (props: { update?: boolean }) => {
   const { id } = useParams();
 
@@ -31,10 +31,26 @@ const FormStudent = (props: { update?: boolean }) => {
       institutionId: event.currentTarget.institutionId.value,
     };
     if (props.update) {
-      await studentService.UpStudent(id ?? "", newStudent);
+      const req = await studentService.UpStudent(id ?? "", newStudent);
+      if(req?.status===200){
+        swall({
+          title: "Sucesso!",
+          text: `Aluno atualizado com sucesso!`,
+          icon: "success",
+          timer: 3000,
+        });
+      }
       navigate("/alunos");
     } else {
-      await studentService.postStudent(newStudent);
+      const req = await studentService.postStudent(newStudent);
+      if(req?.status===201){
+        swall({
+          title: "Sucesso!",
+          text: `Aluno adicionado com sucesso!`,
+          icon: "success",
+          timer: 3000,
+        });
+      }
       navigate("/alunos");
     }
   }

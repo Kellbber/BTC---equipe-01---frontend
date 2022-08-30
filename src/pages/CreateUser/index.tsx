@@ -22,10 +22,10 @@ const create = () => {
     const req = await userService.postUser(newUser);
     if(req?.status===201){
       swall({
-        title: "Success",
+        title: "Certo!",
         text: `Um email foi enviado para ${newUser.email}`,
         icon: "success",
-        timer: 5000,
+        timer: 3000,
       });
       navigate('/login');
     };

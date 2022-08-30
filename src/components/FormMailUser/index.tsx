@@ -31,7 +31,7 @@ const FormMailUser = () => {
     const req = await userService.createUser(id ?? "", newUser);
     if(req){
       swall({
-        title: "Success",
+        title: "Certo!",
         text: `Usuário criado com sucesso!`,
         icon: "success",
         timer: 5000,
