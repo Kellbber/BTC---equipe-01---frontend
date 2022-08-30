@@ -15,6 +15,7 @@ import DetailsUser from "./src/pages/DetailsUser";
 import ConfigUser from "./src/pages/ConfigUser";
 import FormMailUser from "./src/components/FormMailUser";
 import DetailsHistoric from "./src/pages/DetailsHistoric";
+import ConfigHistoric from "./src/pages/ConfigHistoric";
 const Router = () => {
   return (
     <Routes>
@@ -36,6 +37,8 @@ const Router = () => {
       <Route path={RoutePath.DETAILSUSER} element={<DetailsUser />} />
       <Route path={RoutePath.MAILUSER} element={<FormMailUser />} />
       <Route path={RoutePath.DETAILSHIST} element={<DetailsHistoric/>} />
+      <Route path={RoutePath.FOLLOWUPS} element={<ConfigHistoric/>} />
+      <Route path={RoutePath.FOLLOWUPSUP} element={<ConfigHistoric update={true}/>} />
     </Routes>
   );
 };
