@@ -11,7 +11,8 @@ export const createcss = styled.section`
     min-width: 100vw;
     .containerregister {
       width: 100%;
-      min-height: calc(100vh - 5rem);
+      margin-top: 3rem;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -49,8 +50,8 @@ export const registerSection = styled.section`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    width: 33rem;
-    height: 25rem;
+    height: 300px;
+    width: 30%;
     border-radius: 5px;
     background: ${theme.colors.primaryColors};
   `}
@@ -59,9 +60,9 @@ export const registerSection = styled.section`
 export const div = styled.div`
   display: flex;
   flex-direction: column;
-width: 100%;
- align-items: center;
- justify-content: center;
+  width: 100%;
+  align-items: center;
+
 
   ${({ theme }) => css`
     input {
@@ -95,7 +96,7 @@ width: 100%;
 
 export const registerborder = styled.section`
   ${({ theme }) => css`
-    width: 33rem;
+    width: 100%;
     height: 4.7rem;
     background: #2ea8dc;
     border-radius: 5px 5px 0px 0px;
@@ -140,16 +141,24 @@ export const iconConfig = styled.div`
 `;
 
 export const formUser = styled.form`
-  ${({theme})=>css`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 80%;
-  justify-content: center;
-  input{
-    margin: .5rem 0 .5rem 0;
-  }
-
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    input {
+      margin: 1rem 0 1rem 0;
+      width: 50%;
+    }
+    button{
+      margin-left: -1rem;
+      margin-bottom: -1rem;
+      margin-right: -1rem;
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      width: 30%;
+    }
   `}
-
-`
+`;

@@ -88,7 +88,7 @@ const DetailsStudent = () => {
                 </S.cardDetails>
               ))}
 
-              <S.addHistoric>Agendar Consulta</S.addHistoric>
+              <S.addHistoric onClick={()=> {navigate('/agendar'); localStorage.setItem("idStudent", aluno?.id??"")}}>Agendar Consulta</S.addHistoric>
             </S.divStudentHistoric>
           </S.organize>
         </S.content>

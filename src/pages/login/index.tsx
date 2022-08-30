@@ -6,6 +6,10 @@ import Loading from "../../components/Loading";
 import SendButton from "../../components/SendButton";
 import { loginService } from "../../services/authService";
 import * as S from "./style";
+interface User{
+  name: string;
+  email:string;
+}
 const Login = () => {
   const navigate = useNavigate();
     const [showLoading, setShowLoading] = useState(false);
@@ -77,6 +81,7 @@ const Login = () => {
               name="email"
               required
               onChange={handleChangeValues}
+     
             />
             <input
               type="password"

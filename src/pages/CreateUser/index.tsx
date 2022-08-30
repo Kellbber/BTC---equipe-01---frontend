@@ -6,7 +6,7 @@ import SendButton from "../../components/SendButton";
 import { userService } from "../../services/userService";
 import { useForm } from "react-hook-form";
 import * as S from "./style";
-
+import swall from 'sweetalert'
 const create = () => {
 
   const navigate = useNavigate();
@@ -21,6 +21,12 @@ const create = () => {
     };
     const req = await userService.postUser(newUser);
     if(req?.status===201){
+      swall({
+        title: "Success",
+        text: `Um email foi enviado para ${newUser.email}`,
+        icon: "success",
+        timer: 5000,
+      });
       navigate('/login');
     };
   }
@@ -38,7 +44,7 @@ const create = () => {
           className="BiArrowBack"
           cursor="pointer"
           size={30}
-          onClick={() => navigate("/usuarios")}
+          onClick={() => navigate("/")}
         />
       </S.heading>
       <section className="containerregister">

@@ -4,7 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import * as S from "./style";
-import {IMaskInput} from 'react-imask'
+import { IMaskInput } from "react-imask";
 import { useParams } from "react-router-dom";
 import { FormStudents } from "types/FormStudent";
 import { Institution } from "types/Institution";
@@ -91,7 +91,7 @@ const FormStudent = (props: { update?: boolean }) => {
               defaultValue={props.update ? aluno?.name : ""}
             />
             <IMaskInput
-              {...register("age", { required: true , minLength:10})}
+              {...register("age", { required: true, minLength: 10 })}
               placeholder="Data Nasc:"
               mask="00/00/0000"
               name="age"
@@ -109,8 +109,9 @@ const FormStudent = (props: { update?: boolean }) => {
             <select
               {...register("institutionId", { required: true })}
               name="institutionId"
-              defaultValue={props.update ? aluno?.institutionId : ""}
+              value={props.update ? aluno?.institutionId : ""}
             >
+              <option value="" disabled style={{ display: "none" }}></option>
               {institutions?.map((institution: Institution, index) => (
                 <option value={institution.id} key={index}>
                   {institution.name}
