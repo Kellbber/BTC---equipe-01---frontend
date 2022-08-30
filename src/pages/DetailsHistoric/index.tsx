@@ -3,6 +3,8 @@ import { BiArrowBack } from "react-icons/bi";
 import Modal from "react-modal";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import React from "react";
 import { historicService } from "../../services/historicService";
 import * as S from "./style";
 
@@ -64,6 +66,7 @@ const DetailsHistoric = () => {
       }
     }
   };
+
   function returnDetails() {
     navigate(`/alunos/detalhes/${historic?.studentId}`);
   }
@@ -145,9 +148,7 @@ const DetailsHistoric = () => {
         <S.formDelete>
           <p>Deseja realmente deletar?</p>
           <S.buttonsHistoric>
-            <button
-              onClick={() => historicService.deleteHistoric(id ?? "")}
-            >
+            <button onClick={() => historicService.deleteHistoric(id ?? "")}>
               SIM
             </button>
             <button onClick={closeModal}>NÃO</button>
