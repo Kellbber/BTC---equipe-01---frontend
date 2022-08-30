@@ -63,25 +63,28 @@ export const div = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 4rem;
+ margin-top: 2rem;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
     input {
       display: flex;
       outline: none;
       font-family: ${theme.constants.textInitialFontFamily};
-      width: 100%;
+      width: 50%;
       padding: 0.3rem 0.9rem;
       border: 1px solid ${theme.colors.backgroundColor};
-      margin-right: 2rem;
+  
     }
     button {
       border: transparent;
       width: 6rem;
-      height: 2.8rem;
+      
       background-color: ${theme.colors.secundaryColor};
       font-family: ${theme.constants.headingFontFamily};
       font-weight: 600;
       color: ${theme.colors.primaryColors};
-      margin-left: 4rem;
+
       border-radius: 0.2rem;
       cursor: pointer;
     }
