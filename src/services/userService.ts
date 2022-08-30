@@ -53,6 +53,14 @@ export const userApiService = {
         alert(err)
     }
   },
+  oneUserEmail: async(id:string)=>{
+    try{
+      const req = axios.get(`/users/find-one/${id}`);
+      return req;
+    }catch(err){
+      console.log(err)
+    }
+  },
   UpUser: async (userId: string, User: User)=>{
     try{
       const req = await api.patch(`/users/${userId}`,{

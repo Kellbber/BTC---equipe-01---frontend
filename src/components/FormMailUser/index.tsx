@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { userApiService, userService } from "../../services/userService";
 import * as S from "./style";
-
+import swall from 'sweetalert'
 interface User {
   id?: string;
   name: string;
@@ -29,13 +29,22 @@ const FormMailUser = () => {
       confirmPassword: event.currentTarget.confirmPassword.value,
     };
     const req = await userService.createUser(id ?? "", newUser);
-      navigate("/login");
-    
+    if(req){
+      swall({
+        title: "Success",
+        text: `Usuário criado com sucesso!`,
+        icon: "success",
+        timer: 5000,
+      });
+        navigate("/login");
+      
+    }
+
   }
 
   async function getUserUpdate() {
     if (id) {
-      const userUp = await userApiService.oneUser(id);
+      const userUp = await userApiService.oneUserEmail(id);
       setUser(userUp?.data);
     }
   }
@@ -58,7 +67,7 @@ const FormMailUser = () => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/login")}
+            onClick={() => navigate(`/login`)}
           />
         </S.logins>
       </S.heading>

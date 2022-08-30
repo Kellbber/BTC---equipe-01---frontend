@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "https://colunareta-backend.herokuapp.com/",
+    baseURL: "http://colunareta-backend.herokuapp.com/",
 });
 
 api.interceptors.request.use((config:any)=>{
