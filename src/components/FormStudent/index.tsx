@@ -109,9 +109,11 @@ const FormStudent = (props: { update?: boolean }) => {
             <select
               {...register("institutionId", { required: true })}
               name="institutionId"
-              value={props.update ? aluno?.institutionId : ""}
+              defaultValue={props.update ? aluno?.institutionId : ""}
             >
-              <option value="" disabled style={{ display: "none" }}></option>
+              <option value="" disabled style={{ display: "none" }}>
+
+              </option>
               {institutions?.map((institution: Institution, index) => (
                 <option value={institution.id} key={index}>
                   {institution.name}

@@ -9,13 +9,14 @@ const DetailsStudent = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [showLoading, setShowLoading] = useState(true);
+
   const [aluno, setAluno] = useState<StudentComplete>();
 
   const getOneStudent = async () => {
-    if (id) {
-      const get = await studentService.oneStudent(id);
+
+      const get = await studentService.oneStudent(id??"");
       setAluno(get?.data);
-    }
+
     setShowLoading(false);
   };
 
