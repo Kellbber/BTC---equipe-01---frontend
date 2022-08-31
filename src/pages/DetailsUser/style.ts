@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import backgroundname from "../../assets/images/background-name-inst.png";
 import icon from "../../assets/images/icon.svg";
 
-
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
@@ -91,7 +90,7 @@ export const Title = styled.h1`
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: -.2rem;
+    margin-top: -0.2rem;
   `}
 `;
 export const divMain = styled.div`
@@ -107,158 +106,201 @@ export const divMain = styled.div`
   `}
 `;
 export const styleCep = styled.a`
-${({theme})=>css`
-margin-top: 1rem;
-display: flex;
-width: 10%;
-list-style: none;
-outline: none;
-border: transparent;
-background-color: ${theme.colors.secundaryColor};
-border-radius: 0.2rem;
-font-family: ${theme.constants.headingFontFamily};
-color: ${theme.colors.primaryColors};
-font-weight: 500;
-padding: .5rem 0 .5rem 0;
-border: 1px solid ${theme.colors.backgroundColor};
-align-items: center;
-justify-content: center;
-text-decoration: none;
-cursor: pointer;
-transition: ease-in-out .2s;
-:hover{
-    font-weight: 600;
-}
-`}
-`
+  ${({ theme }) => css`
+    margin-top: 1rem;
+    display: flex;
+    width: 10%;
+    list-style: none;
+    outline: none;
+    border: transparent;
+    background-color: ${theme.colors.secundaryColor};
+    border-radius: 0.2rem;
+    font-family: ${theme.constants.headingFontFamily};
+    color: ${theme.colors.primaryColors};
+    font-weight: 500;
+    padding: 0.5rem 0 0.5rem 0;
+    border: 1px solid ${theme.colors.backgroundColor};
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    :hover {
+      font-weight: 600;
+    }
+  `}
+`;
 export const cardDetails = styled.div`
-${({theme})=>css`
-display: flex;
-width: 90%;
-align-items: center;
-justify-content: space-around;
-height: 80px;
-margin-bottom: 1rem;
-background-color: ${theme.colors.backgroundColor};
-
-`}
-`
+  ${({ theme }) => css`
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    margin-bottom: 1rem;
+    background-color: ${theme.colors.backgroundColor};
+  `}
+`;
 export const uniqueCard = styled.div`
-${({theme})=>css`
-font-family: ${theme.constants.headingFontFamily};
-font-size: .8rem;
-display: flex;
-min-width: 15%;
-font-weight: 500;
-display: flex;
-align-items: center;
-justify-content: center;
-
-
-`}
-`
-export const uniqueCardStudent = styled.div`
-${({theme})=>css`
-font-family: ${theme.constants.headingFontFamily};
-font-size: .8rem;
-display: flex;
-min-width: 100%;
-font-weight: 500;
-display: flex;
-align-items: center;
-justify-content: space-around;
-
-
-div{
+  ${({ theme }) => css`
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    display: flex;
     min-width: 15%;
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+  `}
+`;
+export const uniqueCardStudent = styled.div`
+  ${({ theme }) => css`
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    display: flex;
+    min-width: 100%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
-`}
-`
+    div {
+      min-width: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  `}
+`;
 
 export const Details = styled.h5`
-${({theme})=>css`
-
-display: flex;
-width: 100%;
-text-align: center;
-align-items: center;
-justify-content: center;
-font-family: ${theme.constants.textFinalFontFamily};
-font-size: 1.5rem;
-`}
-`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: ${theme.constants.textFinalFontFamily};
+    font-size: 1.5rem;
+  `}
+`;
 export const titleInfo = styled.div`
-${({theme})=>css`
-display: flex;
-width: 90%;
-justify-content: space-around;
-align-items: center;
-background-color: ${theme.colors.secundaryColor};
-font-family: ${theme.constants.headingFontFamily};
-color: ${theme.colors.primaryColors};
-font-size: .8rem;
-p{
-    min-width: 8%;
+  ${({ theme }) => css`
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: ${theme.colors.secundaryColor};
+    font-family: ${theme.constants.headingFontFamily};
+    color: ${theme.colors.primaryColors};
+    font-size: 0.8rem;
+    p {
+      min-width: 8%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  `}
+`;
+export const cardDetailsStudent = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-around;
+    height: 90px;
+    margin-bottom: 1rem;
+    background-color: ${theme.colors.backgroundColor};
+    flex-direction: column;
+  `}
+`;
+export const divisionLine = styled.div`
+  display: flex;
+  width: 100%;
+  background-color: black;
+`;
+
+export const buttonEdit = styled.button`
+  ${({ theme }) => css`
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    outline: none;
+    border: transparent;
+    cursor: pointer;
+    background-color: ${theme.colors.secundaryColor};
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: ${theme.colors.primaryColors};
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 0 0.5rem 0;
+    :hover {
+      font-weight: 600;
+    }
+  `}
+`;
+
+export const divButtons = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+`;
+export const formDelete = styled.form`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
-};
+    width: 100%;
+    flex-direction: column;
+    p {
+      width: 50%;
+      margin: -1rem;
+      font-family: ${theme.constants.headingFontFamily};
+      font-size: 0.8rem;
+    }
+    button {
+      width: 20%;
+      margin-top: 2rem;
+      font-family: ${theme.constants.headingFontFamily};
+      background-color: ${theme.colors.backgroundColor};
+      border: transparent;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+  `}
+`;
+export const buttonsHistoric = styled.div`
+  display: flex;
+  justify-content: space-between;
 
-
-`}
-
-`
-export const cardDetailsStudent = styled.div`
-${({theme})=>css`
-display: flex;
-width: 90%;
-align-items: center;
-justify-content: space-around;
-height: 90px;
-margin-bottom: 1rem;
-background-color: ${theme.colors.backgroundColor};
-flex-direction: column;
-`}
-`
-export const divisionLine = styled.div`
-display: flex;
-width: 100%;
-background-color: black;
-
-`
-
-export const buttonEdit = styled.button`
-${({theme})=>css`
-display: flex;
-width: 10%;
-justify-content: center;
-align-items: center;
-list-style: none;
-outline: none;
-border: transparent;
-cursor: pointer;
-background-color: ${theme.colors.secundaryColor};
-font-family: ${theme.constants.headingFontFamily};
-font-size: .8rem;
-font-weight:400;
-color: ${theme.colors.primaryColors};
-margin-right: 1rem;
-border-radius: 0.3rem;
-padding: .5rem 0 .5rem 0;
-:hover{
-    font-weight: 600;
-}
-`}
-
-`
-
-export const divButtons = styled.div`
-display: flex;
-width: 100%;
-align-items: center;
-justify-content: flex-end;
-`
+  width: 80%;
+  align-items: center;
+`;
+export const buttonDelete = styled.button`
+  ${({ theme }) => css`
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    outline: none;
+    border: transparent;
+    cursor: pointer;
+    background-color: red;
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: ${theme.colors.primaryColors};
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 0 0.5rem 0;
+    :hover {
+      font-weight: 600;
+    }
+  `}
+`;

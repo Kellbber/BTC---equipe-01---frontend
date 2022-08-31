@@ -13,7 +13,9 @@ interface User{
 const Login = () => {
   const navigate = useNavigate();
     const [showLoading, setShowLoading] = useState(false);
-
+  localStorage.removeItem('jwt')
+  localStorage.removeItem('idStudent')
+  localStorage.removeItem('forawing');
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -91,9 +93,6 @@ const Login = () => {
               onChange={handleChangeValues}
             />
             <SendButton />
-            <a onClick={() => navigate("/createuser")}>
-              Não possui conta? Clique aqui
-            </a>
           </S.div>
         </S.LoginSection>
       </section>

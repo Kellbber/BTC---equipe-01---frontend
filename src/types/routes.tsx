@@ -8,7 +8,7 @@ export enum RoutePath{
     DASHBOARD = "/dashboard",
     FORMINST='/forminstituicao',
     INSTUP='/forminstituicao/:id',
-    CREATEUSER='/createuser',
+    CREATEUSER='/criarusuario',
     DETAILSINST="/instituicao/detalhes/:id",
     FORMSTUD='/formaluno',
     STUDUP='/formaluno/:id',

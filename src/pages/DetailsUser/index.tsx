@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import Modal from "react-modal";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { User } from "types/User";
@@ -7,12 +7,26 @@ import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import { userApiService } from "../../services/userService";
 import * as S from "./style";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "28%",
+  },
+};
+Modal.setAppElement("#root");
+
 const DetailsUser = () => {
   const jwt = localStorage.getItem("jwt");
   const navigate = useNavigate();
   const [showLoading, setShowLoading] = useState(true);
   const [user, setUser] = useState<User>();
-
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   interface UserLogged {
     id: string;
     email: string;
@@ -29,6 +43,13 @@ const DetailsUser = () => {
   });
   const { id } = useParams();
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   const getOneUser = async () => {
     if (jwt) {
       if (id) {
@@ -73,6 +94,7 @@ const DetailsUser = () => {
               <S.buttonEdit onClick={() => navigate(`/formusuario/${id}`)}>
                 Editar
               </S.buttonEdit>
+              <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
             </S.divButtons>
           ) : (
             ""
@@ -91,6 +113,23 @@ const DetailsUser = () => {
         </S.divMain>
       </S.content>
       :""}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <S.formDelete>
+          <p>Deseja realmente deletar?</p>
+          <S.buttonsHistoric>
+            <button
+              onClick={() => {userApiService.DeleteUser(id ?? ""); navigate(`/usuarios`)}}
+            >
+              SIM
+            </button>
+            <button onClick={closeModal}>NÃO</button>
+          </S.buttonsHistoric>
+        </S.formDelete>
+      </Modal>
       {showLoading ? <Loading /> : ""}
     </S.background>
   );
