@@ -89,6 +89,9 @@ useEffect(()=>{
             value={search}
           />
         </S.adminSearch>
+        <S.addButton onClick={() => navigate("/criarusuario")}>
+            Adicionar
+          </S.addButton>
         <S.searchList>
           {search.length > 0 ? (
             <S.itemList>

@@ -72,5 +72,14 @@ export const userApiService = {
     }catch(err){
       alert(err)
     }
+  },
+
+  DeleteUser: async (id:string) => {
+    try{
+      const req = api.delete(`/users/${id}`)
+      return req;
+    }catch(err){
+      console.log(err)
+    }
   }
 };

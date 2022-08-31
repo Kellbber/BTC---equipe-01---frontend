@@ -27,7 +27,11 @@ interface Historic {
   startDate: string;
   returnDate: string;
   note: string;
-  forwarding: string[];
+  raiox:boolean;
+  fisioterapia:boolean;
+  colete:boolean;
+  cirurgia:boolean;
+  angulocob:boolean;
   studentId: string;
 }
 
@@ -106,15 +110,20 @@ const DetailsHistoric = () => {
                     {historic?.returnDate}
                   </div>
                   <div>
-                    <p>Exames a fazer</p>
-                    {historic?.forwarding.map((exame) => (
-                      <select>
-                        <option>{exame}</option>
-                      </select>
-                    ))}
+                    <p>Exames ou procedimentos</p>
+                   {historic?.angulocob?"Ângulo cob":""}<br/>
+                   {historic?.cirurgia?"Cirurgia":""}
+                   <br/>
+                   {historic?.colete?"Colete":""}
+                   <br/>
+                   {historic?.raiox?"Raio-X":""}
+                   <br/>
+                   {historic?.fisioterapia?
+                   "Fisioterapia":""}
+                   <br/>
                   </div>
                   <S.buttonsHistoric>
-                    <S.buttonEdit>EDITAR</S.buttonEdit>
+                    <S.buttonEdit onClick={()=> navigate(`/agendar/${id}`)}>EDITAR</S.buttonEdit>
                     <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>

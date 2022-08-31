@@ -4,9 +4,10 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
+
 import * as S from "./style";
 import {IMaskInput} from 'react-imask'
-
+import swall from 'sweetalert'
 interface Institution {
   name: string;
   phone: string;
@@ -62,11 +63,25 @@ const FormInstitution = (props: { update?: boolean }) => {
     };
 
     if (props.update) {
-      await institutionService.UpInstitution(id ?? "", newInst);
+     const req = await institutionService.UpInstitution(id ?? "", newInst);
+      if(req){
+        swall({
+          title: "Sucesso!",
+          text: `Instituição atualizada!`,
+          icon: "success",
+          timer: 3000,
+        });
+      }
       navigate("/instituicoes");
     } else {
       const req = await institutionService.postInstitution(newInst);
       if (req?.status === 201) {
+          swall({
+            title: "Sucesso!",
+            text: `Cadastro da instituição concluído!`,
+            icon: "success",
+            timer: 3000,
+          });
         navigate("/instituicoes");
       }
     }
@@ -148,7 +163,7 @@ const FormInstitution = (props: { update?: boolean }) => {
             />
             <input
               {...register("complement", { required: false })}
-              placeholder="complement:"
+              placeholder="complemento:"
               name="complement"
               defaultValue={props.update ? institution?.complement : ""}
             />

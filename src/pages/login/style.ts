@@ -52,7 +52,7 @@ export const LoginSection = styled.section`
     flex-direction: column;
     justify-content: flex-start;
     width: 30rem;
-    height: 20rem;
+    height: 16rem;
     border-radius: 5px;
     background: ${theme.colors.primaryColors};
   `}

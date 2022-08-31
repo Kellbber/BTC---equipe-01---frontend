@@ -4,21 +4,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import { StudentComplete } from "types/StudentFindOne";
 import Loading from "../../components/Loading";
 import { studentService } from "../../services/studentService";
+
 import * as S from "./style";
+
 const DetailsStudent = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
   const [showLoading, setShowLoading] = useState(true);
+
   const [aluno, setAluno] = useState<StudentComplete>();
 
-  const getOneStudent = async () => {
-    if (id) {
-      const get = await studentService.oneStudent(id);
-      setAluno(get?.data);
-    }
-    setShowLoading(false);
-  };
+  localStorage.setItem("idStudent", id??"");
 
+  const getOneStudent = async () => {
+      const get = await studentService.oneStudent(id??"");
+      setAluno(get?.data);
+
+    setShowLoading(false);
+
+    
+  };
 
   useEffect(() => {
     getOneStudent();
@@ -81,14 +86,14 @@ const DetailsStudent = () => {
                 <S.cardDetails key={index}>
                   <S.uniqueCardHistoric>
                     <p>consulta</p> {historic.startDate}
-                    <S.addHistoric onClick={()=> navigate(`/historico/detalhes/${historic.id}`)}>Visualizar</S.addHistoric>
+                    <S.addHistoric onClick={()=> {navigate(`/historico/detalhes/${historic.id}`)}}>Visualizar</S.addHistoric>
                   </S.uniqueCardHistoric>
                   
                   <S.division />
                 </S.cardDetails>
               ))}
 
-              <S.addHistoric onClick={()=> {navigate('/agendar'); localStorage.setItem("idStudent", aluno?.id??"")}}>Agendar Consulta</S.addHistoric>
+              <S.addHistoric onClick={()=> {navigate('/agendar'); }}>Agendar Consulta</S.addHistoric>
             </S.divStudentHistoric>
           </S.organize>
         </S.content>
@@ -96,7 +101,9 @@ const DetailsStudent = () => {
         ""
       )}
       {showLoading ? <Loading /> : ""}
+      
     </S.background>
+    
   );
 };
 
