@@ -23,7 +23,7 @@ interface Historic {
   studentId: string;
 }
 
-const FormHistoric = (props: { update?: boolean; idStudent: string }) => {
+const FormHistoric = (props: { update?: boolean; }) => {
 
   const getStudent = localStorage.getItem("idStudent");
 
@@ -56,8 +56,7 @@ const FormHistoric = (props: { update?: boolean; idStudent: string }) => {
       });
       const req = await historicService.upHistoric(id ?? "", historic);
       if (req?.status === 200) {
-        navigate("/alunos");
-        navigate(`/historico/detalhes/${id}`);
+        navigate(`/alunos/detalhes/${idStudent}`);
       }
     } else {
       setHistoric({
@@ -66,7 +65,7 @@ const FormHistoric = (props: { update?: boolean; idStudent: string }) => {
       });
       const req = await historicService.postHistoric(historic);
       if (req?.status === 201) {
-        navigate(`/historico/detalhes/${id}`);
+        navigate(`/alunos/detalhes/${idStudent}`);
       }
     }
   }
