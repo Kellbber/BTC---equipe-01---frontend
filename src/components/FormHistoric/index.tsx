@@ -22,7 +22,8 @@ interface Historic {
   angulocob: boolean;
   studentId: string;
 }
-const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
+
+const FormHistoric = (props: { update?: boolean; idStudent: string }) => {
 
   const getStudent = localStorage.getItem("idStudent");
 
@@ -30,6 +31,8 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
   const navigate = useNavigate();
 
   const { id } = useParams();
+
+ const idStudent= localStorage.getItem("idStudent")
 
   const [historic, setHistoric] = useState<Historic>({
     startDate: "",
@@ -96,7 +99,7 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
             cursor="pointer"
             size={30}
             onClick={() => {
-              navigate(`/alunos/detalhes/${getStudent}`);
+              navigate(`/alunos/detalhes/${idStudent}`);
             }}
           />
         </S.logins>
