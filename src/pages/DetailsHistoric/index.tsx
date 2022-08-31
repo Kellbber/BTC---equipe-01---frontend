@@ -25,7 +25,11 @@ interface Historic {
   startDate: string;
   returnDate: string;
   note: string;
-  forwarding: string[];
+  raiox:boolean;
+  fisioterapia:boolean;
+  colete:boolean;
+  cirurgia:boolean;
+  angulocob:boolean;
   studentId: string;
 }
 
@@ -104,11 +108,11 @@ const DetailsHistoric = () => {
                   </div>
                   <div>
                     <p>Exames a fazer</p>
-                    {historic?.forwarding.map((exame) => (
-                      <select>
-                        <option>{exame}</option>
-                      </select>
-                    ))}
+                   {historic?.angulocob?"tem":""}
+                   {historic?.cirurgia?"tem":""}
+                   {historic?.colete?"tem":""}
+                   {historic?.raiox?"tem":""}
+                   {historic?.fisioterapia?"tem":""}
                   </div>
                   <S.buttonsHistoric>
                     <S.buttonEdit>EDITAR</S.buttonEdit>

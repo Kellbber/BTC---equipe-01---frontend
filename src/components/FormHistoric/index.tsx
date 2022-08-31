@@ -50,6 +50,7 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
   }
   const forwarding: string[] = [];
 
+  const getStudent = localStorage.getItem("idStudent");
   async function getHistoricUp() {
     if (id) {
       const historicUp = await historicService.findOne(id);
@@ -95,7 +96,8 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/instituicoes")}
+            onClick={() => {navigate(`/alunos/detalhes/${getStudent}`);
+          localStorage.removeItem('idStudent')}}
           />
         </S.logins>
       </S.heading>

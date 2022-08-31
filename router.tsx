@@ -13,7 +13,7 @@ import ConfigStudent from "./src/pages/ConfigStudent";
 import DetailsStudent from "./src/pages/DetailsStudent";
 import DetailsUser from "./src/pages/DetailsUser";
 import ConfigUser from "./src/pages/ConfigUser";
-import FormMailUser from "./src/components/FormMailUser";
+import FormMailUser from "./src/components/FormMailUser/index";
 import DetailsHistoric from "./src/pages/DetailsHistoric";
 import ConfigHistoric from "./src/pages/ConfigHistoric";
 const Router = () => {
