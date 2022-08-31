@@ -4,6 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
+
 import * as S from "./style";
 import {IMaskInput} from 'react-imask'
 import swall from 'sweetalert'
@@ -162,7 +163,7 @@ const FormInstitution = (props: { update?: boolean }) => {
             />
             <input
               {...register("complement", { required: false })}
-              placeholder="complement:"
+              placeholder="complemento:"
               name="complement"
               defaultValue={props.update ? institution?.complement : ""}
             />

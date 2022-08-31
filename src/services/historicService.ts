@@ -7,8 +7,12 @@ interface Historic {
   secondPhoto: string;
   returnDate: string;
   note?: string;
-  forwarding: string[];
-  studentId?: string;
+  raiox?:boolean;
+  fisioterapia?:boolean;
+  colete?:boolean;
+  cirurgia?:boolean;
+  angulocob?:boolean;
+  studentId: string;
 }
 
 export const historicService = {
@@ -20,12 +24,16 @@ export const historicService = {
                 secondPhoto: newHistoric.secondPhoto,
                 returnDate: newHistoric.returnDate,
                 note: newHistoric.note,
-                forwarding: newHistoric.forwarding,
-             
+                raiox: newHistoric.raiox,
+                fisioterapia: newHistoric.fisioterapia,
+                colete: newHistoric.colete,
+                cirurgia: newHistoric.cirurgia,
+                angulocob: newHistoric.angulocob,
+                studentId: newHistoric.studentId,
             })
             return req;
         }catch(err){
-            alert(err)
+            console.log(err)
         }
     },
 
@@ -54,8 +62,11 @@ export const historicService = {
         secondPhoto: historic.secondPhoto,
         returnDate: historic.returnDate,
         note: historic.note,
-        forwarding: historic.forwarding,
-    
+        raiox: historic.raiox,
+        fisioterapia: historic.fisioterapia,
+        colete: historic.colete,
+        cirurgia: historic.cirurgia,
+        angulocob: historic.angulocob,
       });
       return req;
     } catch (err) {

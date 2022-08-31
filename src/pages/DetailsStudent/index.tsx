@@ -12,6 +12,7 @@ const DetailsStudent = () => {
 
   const [aluno, setAluno] = useState<StudentComplete>();
 
+  localStorage.setItem("idStudent", aluno?.id??"")
   const getOneStudent = async () => {
 
       const get = await studentService.oneStudent(id??"");
@@ -89,7 +90,7 @@ const DetailsStudent = () => {
                 </S.cardDetails>
               ))}
 
-              <S.addHistoric onClick={()=> {navigate('/agendar'); localStorage.setItem("idStudent", aluno?.id??"")}}>Agendar Consulta</S.addHistoric>
+              <S.addHistoric onClick={()=> {navigate('/agendar');}}>Agendar Consulta</S.addHistoric>
             </S.divStudentHistoric>
           </S.organize>
         </S.content>

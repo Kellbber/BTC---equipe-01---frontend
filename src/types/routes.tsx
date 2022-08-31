@@ -18,5 +18,5 @@ export enum RoutePath{
     MAILUSER = '/criarusuario/:id',
     DETAILSHIST='/historico/detalhes/:id',
     FOLLOWUPS='agendar/',
-    FOLLOWUPSUP='agenda/:id',
+    FOLLOWUPSUP='/agendar/:id',
 }

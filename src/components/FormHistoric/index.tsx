@@ -15,67 +15,66 @@ interface Historic {
   secondPhoto: string;
   returnDate: string;
   note?: string;
-  forwarding: string[];
+  raiox: boolean;
+  fisioterapia: boolean;
+  colete: boolean;
+  cirurgia: boolean;
+  angulocob: boolean;
   studentId: string;
 }
 const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
-  const { register, setValue, setFocus } = useForm();
-  const [check, setCheck] = useState<boolean>(false);
-  const [check2, setCheck2] = useState<boolean>(false);
-  const [check3, setCheck3] = useState<boolean>(false);
+
+  const getStudent = localStorage.getItem("idStudent");
+
+  const { register } = useForm();
   const navigate = useNavigate();
 
   const { id } = useParams();
 
-  const [historic, setHistoric] = useState<Historic>();
+  const [historic, setHistoric] = useState<Historic>({
+    startDate: "",
+    firstPhoto: "",
+    secondPhoto: "",
+    returnDate: "",
+    note: "",
+    raiox: false,
+    fisioterapia: false,
+    colete: false,
+    cirurgia: false,
+    angulocob: false,
+    studentId: getStudent??"",
+  });
 
-  const alunoId = localStorage.getItem("idStudent");
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const newHistoric: Historic = {
-      startDate: event.currentTarget.startDate.value,
-      firstPhoto: event.currentTarget.firstPhoto.value,
-      secondPhoto: event.currentTarget.secondPhoto.value,
-      returnDate: event.currentTarget.returnDate.value,
-      note: event.currentTarget.note.value,
-      forwarding: forwarding,
-      studentId: alunoId ?? "",
-    };
+  async function handleSubmit() {
     if (props.update) {
-      await historicService.upHistoric(id ?? "", newHistoric);
+      setHistoric({
+        ...historic,
+        studentId: getStudent ?? "",
+      });
+      const req = await historicService.upHistoric(id ?? "", historic);
+      if (req?.status === 200) {
+        navigate("/alunos");
+        navigate(`/historico/detalhes/${id}`);
+      }
     } else {
-      await historicService.postHistoric(newHistoric);
+      setHistoric({
+        ...historic,
+        studentId: getStudent ?? "",
+      });
+      const req = await historicService.postHistoric(historic);
+      if (req?.status === 201) {
+        navigate(`/historico/detalhes/${id}`);
+      }
     }
   }
-  const forwarding: string[] = [];
 
-  const getStudent = localStorage.getItem("idStudent");
   async function getHistoricUp() {
     if (id) {
       const historicUp = await historicService.findOne(id);
       setHistoric(historicUp?.data);
     }
   }
-  const handleChecked = (e: any) => {
-    setCheck(e.target.checked);
-  };
-  if (check) {
-    forwarding.push("Fisioterapia");
-  }
-  if (check2) {
-    forwarding.push("Raio-X");
-  }
-  if (check3) {
-    forwarding.push("Cirurgia");
-  }
 
-  const handleChecked2 = (e: any) => {
-    setCheck2(e.target.checked);
-  };
-  const handleChecked3 = (e: any) => {
-    setCheck3(e.target.checked);
-  };
   useEffect(() => {
     if (props.update) {
       getHistoricUp();
@@ -96,11 +95,13 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => {navigate(`/alunos/detalhes/${getStudent}`);
-          localStorage.removeItem('idStudent')}}
+            onClick={() => {
+              navigate(`/alunos/detalhes/${getStudent}`);
+            }}
           />
         </S.logins>
       </S.heading>
+
       <S.formContent>
         <S.formDiv>
           <p>{props.update ? "Editar Consulta" : "Criar Consulta"}</p>
@@ -112,19 +113,31 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
               mask="00/00/0000"
               minLength={8}
               name="startDate"
-              defaultValue={props.update ? historic?.startDate : ""}
+              defaultValue={props.update ? historic.startDate : ""}
+              onChange={(e) => {
+                setHistoric({ ...historic, startDate: e.currentTarget.value });
+              }}
             />
             <input
               {...register("firstPhoto", { required: true })}
               placeholder="Primeira Foto:"
               name="firstPhoto"
-              defaultValue={props.update ? historic?.firstPhoto : ""}
+              defaultValue={props.update ? historic.firstPhoto : ""}
+              onChange={(e) => {
+                setHistoric({ ...historic, firstPhoto: e.currentTarget.value });
+              }}
             />
             <input
               {...register("secondPhoto", { required: true })}
               placeholder="Secunda Foto:"
               name="secondPhoto"
-              defaultValue={props.update ? historic?.secondPhoto : ""}
+              defaultValue={props.update ? historic.secondPhoto : ""}
+              onChange={(e) => {
+                setHistoric({
+                  ...historic,
+                  secondPhoto: e.currentTarget.value,
+                });
+              }}
             />
             <IMaskInput
               {...register("returnDate", { required: true })}
@@ -132,13 +145,19 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
               name="returnDate"
               mask="00/00/0000"
               minLength={8}
-              defaultValue={props.update ? historic?.returnDate : ""}
+              defaultValue={props.update ? historic.returnDate : ""}
+              onChange={(e) => {
+                setHistoric({ ...historic, returnDate: e.currentTarget.value });
+              }}
             />
             <input
               {...register("note", { required: true })}
               placeholder="Observação:"
               name="note"
-              defaultValue={props.update ? historic?.note : ""}
+              defaultValue={props.update ? historic.note : ""}
+              onChange={(e) => {
+                setHistoric({ ...historic, note: e.currentTarget.value });
+              }}
             />
 
             <input
@@ -149,43 +168,81 @@ const FormHistoric = (props: { update?: boolean; estudante?: string }) => {
               style={{ display: "none" }}
             />
           </form>
-          <S.title><div>
-            <p>Exames</p>
-          </div>
+          <S.title>
+            <div>
+              <p>Exames</p>
+            </div>
           </S.title>
           <S.checkbox>
             <div>
               <input
-                {...register("forwarding1", { required: true })}
-                name="forwarding1"
+                {...register("fisioterapia", { required: true })}
+                name="fisioterapia"
                 type="checkbox"
-                checked={check}
-                onChange={handleChecked}
+                onClick={() => {
+                  setHistoric({
+                    ...historic,
+                    fisioterapia: !historic.fisioterapia,
+                  });
+                }}
+                checked={historic.fisioterapia}
               />
-              <label htmlFor="forwarding1">Fisioterapia</label>
+              <label htmlFor="fisioterapia">Fisioterapia</label>
             </div>
+
             <div>
               <input
-                {...register("forwarding2", { required: true })}
-                name="forwarding2"
+                {...register("raiox", { required: true })}
+                name="raiox"
                 type="checkbox"
-                checked={check2}
-                onChange={handleChecked2}
+                onClick={() => {
+                  setHistoric({ ...historic, raiox: !historic.raiox });
+                }}
+                checked={historic.raiox}
               />
-              <label htmlFor="forwarding2">Raio-x</label>
+              <label htmlFor="raiox">Raio-X</label>
             </div>
+
             <div>
               <input
-                {...register("forwarding3", { required: true })}
-                name="forwarding3"
+                {...register("cirurgia", { required: true })}
+                name="cirurgia"
                 type="checkbox"
-                checked={check3}
-                onChange={handleChecked3}
+                onClick={() => {
+                  setHistoric({ ...historic, cirurgia: !historic.cirurgia });
+                }}
+                checked={historic.cirurgia}
               />
-              <label htmlFor="forwarding3">Cirurgia</label>
+              <label htmlFor="cirurgia">Cirurgia</label>
+            </div>
+
+            <div>
+              <input
+                {...register("angulocob", { required: true })}
+                name="angulocob"
+                type="checkbox"
+                onClick={() => {
+                  setHistoric({ ...historic, angulocob: !historic.angulocob });
+                }}
+                checked={historic.angulocob}
+              />
+              <label htmlFor="angulocob">Ângulo Cob</label>
+            </div>
+
+            <div>
+              <input
+                {...register("colete", { required: true })}
+                name="colete"
+                type="checkbox"
+                onClick={() => {
+                  setHistoric({ ...historic, colete: !historic.colete });
+                }}
+                checked={historic.colete}
+              />
+              <label htmlFor="colete">Colete</label>
             </div>
           </S.checkbox>
-          <SendButton />
+          <SendButton onClick={handleSubmit} />
         </S.formDiv>
       </S.formContent>
     </>

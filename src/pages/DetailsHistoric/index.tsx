@@ -111,11 +111,11 @@ const DetailsHistoric = () => {
                    {historic?.angulocob?"tem":""}
                    {historic?.cirurgia?"tem":""}
                    {historic?.colete?"tem":""}
-                   {historic?.raiox?"tem":""}
+                   {historic?.raiox?"RAIO-X":""}
                    {historic?.fisioterapia?"tem":""}
                   </div>
                   <S.buttonsHistoric>
-                    <S.buttonEdit>EDITAR</S.buttonEdit>
+                    <S.buttonEdit onClick={()=> navigate(`/agendar/${id}`)}>EDITAR</S.buttonEdit>
                     <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>
@@ -150,7 +150,7 @@ const DetailsHistoric = () => {
           <p>Deseja realmente deletar?</p>
           <S.buttonsHistoric>
             <button
-              onClick={() => historicService.deleteHistoric(id ?? "")}
+              onClick={() => {historicService.deleteHistoric(id ?? ""); navigate(`/alunos/detalhes/${historic?.studentId}`)}}
             >
               SIM
             </button>

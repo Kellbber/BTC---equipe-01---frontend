@@ -74,7 +74,7 @@ export const formContent = styled.main`
 export const formDiv = styled.div`
   ${({ theme }) => css`
     display: flex;
-    width: 50%;
+    width: 60%;
     justify-content: center;
     align-items: center;
     background-color: white;
