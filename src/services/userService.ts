@@ -47,7 +47,7 @@ export const userApiService = {
 
   oneUser: async (id:string) =>{
     try{
-        const req = api.get(`/users/${id}`);
+        const req = axios.get(`/users/find-one/${id}`);
         return req;
     }catch(err){
         alert(err)
@@ -66,11 +66,13 @@ export const userApiService = {
       const req = await api.patch(`/users/${userId}`,{
         name: User.name,
         email: User.email,
-        role: User.role
+        role: User.role,
+        password: User.password,
+        confirmPassword: User.confirmPassword,
       });
       return req;
     }catch(err){
-      alert(err)
+      console.log(err)
     }
   },
 

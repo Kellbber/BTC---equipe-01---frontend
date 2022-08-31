@@ -11,6 +11,7 @@ interface User {
   name: string;
   email: string;
   role?: string;
+
 }
 const FormUser = (props: { update?: boolean }) => {
   const { register } = useForm();
@@ -21,14 +22,17 @@ const FormUser = (props: { update?: boolean }) => {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const newUser: User = {
       name: event.currentTarget.Nome.value,
       email: event.currentTarget.email.value,
       role: event.currentTarget.role.value,
+
     };
+    
     if (props.update) {
       await userApiService.UpUser(id ?? "", newUser);
-      navigate("/usuarios");
+      navigate(`/usuarios/detalhes/${id}`)
     } else {
       const req = await userService.postUser(newUser);
       if (req?.status === 201) {
@@ -40,8 +44,11 @@ const FormUser = (props: { update?: boolean }) => {
     if (id) {
       const userUp = await userApiService.oneUser(id);
       setUser(userUp?.data);
+
     }
+
   }
+  console.log(user)
   useEffect(() => {
     if (props.update) {
       getUserForUpdate();
