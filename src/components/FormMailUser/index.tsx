@@ -4,6 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { userApiService, userService } from "../../services/userService";
+import {IMaskInput} from 'react-imask'
 import * as S from "./style";
 import swall from 'sweetalert'
 interface User {
@@ -14,7 +15,7 @@ interface User {
   confirmPassword: string;
 }
 const FormMailUser = () => {
-  const { register } = useForm();
+  const { register, watch, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -85,23 +86,26 @@ const FormMailUser = () => {
             <input
               {...register("email", { required: 'Entre com o seu E-mail!', pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'Enter a valid e-mail address',
+                message: 'Entre com um e-mail válido ',
               },})}
               placeholder="Email:"
               name="email"
               type="email"
               defaultValue={user?.email}
             />
-            <input
-              {...register("password", { required: true })}
-              placeholder="Senha:"
+            <IMaskInput
+              {...register("password", { required: true})}
+              mask=""
+              placeholder="Senha no formato: Example@123"
               name="password"
               type="password"
-              minLength={5}
-              maxLength={15}
+              required
+              minLength={9}
+             
             />
             <input
-              {...register("confirmPassword", { required: true })}
+              {...register("confirmPassword", { required: true})}  
+              required     
               placeholder="Confirmar Senha:"
               name="confirmPassword"
               type="password"
