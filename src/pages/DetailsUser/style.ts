@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components";
-import backgroundname from "../../assets/images/background-name-inst.png";
+import fundoInst from "../../assets/images/back-users.png";
 import icon from "../../assets/images/icon.svg";
-
 export const background = styled.section`
   ${({ theme }) => css`
     min-height: 100vh;
-    min-width: 100vw;
-    background: ${theme.colors.backgroundColor};
+    background: url(${fundoInst});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   `}
 `;
 export const heading = styled.div`
@@ -17,6 +18,7 @@ export const heading = styled.div`
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
     justify-content: center;
+  
   `}
 `;
 export const iconConfig = styled.div`
@@ -67,10 +69,9 @@ export const content = styled.main`
   ${({ theme }) => css`
     display: flex;
     width: 100%;
+    justify-content:;
     align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
-    align-self: center;
   `}
 `;
 
@@ -79,37 +80,19 @@ export const Title = styled.h1`
     display: flex;
     width: 100%;
     font-family: ${theme.constants.nameInstitutionFamily};
-    color: ${theme.colors.primaryColors};
-    font-size: 400%;
-    font-weight: 900;
-    background-image: url(${backgroundname});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 2rem 0 2rem 0;
+
     text-align: center;
     align-items: center;
     justify-content: center;
     margin-top: -0.2rem;
   `}
 `;
-export const divMain = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: ${theme.colors.primaryColors};
-    margin-top: 1rem;
-    border-radius: 0.2rem;
-  `}
-`;
+
 export const styleCep = styled.a`
   ${({ theme }) => css`
     margin-top: 1rem;
     display: flex;
-    width: 10%;
+    width: 20%;
     list-style: none;
     outline: none;
     border: transparent;
@@ -134,11 +117,11 @@ export const cardDetails = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 90%;
-    align-items: center;
-    justify-content: space-around;
+
+    justify-content: center;
+    flex-direction: column;
     height: 80px;
     margin-bottom: 1rem;
-    background-color: ${theme.colors.backgroundColor};
   `}
 `;
 export const uniqueCard = styled.div`
@@ -146,14 +129,43 @@ export const uniqueCard = styled.div`
     font-family: ${theme.constants.headingFontFamily};
     font-size: 0.8rem;
     display: flex;
-    min-width: 15%;
+    width: 100%;
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    margin-top: 1rem;
+    p {
+      color: gray;
+    }
+    div{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .5rem;
+    }
   `}
 `;
-export const uniqueCardStudent = styled.div`
+export const uniqueCardHistoric = styled.div`
+  ${({ theme }) => css`
+    font-family: ${theme.constants.headingFontFamily};
+    font-size: 0.8rem;
+    display: flex;
+    width: 100%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin-bottom: .3rem;
+    justify-content: space-between;
+    p {
+      color: gray;
+      margin: 0;
+    }
+  `}
+`;
+export const uniqueCardConsult = styled.div`
   ${({ theme }) => css`
     font-family: ${theme.constants.headingFontFamily};
     font-size: 0.8rem;
@@ -176,12 +188,28 @@ export const uniqueCardStudent = styled.div`
 export const Details = styled.h5`
   ${({ theme }) => css`
     display: flex;
-    width: 100%;
+    width: 15%;
+    border-radius: 0.2rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-family: ${theme.constants.textFinalFontFamily};
     font-size: 1.5rem;
+    background-color: ${theme.colors.primaryColors};
+  `}
+`;
+export const DetailsCard = styled.h5`
+  ${({ theme }) => css`
+    display: flex;
+    width: 15%;
+    border-radius: 0.2rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: ${theme.constants.textFinalFontFamily};
+    font-size: 1.5rem;
+    background-color: ${theme.colors.primaryColors};
+   
   `}
 `;
 export const titleInfo = styled.div`
@@ -202,13 +230,12 @@ export const titleInfo = styled.div`
     }
   `}
 `;
-export const cardDetailsStudent = styled.div`
+export const cardDetailsConsult = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 90%;
-    align-items: center;
-    justify-content: space-around;
-    height: 90px;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-bottom: 1rem;
     background-color: ${theme.colors.backgroundColor};
     flex-direction: column;
@@ -223,84 +250,145 @@ export const divisionLine = styled.div`
 export const buttonEdit = styled.button`
   ${({ theme }) => css`
     display: flex;
-    width: 10%;
-    justify-content: center;
     align-items: center;
-    list-style: none;
-    outline: none;
-    border: transparent;
-    cursor: pointer;
+    justify-content: center;
+    padding: .5rem 0 .5rem 0;
     background-color: ${theme.colors.secundaryColor};
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0.2rem;
     font-family: ${theme.constants.headingFontFamily};
-    font-size: 0.8rem;
-    font-weight: 400;
+    align-self: center;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    
+    width: 20%;
     color: ${theme.colors.primaryColors};
-    margin-right: 1rem;
-    border-radius: 0.3rem;
-    padding: 0.5rem 0 0.5rem 0;
-    :hover {
-      font-weight: 600;
-    }
   `}
 `;
-
+export const buttonDelete = styled.button`
+${({theme})=>css`
+    background-color: red;
+    width: 20%;
+    outline: none;
+    padding: .5rem 0 .5rem 0;
+    cursor: pointer;
+    border: transparent;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    font-family: ${theme.constants.headingFontFamily};
+    color: ${theme.colors.primaryColors};
+    border-radius: 0.2rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+`}
+`
 export const divButtons = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
+
+
 `;
-export const formDelete = styled.form`
+
+//historico
+export const addHistoric = styled.button`
   ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${theme.colors.secundaryColor};
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0.2rem;
+    font-family: ${theme.constants.headingFontFamily};
+    align-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    width: 30%;
+    color: ${theme.colors.primaryColors};
+  `}
+`;
+
+export const division = styled.div`
+  display: flex;
+  width: 100%;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 0.1% 0 0.1% 0;
+`;
+
+export const divStudentDetails = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.primaryColors};
+    flex-direction: column;
+ height: 60vh;
+    border-radius: 0.2rem;
+    padding-top: 1rem;
+    
+    button{
+      display: flex;
+      justify-content: center;
+    }
+  `}
+`;
+export const divStudentHistoric = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.primaryColors};
+    flex-direction: column;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+    border: transparent;
+  `}
+`;
+
+export const organize = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-around;
+
+`
+export const formDelete = styled.form`
+${({theme})=>css`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     flex-direction: column;
-    p {
-      width: 50%;
-      margin: -1rem;
-      font-family: ${theme.constants.headingFontFamily};
-      font-size: 0.8rem;
+    p{
+        width: 50%;
+        margin: -1rem;
+        font-family: ${theme.constants.headingFontFamily};
+        font-size: .8rem;
     }
-    button {
-      width: 20%;
-      margin-top: 2rem;
-      font-family: ${theme.constants.headingFontFamily};
-      background-color: ${theme.colors.backgroundColor};
-      border: transparent;
-      border-radius: 0.2rem;
-      cursor: pointer;
+    button{
+        width: 20%;
+        margin-top: 2rem;
+        font-family: ${theme.constants.headingFontFamily};
+        background-color: ${theme.colors.backgroundColor};
+        border: transparent;
+        border-radius: 0.2rem;
+        cursor: pointer;
     }
-  `}
-`;
+`}
+`
 export const buttonsHistoric = styled.div`
   display: flex;
   justify-content: space-between;
-
   width: 80%;
   align-items: center;
-`;
-export const buttonDelete = styled.button`
-  ${({ theme }) => css`
-    display: flex;
-    width: 10%;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    outline: none;
-    border: transparent;
-    cursor: pointer;
-    background-color: red;
-    font-family: ${theme.constants.headingFontFamily};
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: ${theme.colors.primaryColors};
-    margin-right: 1rem;
-    border-radius: 0.3rem;
-    padding: 0.5rem 0 0.5rem 0;
-    :hover {
-      font-weight: 600;
-    }
-  `}
 `;

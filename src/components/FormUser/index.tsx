@@ -69,7 +69,7 @@ const FormUser = (props: { update?: boolean }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/usuarios")}
+          onClick={() => {id ? navigate(`/usuarios/detalhes/${id}`): navigate('/usuarios')}}
           />
         </S.logins>
         </S.heading>

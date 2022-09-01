@@ -81,36 +81,45 @@ const DetailsUser = () => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/usuarios")}
           />
         </S.logins>
       </S.heading>
       {!showLoading?
       <S.content>
-        <S.divMain>
-          <S.Title>{user?.name}</S.Title>
-          {userLogged.role === "ADMIN" ? (
-            <S.divButtons>
-              <S.buttonEdit onClick={() => navigate(`/formusuario/${id}`)}>
-                Editar
-              </S.buttonEdit>
-              <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
-            </S.divButtons>
-          ) : (
-            ""
-          )}
+       
           <S.Details>Detalhes</S.Details>
-          <S.titleInfo>
-            <p>Nome</p>
-            <p>Email</p>
-            <p>Cargo</p>
-          </S.titleInfo>
+          <S.organize>
+          <S.divStudentDetails>
           <S.cardDetails>
-            <S.uniqueCard>{user?.name}</S.uniqueCard>
-            <S.uniqueCard>{user?.email}</S.uniqueCard>
-            <S.uniqueCard>{user?.role}</S.uniqueCard>
+            <S.uniqueCard>
+              <div>
+                <p>Nome</p>
+              {user?.name}
+              </div>
+              </S.uniqueCard>
+              <S.division/>
+            <S.uniqueCard>
+              <div>
+              <p>Email</p>
+              {user?.email}
+              </div>
+            </S.uniqueCard>
+            <S.division/>
+            <S.uniqueCard>
+              <div>
+              <p>Cargo</p>
+              {user?.role}
+              </div>
+              </S.uniqueCard>
+              <S.division/>
+              <S.divButtons>
+                <S.buttonEdit onClick={()=> navigate(`/formusuario/${user?.id}`)}>Editar</S.buttonEdit>
+                <S.buttonDelete onClick={openModal}>Deletar</S.buttonDelete>
+              </S.divButtons>
           </S.cardDetails>
-        </S.divMain>
+          </S.divStudentDetails>
+          </S.organize>
       </S.content>
       :""}
       <Modal
