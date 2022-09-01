@@ -215,9 +215,8 @@ export const buttonsHistoric = styled.div`
   align-items: center;
 `;
 
-
 export const buttonEdit = styled.button`
-${({theme})=>css`
+  ${({ theme }) => css`
     background-color: ${theme.colors.secundaryColor};
     width: 20%;
     outline: none;
@@ -230,10 +229,10 @@ ${({theme})=>css`
     color: ${theme.colors.primaryColors};
     border-radius: 0.2rem;
     margin-top: 4rem;
-`}
-`
-export const buttonDelete = styled.button`
-${({theme})=>css`
+  `}
+`;
+export const buttonDownload = styled.button`
+  ${({ theme }) => css`
     background-color: red;
     width: 20%;
     outline: none;
@@ -246,30 +245,46 @@ ${({theme})=>css`
     color: ${theme.colors.primaryColors};
     border-radius: 0.2rem;
     margin-top: 4rem;
-`}
-`
+  `}
+`;
+export const buttonDelete = styled.button`
+  ${({ theme }) => css`
+    background-color: red;
+    width: 20%;
+    outline: none;
+    cursor: pointer;
+    border: transparent;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    font-family: ${theme.constants.headingFontFamily};
+    color: ${theme.colors.primaryColors};
+    border-radius: 0.2rem;
+    margin-top: 4rem;
+  `}
+`;
 
 export const formDelete = styled.form`
-${({theme})=>css`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     flex-direction: column;
-    p{
-        width: 50%;
-        margin: -1rem;
-        font-family: ${theme.constants.headingFontFamily};
-        font-size: .8rem;
+    p {
+      width: 50%;
+      margin: -1rem;
+      font-family: ${theme.constants.headingFontFamily};
+      font-size: 0.8rem;
     }
-    button{
-        width: 20%;
-        margin-top: 2rem;
-        font-family: ${theme.constants.headingFontFamily};
-        background-color: ${theme.colors.backgroundColor};
-        border: transparent;
-        border-radius: 0.2rem;
-        cursor: pointer;
+    button {
+      width: 20%;
+      margin-top: 2rem;
+      font-family: ${theme.constants.headingFontFamily};
+      background-color: ${theme.colors.backgroundColor};
+      border: transparent;
+      border-radius: 0.2rem;
+      cursor: pointer;
     }
-`}
-`
+  `}
+`;

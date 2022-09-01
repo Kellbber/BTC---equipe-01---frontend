@@ -9,7 +9,6 @@ import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 
 const DetailsInstitution = () => {
-  
   const { id } = useParams();
   const navigate = useNavigate();
   const [showLoading, setShowLoading] = useState(true);
@@ -37,7 +36,6 @@ const DetailsInstitution = () => {
   const jwt = localStorage.getItem("jwt");
 
   const getOneInstitution = async () => {
- 
     if (jwt) {
       if (id) {
         const get = await institutionService.oneInstitution(id);
@@ -78,68 +76,65 @@ const DetailsInstitution = () => {
           />
         </S.logins>
       </S.heading>
-    {!showLoading?
-      <S.content>
-         <S.Details>Detalhes</S.Details>
+      {!showLoading ? (
+        <S.content>
+          <S.Details>Detalhes</S.Details>
           <S.organize>
-        <S.divStudentDetails>
-        <S.cardDetails>
-        <S.uniqueCard>
-          <div>
-            <p>
-              Nome
-            </p>
-            {institution?.name}
-          </div>
-          <S.division/>
-          <div>
-            <p>
-             Telefone
-            </p>
-            {institution?.phone}
-          </div>
-          <S.division/>
-          <div>
-            <p>
-            Endereço
-            </p>
-            {institution?.street}
-          </div>
-          <S.division/>
-          <div>
-            <p>Visualizar CEP</p>
-          <S.styleCep
-            href={`https://www.google.com.br/maps/place/${institution?.cep}`}
-            target="_blank"
-          >
-            {institution?.cep}
-          </S.styleCep>
-          </div>
-          <S.division/>
-          <S.buttonEdit onClick={() => navigate(`/forminstituicao/${id}`)}>
-                Editar
-              </S.buttonEdit>
-        </S.uniqueCard>
-        </S.cardDetails>
-        </S.divStudentDetails>
-        <S.divStudentHistoric>
-        <S.DetailsCard>Alunos</S.DetailsCard>
-          {institution?.students.map((student: Student,index)=>(
-            <S.cardDetails key={index}>
-       
-              <S.uniqueCardHistoric>
-                <p>Nome</p>  
-                {student.name}
-                <p>Data Nasc</p>
-                {student.age}
-              </S.uniqueCardHistoric>
-              <S.division />
-            </S.cardDetails>
-          ))}
-        </S.divStudentHistoric>
-        </S.organize>
-      </S.content>
-      :""}
+            <S.divStudentDetails>
+              <S.cardDetails>
+                <S.uniqueCard>
+                  <div>
+                    <p>Nome</p>
+                    {institution?.name}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Telefone</p>
+                    {institution?.phone}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Endereço</p>
+                    {institution?.street}
+                  </div>
+                  <S.division />
+                  <div>
+                    <p>Visualizar CEP</p>
+                    <S.styleCep
+                      href={`https://www.google.com.br/maps/place/${institution?.cep}`}
+                      target="_blank"
+                    >
+                      {institution?.cep}
+                    </S.styleCep>
+                  </div>
+                  <S.division />
+                  <S.buttonEdit
+                    onClick={() => navigate(`/forminstituicao/${id}`)}
+                  >
+                    Editar
+                  </S.buttonEdit>
+                </S.uniqueCard>
+              </S.cardDetails>
+            </S.divStudentDetails>
+            <S.divStudentHistoric>
+              <S.DetailsCard>Alunos</S.DetailsCard>
+              {institution?.students.map((student: Student, index) => (
+                <S.cardDetails key={index}>
+                  <S.uniqueCardHistoric>
+                    <p>Nome</p>
+                    {student.name}
+                    <p>Data Nasc</p>
+                    {student.age}
+                  </S.uniqueCardHistoric>
+                  <S.division />
+                </S.cardDetails>
+              ))}
+            </S.divStudentHistoric>
+          </S.organize>
+        </S.content>
+      ) : (
+        ""
+      )}
       {showLoading ? <Loading /> : ""}
     </S.background>
   );

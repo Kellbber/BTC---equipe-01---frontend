@@ -18,7 +18,6 @@ export const heading = styled.div`
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
     justify-content: center;
-  
   `}
 `;
 export const iconConfig = styled.div`
@@ -69,7 +68,7 @@ export const content = styled.main`
   ${({ theme }) => css`
     display: flex;
     width: 100%;
-    justify-content:;
+    justify-content: ;
     align-items: center;
     flex-direction: column;
   `}
@@ -139,12 +138,12 @@ export const uniqueCard = styled.div`
     p {
       color: gray;
     }
-    div{
+    div {
       display: flex;
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
   `}
 `;
@@ -157,7 +156,7 @@ export const uniqueCardHistoric = styled.div`
     font-weight: 500;
     display: flex;
     align-items: center;
-    margin-bottom: .3rem;
+    margin-bottom: 0.3rem;
     justify-content: space-between;
     p {
       color: gray;
@@ -209,7 +208,6 @@ export const DetailsCard = styled.h5`
     font-family: ${theme.constants.textFinalFontFamily};
     font-size: 1.5rem;
     background-color: ${theme.colors.primaryColors};
-   
   `}
 `;
 export const titleInfo = styled.div`
@@ -261,7 +259,7 @@ export const buttonEdit = styled.button`
     align-self: center;
     margin-top: 5rem;
     margin-bottom: 1rem;
-    
+
     width: 50%;
     color: ${theme.colors.primaryColors};
   `}
@@ -315,11 +313,11 @@ export const divStudentDetails = styled.div`
     align-items: center;
     background-color: ${theme.colors.primaryColors};
     flex-direction: column;
- height: 60vh;
+    height: 60vh;
     border-radius: 0.2rem;
     padding-top: 1rem;
-    
-    button{
+
+    button {
       display: flex;
       justify-content: center;
     }
@@ -334,14 +332,17 @@ export const divStudentHistoric = styled.div`
     background-color: ${theme.colors.primaryColors};
     flex-direction: column;
     margin-left: 1rem;
+    max-height: 31rem;
+    overflow-y: auto;
+    width: 35rem;
+    height: 35rem;
     border-radius: 0.2rem;
     border: transparent;
   `}
 `;
 
 export const organize = styled.div`
-display: flex;
-width: 100%;
-justify-content: space-around;
-
-`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;

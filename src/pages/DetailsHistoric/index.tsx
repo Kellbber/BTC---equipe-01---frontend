@@ -25,11 +25,11 @@ interface Historic {
   startDate: string;
   returnDate: string;
   note: string;
-  raiox:boolean;
-  fisioterapia:boolean;
-  colete:boolean;
-  cirurgia:boolean;
-  angulocob:boolean;
+  raiox: boolean;
+  fisioterapia: boolean;
+  colete: boolean;
+  cirurgia: boolean;
+  angulocob: boolean;
   studentId: string;
 }
 
@@ -68,12 +68,14 @@ const DetailsHistoric = () => {
       }
     }
   };
+
   function returnDetails() {
     navigate(`/alunos/detalhes/${historic?.studentId}`);
   }
   useEffect(() => {
     getHistoric();
   }, []);
+
   return (
     <S.background>
       <S.heading>
@@ -108,19 +110,29 @@ const DetailsHistoric = () => {
                   </div>
                   <div>
                     <p>Exames ou procedimentos</p>
-                   {historic?.angulocob?"Ângulo cob":""}<br/>
-                   {historic?.cirurgia?"Cirurgia":""}
-                   <br/>
-                   {historic?.colete?"Colete":""}
-                   <br/>
-                   {historic?.raiox?"Raio-X":""}
-                   <br/>
-                   {historic?.fisioterapia?
-                   "Fisioterapia":""}
-                   <br/>
+                    {historic?.angulocob ? "Ângulo cob" : ""}
+                    <br />
+                    {historic?.cirurgia ? "Cirurgia" : ""}
+                    <br />
+                    {historic?.colete ? "Colete" : ""}
+                    <br />
+                    {historic?.raiox ? "Raio-X" : ""}
+                    <br />
+                    {historic?.fisioterapia ? "Fisioterapia" : ""}
+                    <br />
                   </div>
                   <S.buttonsHistoric>
-                    <S.buttonEdit onClick={()=> navigate(`/agendar/${id}`)}>EDITAR</S.buttonEdit>
+                    <S.buttonEdit onClick={() => navigate(`/agendar/${id}`)}>
+                      EDITAR
+                    </S.buttonEdit>
+                    {/* <S.buttonDownload
+                      onClick={() => {
+                        console.log(getHistoric()),
+                          detailsStudent(getHistoric());
+                      }}
+                    >
+                      Baixar consulta
+                    </S.buttonDownload> */}
                     <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>
@@ -155,7 +167,10 @@ const DetailsHistoric = () => {
           <p>Deseja realmente deletar?</p>
           <S.buttonsHistoric>
             <button
-              onClick={() => {historicService.deleteHistoric(id ?? ""); navigate(`/alunos/detalhes/${historic?.studentId}`)}}
+              onClick={() => {
+                historicService.deleteHistoric(id ?? "");
+                navigate(`/alunos/detalhes/${historic?.studentId}`);
+              }}
             >
               SIM
             </button>
