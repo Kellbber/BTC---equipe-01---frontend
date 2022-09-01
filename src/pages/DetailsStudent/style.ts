@@ -301,11 +301,9 @@ export const divStudentDetails = styled.div`
     align-items: center;
     background-color: ${theme.colors.primaryColors};
     flex-direction: column;
-    margin-top: 1rem;
-    margin-left: 1rem;
     border-radius: 0.2rem;
     padding-top: 1rem;
-    min-height: 340px;
+    height: 60vh;
     button{
       display: flex;
       justify-content: center;
@@ -320,7 +318,6 @@ export const divStudentHistoric = styled.button`
     align-items: center;
     background-color: ${theme.colors.primaryColors};
     flex-direction: column;
-    margin-top: 1rem;
     margin-left: 1rem;
     border-radius: 0.2rem;
     padding-top: 1rem;
@@ -331,7 +328,6 @@ export const divStudentHistoric = styled.button`
 export const organize = styled.div`
 display: flex;
 width: 100%;
-align-items: center;
-justify-content: center;
+justify-content: space-around;
 
 `
