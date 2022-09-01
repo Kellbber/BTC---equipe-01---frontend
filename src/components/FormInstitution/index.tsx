@@ -113,7 +113,7 @@ const FormInstitution = (props: { update?: boolean }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => navigate("/instituicoes")}
+            onClick={() => {id ? navigate(`/instituicao/detalhes/${id}`): navigate('/instituicoes')}}
           />
         </S.logins>
       </S.heading>

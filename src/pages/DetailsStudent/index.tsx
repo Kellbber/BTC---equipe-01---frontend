@@ -78,8 +78,6 @@ const DetailsStudent = () => {
               </S.buttonEdit>
                 </S.uniqueCard>
               </S.cardDetails>
-
-
             </S.divStudentDetails>
             <S.divStudentHistoric>
               {aluno?.followUp?.map((historic, index) => (
