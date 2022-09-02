@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { historicService } from "../../services/historicService";
 import * as S from "./style";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfMake/build/vfs_fonts";
+import pdFmake from "pdfmake/build/pdfmake";
+import pdFfonts from "pdfMake/build/vfs_fonts";
 
 const customStyles = {
   content: {
@@ -79,7 +79,7 @@ const DetailsHistoric = () => {
   }, []);
 
   const generatePdf = (historic: Historic) => {
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdFmake.vfs = pdFfonts.pdfMake.vfs;
 
     const title = [
       {
@@ -135,7 +135,7 @@ const DetailsHistoric = () => {
       footer: Rodape,
     };
 
-    pdfMake.createPdf(docdefinitions).download();
+    pdFmake.createPdf(docdefinitions).download();
   };
 
   return (
