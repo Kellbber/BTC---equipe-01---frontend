@@ -2,7 +2,6 @@ import { FormStudents } from "../../src/types/FormStudent";
 import api from './Api';
 
 
-
 export const studentService = {
   postStudent: async (newStudent: FormStudents) => {
     try {
@@ -54,6 +53,15 @@ export const studentService = {
       return req;
     }catch(err){
       alert(err)
+    }
+  },
+
+  deleteStudent: async (id: string) =>{
+    try{
+      const req = api.delete(`/student/${id}`);
+      return req;
+    }catch(err){
+
     }
   }
 };

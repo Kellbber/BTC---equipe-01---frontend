@@ -125,6 +125,7 @@ const DetailsHistoric = () => {
                     <S.buttonEdit onClick={() => navigate(`/agendar/${id}`)}>
                       EDITAR
                     </S.buttonEdit>
+                    <S.buttonDelete onClick={openModal}>Deletar</S.buttonDelete>
                     {historic && (
                       <S.buttonDownload
                         onClick={() => {
@@ -135,7 +136,6 @@ const DetailsHistoric = () => {
                       </S.buttonDownload>
                     )}
 
-                    <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>
               </S.cardDetails>

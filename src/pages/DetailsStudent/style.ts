@@ -18,7 +18,6 @@ export const heading = styled.div`
     background-color: ${theme.colors.secundaryColor};
     align-items: center;
     justify-content: center;
-  
   `}
 `;
 export const iconConfig = styled.div`
@@ -113,6 +112,53 @@ export const styleCep = styled.a`
     }
   `}
 `;
+export const buttonsHistoric = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+`;
+
+export const buttonDelete = styled.button`
+  ${({ theme }) => css`
+    background-color: red;
+    width: 20%;
+    outline: none;
+    cursor: pointer;
+    border: transparent;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    font-family: ${theme.constants.headingFontFamily};
+    color: ${theme.colors.primaryColors};
+    border-radius: 0.2rem;
+    margin-top: 4rem;
+  `}
+`;
+export const formDelete = styled.form`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    p {
+      width: 50%;
+      margin: -1rem;
+      font-family: ${theme.constants.headingFontFamily};
+      font-size: 0.8rem;
+    }
+    button {
+      width: 20%;
+      margin-top: 2rem;
+      font-family: ${theme.constants.headingFontFamily};
+      background-color: ${theme.colors.backgroundColor};
+      border: transparent;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+  `}
+`;
 export const cardDetails = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -139,12 +185,12 @@ export const uniqueCard = styled.div`
     p {
       color: gray;
     }
-    div{
+    div {
       display: flex;
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
   `}
 `;
@@ -247,8 +293,8 @@ export const buttonEdit = styled.button`
     align-self: center;
     margin-top: 5rem;
     margin-bottom: 1rem;
-    
-    width: 50%;
+
+    width: 20%;
     color: ${theme.colors.primaryColors};
   `}
 `;
@@ -304,7 +350,7 @@ export const divStudentDetails = styled.div`
     border-radius: 0.2rem;
     padding-top: 1rem;
     height: 60vh;
-    button{
+    button {
       display: flex;
       justify-content: center;
     }
@@ -326,8 +372,7 @@ export const divStudentHistoric = styled.button`
 `;
 
 export const organize = styled.div`
-display: flex;
-width: 100%;
-justify-content: space-around;
-
-`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
