@@ -16,8 +16,8 @@ const customStyles = {
     width: "28%",
   },
 };
-import * as S from "./style";
 Modal.setAppElement("#root");
+import * as S from "./style";
 
 const DetailsStudent = () => {
   const { id } = useParams();

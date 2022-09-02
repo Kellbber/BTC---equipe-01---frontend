@@ -6,12 +6,25 @@ import { Student } from "types/student";
 import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import { institutionService } from "../../services/institutionService";
-
 import * as S from "./style";
+import Modal from 'react-modal'
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "28%",
+  },
+};
+Modal.setAppElement("#root");
 
 const DetailsInstitution = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState(true);
   const [institution, setInstitution] = useState<InstitutionComplete>();
   interface User {
@@ -33,6 +46,13 @@ const DetailsInstitution = () => {
     const response = await userLoggedService.userLogged();
     setUserLogged(response?.data);
   };
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const jwt = localStorage.getItem("jwt");
 
@@ -110,11 +130,17 @@ const DetailsInstitution = () => {
                     </S.styleCep>
                   </div>
                   <S.division />
+                  <S.buttonsHistoric>
                   <S.buttonEdit
                     onClick={() => navigate(`/forminstituicao/${id}`)}
                   >
                     Editar
                   </S.buttonEdit>
+                  <S.buttonDelete onClick={openModal}>
+                    Deletar
+                  </S.buttonDelete>
+                  </S.buttonsHistoric>
+
                 </S.uniqueCard>
               </S.cardDetails>
             </S.divStudentDetails>
@@ -137,6 +163,26 @@ const DetailsInstitution = () => {
       ) : (
         ""
       )}
+             <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <S.formDelete>
+          <p>Deseja realmente deletar?</p>
+          <S.buttonsHistoric>
+            <button
+              onClick={() => {
+                institutionService.deletInstitution(id ?? "");
+                navigate(`/instituicoes`);
+              }}
+            >
+              SIM
+            </button>
+            <button onClick={closeModal}>NÃO</button>
+          </S.buttonsHistoric>
+        </S.formDelete>
+      </Modal>
       {showLoading ? <Loading /> : ""}
     </S.background>
   );

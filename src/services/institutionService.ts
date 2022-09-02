@@ -65,4 +65,12 @@ export const institutionService = {
       alert(err);
     }
   },
+  deletInstitution: async (id: string)=>{
+    try{
+      const req = api.delete(`/institutions/${id}`)
+      return req;
+    }catch(err){
+      alert(err)
+    }
+  }
 };
