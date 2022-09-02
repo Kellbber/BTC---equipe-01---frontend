@@ -5,8 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { historicService } from "../../services/historicService";
 import * as S from "./style";
-import pdFmake from "pdfmake/build/pdfmake";
-import pdFfonts from "pdfMake/build/vfs_fonts";
 
 const customStyles = {
   content: {
@@ -78,66 +76,6 @@ const DetailsHistoric = () => {
     getHistoric();
   }, []);
 
-  const generatePdf = (historic: Historic) => {
-    pdFmake.vfs = pdFfonts.pdfMake.vfs;
-
-    const title = [
-      {
-        text: "Historico",
-        fontSize: 15,
-        bold: true,
-        margin: [15, 20, 0, 45],
-      },
-    ];
-
-    const details = [
-      {
-        table: {
-          headerRows: 1,
-          body: [
-            [
-              { text: "Data Inicial", style: "tableHeader" },
-              { text: "Data de Retorno", style: "tableHeader" },
-              { text: "Exames ou procedimentos ", style: "tableHeader" },
-            ],
-            [
-              { text: historic.startDate },
-              { text: historic.returnDate },
-              historic.angulocob ? { text: "angulocob" } : "",
-            ],
-            [{}, {}, historic.cirurgia ? { text: "cirurgia" } : ""],
-            [{}, {}, historic.colete ? { text: "colete" } : ""],
-            [{}, {}, historic.raiox ? { text: "raiox " } : ""],
-            [{}, {}, historic.fisioterapia ? { text: "fisioterapia " } : ""],
-          ],
-        },
-        layout: "headerLineOnly",
-      },
-    ];
-
-    function Rodape(currentPage: any, pageCount: any) {
-      return [
-        {
-          text: currentPage + " / " + pageCount,
-          alignment: "right",
-          fontSize: 9,
-          margin: [0, 10, 20, 0],
-        },
-      ];
-    }
-
-    const docdefinitions: any = {
-      pageSize: "A4",
-      pageMargins: [15, 50, 15, 40],
-
-      header: [title],
-      content: [details],
-      footer: Rodape,
-    };
-
-    pdFmake.createPdf(docdefinitions).download();
-  };
-
   return (
     <S.background>
       <S.heading>
@@ -190,7 +128,7 @@ const DetailsHistoric = () => {
                     {historic && (
                       <S.buttonDownload
                         onClick={() => {
-                          generatePdf(historic);
+                          // generatePdf(historic);
                         }}
                       >
                         Baixar consulta
