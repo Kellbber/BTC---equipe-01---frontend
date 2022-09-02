@@ -77,7 +77,8 @@ const DetailsHistoric = () => {
   useEffect(() => {
     getHistoric();
   }, []);
-  const generatePdf = (Historic: Historic) => {
+
+  const generatePdf = (historic: Historic) => {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
     const title = [
@@ -97,8 +98,17 @@ const DetailsHistoric = () => {
             [
               { text: "Data Inicial", style: "tableHeader" },
               { text: "Data de Retorno", style: "tableHeader" },
+              { text: "Exames ou procedimentos ", style: "tableHeader" },
             ],
-            [{ text: Historic.startDate }, { text: Historic.returnDate }],
+            [
+              { text: historic.startDate },
+              { text: historic.returnDate },
+              historic.angulocob ? { text: "angulocob" } : "",
+            ],
+            [{}, {}, historic.cirurgia ? { text: "cirurgia" } : ""],
+            [{}, {}, historic.colete ? { text: "colete" } : ""],
+            [{}, {}, historic.raiox ? { text: "raiox " } : ""],
+            [{}, {}, historic.fisioterapia ? { text: "fisioterapia " } : ""],
           ],
         },
         layout: "headerLineOnly",
@@ -127,6 +137,7 @@ const DetailsHistoric = () => {
 
     pdfMake.createPdf(docdefinitions).download();
   };
+
   return (
     <S.background>
       <S.heading>
@@ -176,13 +187,16 @@ const DetailsHistoric = () => {
                     <S.buttonEdit onClick={() => navigate(`/agendar/${id}`)}>
                       EDITAR
                     </S.buttonEdit>
-                    <S.buttonDownload
-                      onClick={() => {
-                        // console.log(Historic()), generatePdf(Historic());
-                      }}
-                    >
-                      Baixar consulta
-                    </S.buttonDownload>
+                    {historic && (
+                      <S.buttonDownload
+                        onClick={() => {
+                          generatePdf(historic);
+                        }}
+                      >
+                        Baixar consulta
+                      </S.buttonDownload>
+                    )}
+
                     <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>
