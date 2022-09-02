@@ -14,7 +14,7 @@ interface UserLogged {
   confirmPassword: string;
   role: string;
 }
-interface UserAll{
+interface UserAll {
   users: User[];
   totalPages: number;
 }
@@ -38,12 +38,13 @@ const AdminUsers = () => {
     setUserLogged(response?.data);
   };
   const filteredUsers =
-    search.length > 0 ? users?.users.filter((user) => user.name.includes(search)) : [];
+    search.length > 0
+      ? users?.users.filter((user) => user.name.includes(search))
+      : [];
 
   const jwt = localStorage.getItem("jwt");
 
-  const getAllUsers = async ()   => {
-
+  const getAllUsers = async () => {
     if (jwt) {
       const response = await userApiService.allUsers(page);
       if (response) {
@@ -52,11 +53,10 @@ const AdminUsers = () => {
       setShowLoading(false);
     }
   };
-useEffect(()=>{
-  getUserLogged();
-  getAllUsers();
-
-},[])
+  useEffect(() => {
+    getUserLogged();
+    getAllUsers();
+  }, []);
   function goToDetails(id: string) {
     navigate(`/usuarios/detalhes/${id}`);
   }
@@ -79,73 +79,73 @@ useEffect(()=>{
           />
         </S.logins>
       </S.heading>
-      {!showLoading?
-      <S.content>
-        <S.adminSearch>
-          <input
-            type="text"
-            placeholder="Digite o nome do usuário..."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-        </S.adminSearch>
-        <S.addButton onClick={() => navigate("/criarusuario")}>
+      {!showLoading ? (
+        <S.content>
+          <S.adminSearch>
+            <input
+              type="text"
+              placeholder="Digite o nome do usuário..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+          </S.adminSearch>
+          <S.addButton onClick={() => navigate("/criarusuario")}>
             Adicionar
           </S.addButton>
-        <S.searchList>
-          {search.length > 0 ? (
-            <S.itemList>
-              <S.nameTable>
-                <p>Nome</p>
-                <p>Email</p>
-              </S.nameTable>
-              <S.divTable>
-                {filteredUsers?.map((user) => {
-                  return (
-                    <div
-                      className="divmain"
-                      key={user.name}
-                      onClick={() => {
-                        goToDetails(user.id ?? "");
-                      }}
-                    >
-                      <div>{user.name}</div>
-                      <div>{user.email}</div>
-                    </div>
-                  );
-                })}
-              </S.divTable>
-            </S.itemList>
-          ) : (
-            <S.itemList>
-              <S.nameTable>
-                <p>Nome</p>
-                <p>Email</p>
-              </S.nameTable>
-              <S.divTable>
-                {users?.users.map((user) => {
-                  return (
-                    <div
-                      className="divmain"
-                      key={user.name}
-                      onClick={() => {
-                        goToDetails(user.id ?? "");
-                      }}
-                    >
-                      <div>{user.name}</div>
-                      <div>{user.email}</div>
-                    </div>
-                  );
-                })}
-              </S.divTable>
-            </S.itemList>
-          )}
-        </S.searchList>
-      </S.content>
-      :""}
-      {showLoading?
-         <Loading/>
-      :""}
+          <S.searchList>
+            {search.length > 0 ? (
+              <S.itemList>
+                <S.nameTable>
+                  <p>Nome</p>
+                  <p>Email</p>
+                </S.nameTable>
+                <S.divTable>
+                  {filteredUsers?.map((user) => {
+                    return (
+                      <div
+                        className="divmain"
+                        key={user.name}
+                        onClick={() => {
+                          goToDetails(user.id ?? "");
+                        }}
+                      >
+                        <div>{user.name}</div>
+                        <div>{user.email}</div>
+                      </div>
+                    );
+                  })}
+                </S.divTable>
+              </S.itemList>
+            ) : (
+              <S.itemList>
+                <S.nameTable>
+                  <p>Nome</p>
+                  <p>Email</p>
+                </S.nameTable>
+                <S.divTable>
+                  {users?.users.map((user) => {
+                    return (
+                      <div
+                        className="divmain"
+                        key={user.name}
+                        onClick={() => {
+                          goToDetails(user.id ?? "");
+                        }}
+                      >
+                        <div>{user.name}</div>
+                        <div>{user.email}</div>
+                      </div>
+                    );
+                  })}
+                </S.divTable>
+              </S.itemList>
+            )}
+          </S.searchList>
+        </S.content>
+      ) : (
+        ""
+      )}
+      {showLoading ? <Loading /> : ""}
     </S.background>
   );
 };

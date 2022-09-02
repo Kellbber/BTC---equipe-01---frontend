@@ -6,6 +6,7 @@ import { Student } from "types/student";
 import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import { institutionService } from "../../services/institutionService";
+
 import * as S from "./style";
 
 const DetailsInstitution = () => {
@@ -58,6 +59,7 @@ const DetailsInstitution = () => {
       return false;
     }
   }
+
   return (
     <S.background>
       <S.heading>

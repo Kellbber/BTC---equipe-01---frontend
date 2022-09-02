@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { historicService } from "../../services/historicService";
 import * as S from "./style";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfMake/build/vfs_fonts";
 
 const customStyles = {
   content: {
@@ -75,7 +77,56 @@ const DetailsHistoric = () => {
   useEffect(() => {
     getHistoric();
   }, []);
+  const generatePdf = (Historic: Historic) => {
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+    const title = [
+      {
+        text: "Historico",
+        fontSize: 15,
+        bold: true,
+        margin: [15, 20, 0, 45],
+      },
+    ];
+
+    const details = [
+      {
+        table: {
+          headerRows: 1,
+          body: [
+            [
+              { text: "Data Inicial", style: "tableHeader" },
+              { text: "Data de Retorno", style: "tableHeader" },
+            ],
+            [{ text: Historic.startDate }, { text: Historic.returnDate }],
+          ],
+        },
+        layout: "headerLineOnly",
+      },
+    ];
+
+    function Rodape(currentPage: any, pageCount: any) {
+      return [
+        {
+          text: currentPage + " / " + pageCount,
+          alignment: "right",
+          fontSize: 9,
+          margin: [0, 10, 20, 0],
+        },
+      ];
+    }
+
+    const docdefinitions: any = {
+      pageSize: "A4",
+      pageMargins: [15, 50, 15, 40],
+
+      header: [title],
+      content: [details],
+      footer: Rodape,
+    };
+
+    pdfMake.createPdf(docdefinitions).download();
+  };
   return (
     <S.background>
       <S.heading>
@@ -125,14 +176,13 @@ const DetailsHistoric = () => {
                     <S.buttonEdit onClick={() => navigate(`/agendar/${id}`)}>
                       EDITAR
                     </S.buttonEdit>
-                    {/* <S.buttonDownload
+                    <S.buttonDownload
                       onClick={() => {
-                        console.log(getHistoric()),
-                          detailsStudent(getHistoric());
+                        // console.log(Historic()), generatePdf(Historic());
                       }}
                     >
                       Baixar consulta
-                    </S.buttonDownload> */}
+                    </S.buttonDownload>
                     <S.buttonDelete onClick={openModal}>DELETAR</S.buttonDelete>
                   </S.buttonsHistoric>
                 </S.uniqueCard>

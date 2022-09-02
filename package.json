@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.0.0",
     "@types/pdfmake": "^0.2.1",
     "axios": "^0.27.2",
     "intl-tel-input": "^17.0.18",
