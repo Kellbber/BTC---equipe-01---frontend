@@ -91,6 +91,7 @@ const create = () => {
               <input
                 {...register("nome", { required: "Entre com o seu nome" })}
                 placeholder="Nome:"
+                required
                 name="Name"
                 type="text"
               />
@@ -105,6 +106,7 @@ const create = () => {
                 placeholder="Email:"
                 name="email"
                 type="email"
+                required
               />
               <SendButton />
             </S.formUser>

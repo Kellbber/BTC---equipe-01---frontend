@@ -1,5 +1,5 @@
 import api from "./Api";
-
+import swall from 'sweetalert'
 interface Historic {
   id?: string;
   startDate: string;
@@ -33,7 +33,12 @@ export const historicService = {
             })
             return req;
         }catch(err){
-            console.log(err)
+          swall({
+            title: "Erro",
+            text: "Os campos não estão corretos!",
+            icon: "error",
+            timer: 3000,
+          });
         }
     },
 
@@ -42,7 +47,12 @@ export const historicService = {
       const req = api.get(`/followUps/${id}`);
       return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar o histórico",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   deleteHistoric: async (id: string) => {
@@ -50,7 +60,12 @@ export const historicService = {
       const req = api.delete(`/followUps/${id}`);
       return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Não foi possível deletar o histórico",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 
@@ -70,7 +85,12 @@ export const historicService = {
       });
       return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Os campos não estão corretos!",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 };

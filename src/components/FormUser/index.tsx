@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import SendButton from "../../components/SendButton";
 import { userApiService, userService } from "../../services/userService";
 import * as S from "./style";
-
+import swall from 'sweetalert'
 interface User {
   id?: string;
   name: string;
@@ -32,6 +32,12 @@ const FormUser = (props: { update?: boolean }) => {
     
     if (props.update) {
       await userApiService.UpUser(id ?? "", newUser);
+      swall({
+        title: "Certo!",
+        text: "Usuário atualizado",
+        icon: "success",
+        timer: 3000,
+      });
       navigate(`/usuarios/detalhes/${id}`)
     } else {
       const req = await userService.postUser(newUser);
@@ -83,6 +89,7 @@ const FormUser = (props: { update?: boolean }) => {
                 placeholder="Nome:"
                 name="Nome"
                 type="text"
+                required
                 defaultValue={props.update ? user?.name : ""}
               />{" "}
               <input
@@ -90,11 +97,13 @@ const FormUser = (props: { update?: boolean }) => {
                 placeholder="Email:"
                 name="email"
                 type="email"
+                required
                 defaultValue={props.update ? user?.email : ""}
               />
               <select
                 {...register("role", { required: true })}
                 name="role"
+                required
                 defaultValue={props.update ? user?.role : ""}
               >
                 <option>ADMIN</option>

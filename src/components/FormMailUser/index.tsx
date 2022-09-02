@@ -81,6 +81,7 @@ const FormMailUser = () => {
               placeholder="Nome:"
               name="Nome"
               type="text"
+              required
               defaultValue={user?.name}
             />
             <input
@@ -91,6 +92,7 @@ const FormMailUser = () => {
               placeholder="Email:"
               name="email"
               type="email"
+              required
               defaultValue={user?.email}
             />
             <IMaskInput

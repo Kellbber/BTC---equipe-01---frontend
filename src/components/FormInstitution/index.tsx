@@ -127,12 +127,13 @@ const FormInstitution = (props: { update?: boolean }) => {
               placeholder="Nome:"
               name="Nome"
               id="Nome"
+              required
               defaultValue={props.update ? institution?.name : ""}
             />
             <IMaskInput
               {...register("telefone", { required: true })}
               mask="(00) 0000-0000"
-          
+              required
               placeholder="(XX) 0000-0000"
               name="phone"
               defaultValue={props.update ? institution?.phone : ""}
@@ -144,6 +145,7 @@ const FormInstitution = (props: { update?: boolean }) => {
               mask="00000-000"
               placeholder="CEP:"
               name="cepInst"
+              required
               defaultValue={props.update ? institution?.cep : ""}
               minLength={9}
               type="text"
@@ -152,6 +154,7 @@ const FormInstitution = (props: { update?: boolean }) => {
               {...register("street", { required: true })}
               placeholder="Rua:"
               name="street"
+              required
               defaultValue={props.update ? institution?.street : ""}
             />
             <input
@@ -159,6 +162,7 @@ const FormInstitution = (props: { update?: boolean }) => {
               placeholder="Num:"
               name="adressNumber"
               type="text"
+              required
               defaultValue={props.update ? institution?.adressNumber : ""}
             />
             <input
@@ -171,18 +175,21 @@ const FormInstitution = (props: { update?: boolean }) => {
               {...register("district", { required: true })}
               placeholder="Bairro:"
               name="district"
+              required
               defaultValue={props.update ? institution?.district : ""}
             />
             <input
               {...register("city", { required: true })}
               placeholder="Cidade:"
               name="city"
+              required
               defaultValue={props.update ? institution?.city : ""}
             />
             <input
               {...register("state", { required: true })}
               placeholder="UF:"
               name="state"
+              required
               defaultValue={props.update ? institution?.state : ""}
               minLength={2}
               maxLength={2}

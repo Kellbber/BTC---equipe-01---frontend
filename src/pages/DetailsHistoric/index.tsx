@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { historicService } from "../../services/historicService";
 import * as S from "./style";
-
+import swall from 'sweetalert'
 const customStyles = {
   content: {
     top: "50%",
@@ -161,6 +161,12 @@ const DetailsHistoric = () => {
             <button
               onClick={() => {
                 historicService.deleteHistoric(id ?? "");
+                swall({
+                  title: "Certo",
+                  text: "Histórico deletado",
+                  icon: "success",
+                  timer: 3000,
+                });
                 navigate(`/alunos/detalhes/${historic?.studentId}`);
               }}
             >

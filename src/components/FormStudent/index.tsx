@@ -104,12 +104,15 @@ const FormStudent = (props: { update?: boolean }) => {
               {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
+              required
+              min={5}
               defaultValue={props.update ? aluno?.name : ""}
             />
             <IMaskInput
               {...register("age", { required: true, minLength: 10 })}
               placeholder="Data Nasc:"
               mask="00/00/0000"
+              required
               name="age"
               defaultValue={props.update ? aluno?.age : ""}
             />
@@ -119,6 +122,8 @@ const FormStudent = (props: { update?: boolean }) => {
               placeholder="(00) 0000-0000"
               name="phone"
               type="text"
+              required
+              min={10}
               mask="(00) 0000-00000"
               defaultValue={props.update ? aluno?.phone : ""}
             />

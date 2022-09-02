@@ -1,6 +1,7 @@
 import axios from "axios";
 import { User } from "types/User";
 import api from "./Api";
+import swall from 'sweetalert'
 axios.defaults.baseURL = "https://colunareta-backend.herokuapp.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 interface NewUser {
@@ -17,7 +18,12 @@ export const userService = {
       const req = await axios.post("/users/create", newUser);
       return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Os campos não estão corretos!",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   createUser: async (userId:string, newUser:NewUser)=>{
@@ -30,7 +36,12 @@ export const userService = {
       })
       return req;
     }catch(err){
-      alert(err)
+      swall({
+        title: "Erro",
+        text: "Os campos não estão corretos!",
+        icon: "error",
+        timer: 3000,
+      });
     }
   }
 };
@@ -41,7 +52,12 @@ export const userApiService = {
       const req = api.get(`/users/find-all?page=${pageNumber}`);
       return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar os usuários",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 
@@ -50,7 +66,12 @@ export const userApiService = {
         const req = axios.get(`/users/find-one/${id}`);
         return req;
     }catch(err){
-        alert(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar o usuário",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   oneUserEmail: async(id:string)=>{
@@ -58,7 +79,12 @@ export const userApiService = {
       const req = axios.get(`/users/find-one/${id}`);
       return req;
     }catch(err){
-      console.log(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar o usuário",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   UpUser: async (userId: string, User: User)=>{
@@ -72,7 +98,12 @@ export const userApiService = {
       });
       return req;
     }catch(err){
-      console.log(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível atualizar o usuário",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 
@@ -81,7 +112,12 @@ export const userApiService = {
       const req = api.delete(`/users/${id}`)
       return req;
     }catch(err){
-      console.log(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível deletar o usuário",
+        icon: "error",
+        timer: 3000,
+      });
     }
   }
 };

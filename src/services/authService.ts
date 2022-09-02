@@ -17,7 +17,7 @@ const loginService = {
         icon: "error",
         timer: 5000,
       });
-      console.log(err)
+      
     }
   },
 };

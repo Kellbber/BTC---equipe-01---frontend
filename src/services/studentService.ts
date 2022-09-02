@@ -1,6 +1,6 @@
 import { FormStudents } from "../../src/types/FormStudent";
 import api from './Api';
-
+import swall from 'sweetalert'
 
 export const studentService = {
   postStudent: async (newStudent: FormStudents) => {
@@ -13,7 +13,12 @@ export const studentService = {
         });
         return req;
     } catch (err) {
-      alert(err);
+      swall({
+        title: "Erro",
+        text: "Os campos não estão corretos!",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   UpStudent: async (studentId: string, Student: FormStudents)=>{
@@ -27,7 +32,12 @@ export const studentService = {
         })
         return req;
     }catch(err){
-        alert(err)
+      swall({
+        title: "Erro",
+        text: "Os campos não estão corretos!",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   oneStudent: async (id: string)=>{
@@ -35,7 +45,12 @@ export const studentService = {
         const req = api.get(`/student/${id}`);
         return req;
     }catch(err){
-        alert(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar o aluno",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
   allStudent: async (pageNumber:number)=>{
@@ -43,7 +58,12 @@ export const studentService = {
       const req = api.get(`/student/find-all?page=${pageNumber}`);
       return req;
     }catch(err){
-      alert(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível encontrar os alunos",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 
@@ -52,7 +72,12 @@ export const studentService = {
       const req = api.get(`/student/find-all-filter?page=${pageNumber}&search=${idInst}`)
       return req;
     }catch(err){
-      alert(err)
+      swall({
+        title: "Erro",
+        text: "Não foi possível filtrar os alunos",
+        icon: "error",
+        timer: 3000,
+      });
     }
   },
 
@@ -61,7 +86,12 @@ export const studentService = {
       const req = api.delete(`/student/${id}`);
       return req;
     }catch(err){
-
+      swall({
+        title: "Erro",
+        text: "Não foi possível deletar o aluno",
+        icon: "error",
+        timer: 3000,
+      });
     }
   }
 };

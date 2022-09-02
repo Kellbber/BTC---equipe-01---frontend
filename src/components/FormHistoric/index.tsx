@@ -114,6 +114,7 @@ const FormHistoric = (props: { update?: boolean; }) => {
               placeholder="Data Inicial:"
               mask="00/00/0000"
               minLength={8}
+              required
               name="startDate"
               defaultValue={props.update ? historic.startDate : ""}
               onChange={(e) => {
@@ -122,6 +123,7 @@ const FormHistoric = (props: { update?: boolean; }) => {
             />
             <input
               {...register("firstPhoto", { required: true })}
+              required
               placeholder="Primeira Foto:"
               name="firstPhoto"
               defaultValue={props.update ? historic.firstPhoto : ""}
@@ -131,6 +133,7 @@ const FormHistoric = (props: { update?: boolean; }) => {
             />
             <input
               {...register("secondPhoto", { required: true })}
+              required
               placeholder="Secunda Foto:"
               name="secondPhoto"
               defaultValue={props.update ? historic.secondPhoto : ""}
@@ -143,6 +146,7 @@ const FormHistoric = (props: { update?: boolean; }) => {
             />
             <IMaskInput
               {...register("returnDate", { required: true })}
+              required
               placeholder="Data de Retorno:"
               name="returnDate"
               mask="00/00/0000"
