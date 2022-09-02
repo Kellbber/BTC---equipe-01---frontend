@@ -79,8 +79,6 @@ const DetailsHistoric = () => {
   }, []);
 
   const generatePdf = (historic: Historic) => {
-    pdFmake.vfs = pdFfonts.pdfMake.vfs;
-
     const title = [
       {
         text: "Historico",
