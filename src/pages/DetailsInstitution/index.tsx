@@ -8,6 +8,7 @@ import { userLoggedService } from "../../services/authService";
 import { institutionService } from "../../services/institutionService";
 import * as S from "./style";
 import Modal from 'react-modal'
+import swall from 'sweetalert'
 const customStyles = {
   content: {
     top: "50%",
@@ -174,6 +175,11 @@ const DetailsInstitution = () => {
             <button
               onClick={() => {
                 institutionService.deletInstitution(id ?? "");
+                swall({
+                  title: "Instituição Deletada!",
+                  icon: "success",
+                  timer: 3000,
+                });
                 navigate(`/instituicoes`);
               }}
             >

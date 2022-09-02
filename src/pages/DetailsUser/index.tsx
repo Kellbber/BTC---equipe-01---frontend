@@ -7,7 +7,7 @@ import Loading from "../../components/Loading";
 import { userLoggedService } from "../../services/authService";
 import { userApiService } from "../../services/userService";
 import * as S from "./style";
-
+import swall from 'sweetalert'
 const customStyles = {
   content: {
     top: "50%",
@@ -131,7 +131,14 @@ const DetailsUser = () => {
           <p>Deseja realmente deletar?</p>
           <S.buttonsHistoric>
             <button
-              onClick={() => {userApiService.DeleteUser(id ?? ""); navigate(`/usuarios`)}}
+              onClick={() => {userApiService.DeleteUser(id ?? ""); 
+              swall({
+                title: "Usuário Deletado!",
+                icon: "success",
+                timer: 3000,
+              });
+              navigate(`/usuarios`);
+            }}
             >
               SIM
             </button>

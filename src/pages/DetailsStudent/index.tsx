@@ -5,6 +5,7 @@ import { StudentComplete } from "types/StudentFindOne";
 import Loading from "../../components/Loading";
 import { studentService } from "../../services/studentService";
 import Modal from 'react-modal'
+import swall from 'sweetalert'
 const customStyles = {
   content: {
     top: "50%",
@@ -134,6 +135,11 @@ const DetailsStudent = () => {
             <button
               onClick={() => {
                 studentService.deleteStudent(id ?? "");
+                swall({
+                  title: "Aluno Deletado!",
+                  icon: "success",
+                  timer: 3000,
+                });
                 navigate(`/alunos`);
               }}
             >

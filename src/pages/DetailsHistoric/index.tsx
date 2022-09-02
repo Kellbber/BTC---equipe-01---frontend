@@ -126,16 +126,6 @@ const DetailsHistoric = () => {
                       EDITAR
                     </S.buttonEdit>
                     <S.buttonDelete onClick={openModal}>Deletar</S.buttonDelete>
-                    {historic && (
-                      <S.buttonDownload
-                        onClick={() => {
-                          // generatePdf(historic);
-                        }}
-                      >
-                        Baixar consulta
-                      </S.buttonDownload>
-                    )}
-
                   </S.buttonsHistoric>
                 </S.uniqueCard>
               </S.cardDetails>
