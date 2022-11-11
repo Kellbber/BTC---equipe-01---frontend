@@ -55,7 +55,7 @@ Você pode [acessar o código fonte do projeto](https://github.com/Kellbber/BTC-
 
 Após clonar o projeto para sua máquina, você pode abrir com a aplicação [VSCODE](https://code.visualstudio.com/).
 
-Ou então, pode ir direto para a página web [ColunaReta](https://colunareta-ar6p1153b-kellbber.vercel.app/).
+Ou então, pode ir direto para a página web [ColunaReta](https://colunareta.vercel.app).
 
 ## Desenvolvedores
 
