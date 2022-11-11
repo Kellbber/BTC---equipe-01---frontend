@@ -16,6 +16,7 @@ const Login = () => {
   localStorage.removeItem('jwt')
   localStorage.removeItem('idStudent')
   localStorage.removeItem('forawing');
+  
   const [values, setValues] = useState({
     email: "",
     password: "",

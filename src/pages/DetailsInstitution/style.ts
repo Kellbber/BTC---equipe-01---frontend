@@ -116,7 +116,6 @@ export const cardDetails = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 90%;
-
     justify-content: center;
     flex-direction: column;
     height: 80px;

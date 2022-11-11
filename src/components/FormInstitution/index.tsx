@@ -6,8 +6,8 @@ import SendButton from "../../components/SendButton";
 import { institutionService } from "../../services/institutionService";
 
 import * as S from "./style";
-import {IMaskInput} from 'react-imask'
-import swall from 'sweetalert'
+import { IMaskInput } from "react-imask";
+import swall from "sweetalert";
 interface Institution {
   name: string;
   phone: string;
@@ -20,14 +20,8 @@ interface Institution {
   complement: string;
 }
 
-
-
 const FormInstitution = (props: { update?: boolean }) => {
-  const {
-    register,
-    setValue,
-    setFocus,
-  } = useForm();
+  const { register, setValue, setFocus } = useForm();
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -63,8 +57,8 @@ const FormInstitution = (props: { update?: boolean }) => {
     };
 
     if (props.update) {
-     const req = await institutionService.UpInstitution(id ?? "", newInst);
-      if(req){
+      const req = await institutionService.UpInstitution(id ?? "", newInst);
+      if (req) {
         swall({
           title: "Sucesso!",
           text: `Instituição atualizada!`,
@@ -76,12 +70,12 @@ const FormInstitution = (props: { update?: boolean }) => {
     } else {
       const req = await institutionService.postInstitution(newInst);
       if (req?.status === 201) {
-          swall({
-            title: "Sucesso!",
-            text: `Cadastro da instituição concluído!`,
-            icon: "success",
-            timer: 3000,
-          });
+        swall({
+          title: "Sucesso!",
+          text: `Cadastro da instituição concluído!`,
+          icon: "success",
+          timer: 3000,
+        });
         navigate("/instituicoes");
       }
     }
@@ -113,7 +107,11 @@ const FormInstitution = (props: { update?: boolean }) => {
           <BiArrowBack
             cursor="pointer"
             size={30}
-            onClick={() => {id ? navigate(`/instituicao/detalhes/${id}`): navigate('/instituicoes')}}
+            onClick={() => {
+              id
+                ? navigate(`/instituicao/detalhes/${id}`)
+                : navigate("/instituicoes");
+            }}
           />
         </S.logins>
       </S.heading>
@@ -123,7 +121,7 @@ const FormInstitution = (props: { update?: boolean }) => {
 
           <form onSubmit={handleSubmit}>
             <input
-              {...register("nome", { required: true})}
+              {...register("nome", { required: true })}
               placeholder="Nome:"
               name="Nome"
               id="Nome"
@@ -195,7 +193,7 @@ const FormInstitution = (props: { update?: boolean }) => {
               maxLength={2}
               type="text"
             />
-   
+
             <SendButton />
           </form>
         </S.formDiv>
